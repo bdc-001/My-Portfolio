@@ -211,7 +211,7 @@ const BlogPost = () => {
                         {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
                             <Link
                                 key={relatedPost.id}
-                                to={`/ blog / ${relatedPost.slug} `}
+                                to={`/blog/${relatedPost.slug}`}
                                 className="group bg-white rounded-xl border border-neutral-100 p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
                             >
                                 <h4 className="text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">

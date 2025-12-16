@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 
 const Work = () => {
     return (
-        <div className="pt-20">
-            <div className="container mx-auto px-8">
+        <div className="pt-16 sm:pt-20">
+            <div className="container mx-auto px-4 sm:px-6 md:px-8">
                 {/* Breadcrumb Navigation */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
-                    className="pt-8 pb-4"
+                    className="pt-4 sm:pt-6 md:pt-8 pb-3 sm:pb-4"
                 >
-                    <div className="flex items-center gap-2 text-sm">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm">
                         <a href="/" className="text-neutral-400 hover:text-primary transition-colors">Home</a>
                         <span className="text-neutral-300">/</span>
                         <span className="text-primary font-medium">Work</span>
@@ -25,13 +25,13 @@ const Work = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="py-16 border-b border-neutral-100"
+                    className="py-8 sm:py-12 md:py-16 border-b border-neutral-100"
                 >
                     <div className="max-w-4xl">
-                        <h1 className="text-5xl lg:text-7xl font-bold text-primary tracking-tighter mb-8 text-balance leading-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-primary tracking-tighter mb-4 sm:mb-6 md:mb-8 text-balance leading-tight">
                             Turning ideas into impact.
                         </h1>
-                        <p className="text-xl text-secondary leading-relaxed max-w-2xl">
+                        <p className="text-base sm:text-lg md:text-xl text-secondary leading-relaxed max-w-2xl">
                             A deep dive into my product journey—how I identify problems, craft strategies, and ship solutions that drive measurable business growth.
                         </p>
                     </div>

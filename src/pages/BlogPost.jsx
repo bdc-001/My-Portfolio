@@ -60,20 +60,20 @@ const BlogPost = () => {
     };
 
     return (
-        <div className="pt-20">
-            <div className="container mx-auto px-8">
+        <div className="pt-16 sm:pt-20">
+            <div className="container mx-auto px-4 sm:px-6 md:px-8">
                 {/* Back Button */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
-                    className="pt-8 pb-8"
+                    className="pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-8"
                 >
                     <button
                         onClick={() => navigate('/blog')}
-                        className="flex items-center gap-2 text-neutral-500 hover:text-primary transition-colors"
+                        className="flex items-center gap-2 text-sm sm:text-base text-neutral-500 hover:text-primary transition-colors"
                     >
-                        <FiArrowLeft /> Back to Blog
+                        <FiArrowLeft className="w-4 h-4" /> <span className="hidden sm:inline">Back to Blog</span><span className="sm:hidden">Back</span>
                     </button>
                 </motion.div>
 
@@ -85,39 +85,40 @@ const BlogPost = () => {
                     className="max-w-4xl mx-auto"
                 >
                     {/* Title */}
-                    <h1 className="text-4xl lg:text-6xl font-bold text-primary tracking-tight mb-8 leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-primary tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight">
                         {post.title}
                     </h1>
 
                     {/* Meta */}
-                    <div className="flex items-center justify-between mb-12 pb-8 border-b border-neutral-100">
-                        <div className="flex items-center gap-6 text-sm text-neutral-500">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 sm:mb-10 md:mb-12 pb-6 sm:pb-8 border-b border-neutral-100">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-xs sm:text-sm text-neutral-500">
                             <span>{formatDateWithOrdinal(post.date)}</span>
                             <span className="flex items-center gap-1">
-                                <FiClock className="w-4 h-4" />
+                                <FiClock className="w-3 h-3 sm:w-4 sm:h-4" />
                                 {post.readTime}
                             </span>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
                             <button
                                 onClick={handleCopyLink}
-                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium border border-neutral-200 text-neutral-700 hover:border-purple-300 hover:bg-purple-50 hover:text-purple-600 rounded-lg transition-all"
+                                className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium border border-neutral-200 text-neutral-700 hover:border-purple-300 hover:bg-purple-50 hover:text-purple-600 rounded-lg transition-all flex-1 sm:flex-initial justify-center"
                             >
-                                {copied ? <FiCheck className="w-4 h-4" /> : <FiCopy className="w-4 h-4" />}
-                                {copied ? 'Copied!' : 'Copy Link'}
+                                {copied ? <FiCheck className="w-3 h-3 sm:w-4 sm:h-4" /> : <FiCopy className="w-3 h-3 sm:w-4 sm:h-4" />}
+                                <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy Link'}</span>
+                                <span className="sm:hidden">{copied ? 'Copied' : 'Copy'}</span>
                             </button>
                             <button
                                 onClick={handleShare}
-                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-colors shadow-sm"
+                                className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-colors shadow-sm flex-1 sm:flex-initial justify-center"
                             >
-                                <FiShare2 className="w-4 h-4" />
+                                <FiShare2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                 Share
                             </button>
                         </div>
                     </div>
 
                     {/* Cover Image */}
-                    <div className="relative overflow-hidden rounded-2xl mb-12 aspect-[21/9]">
+                    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-8 sm:mb-10 md:mb-12 aspect-[21/9]">
                         <img
                             src={post.coverImage}
                             alt={post.title}
@@ -131,21 +132,21 @@ const BlogPost = () => {
                             // Handle headings
                             if (paragraph.startsWith('## ')) {
                                 return (
-                                    <h2 key={index} className="text-3xl font-bold text-primary mt-12 mb-6">
+                                    <h2 key={index} className="text-2xl sm:text-3xl font-bold text-primary mt-8 sm:mt-10 md:mt-12 mb-4 sm:mb-6">
                                         {paragraph.replace('## ', '')}
                                     </h2>
                                 );
                             }
                             if (paragraph.startsWith('### ')) {
                                 return (
-                                    <h3 key={index} className="text-2xl font-bold text-primary mt-8 mb-4">
+                                    <h3 key={index} className="text-xl sm:text-2xl font-bold text-primary mt-6 sm:mt-8 mb-3 sm:mb-4">
                                         {paragraph.replace('### ', '')}
                                     </h3>
                                 );
                             }
                             // Regular paragraphs
                             return (
-                                <p key={index} className="text-lg text-secondary leading-relaxed mb-6">
+                                <p key={index} className="text-base sm:text-lg text-secondary leading-relaxed mb-4 sm:mb-6">
                                     {paragraph}
                                 </p>
                             );
@@ -153,51 +154,53 @@ const BlogPost = () => {
                     </div>
 
                     {/* Share Section */}
-                    <div className="mt-16 pt-8 border-t border-neutral-100">
+                    <div className="mt-8 sm:mt-12 md:mt-16 pt-6 sm:pt-8 border-t border-neutral-100">
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <p className="text-lg text-neutral-600">Found this helpful? Share it with your network.</p>
-                            <div className="flex items-center gap-3">
+                            <p className="text-base sm:text-lg text-neutral-600 text-center sm:text-left">Found this helpful? Share it with your network.</p>
+                            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
                                 <button
                                     onClick={handleCopyLink}
-                                    className="flex items-center gap-2 px-6 py-3 border border-neutral-200 text-neutral-700 font-medium rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors"
+                                    className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 border border-neutral-200 text-neutral-700 text-sm sm:text-base font-medium rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors flex-1 sm:flex-initial justify-center"
                                 >
-                                    {copied ? <FiCheck /> : <FiCopy />}
-                                    {copied ? 'Copied!' : 'Copy Link'}
+                                    {copied ? <FiCheck className="w-4 h-4" /> : <FiCopy className="w-4 h-4" />}
+                                    <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy Link'}</span>
+                                    <span className="sm:hidden">{copied ? 'Copied' : 'Copy'}</span>
                                 </button>
                                 <button
                                     onClick={handleShare}
-                                    className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                                    className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-purple-600 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-purple-700 transition-colors flex-1 sm:flex-initial justify-center"
                                 >
-                                    <FiShare2 />
-                                    Share Article
+                                    <FiShare2 className="w-4 h-4" />
+                                    <span className="hidden sm:inline">Share Article</span>
+                                    <span className="sm:hidden">Share</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     {/* Connect Section */}
-                    <div className="mt-16 pt-8 border-t border-neutral-100">
-                        <div className="text-center mb-6">
-                            <h3 className="text-2xl font-bold text-primary mb-2">Let's Connect</h3>
-                            <p className="text-neutral-600">Follow my journey on LinkedIn and YouTube</p>
+                    <div className="mt-8 sm:mt-12 md:mt-16 pt-6 sm:pt-8 border-t border-neutral-100">
+                        <div className="text-center mb-4 sm:mb-6">
+                            <h3 className="text-xl sm:text-2xl font-bold text-primary mb-2">Let's Connect</h3>
+                            <p className="text-sm sm:text-base text-neutral-600">Follow my journey on LinkedIn and YouTube</p>
                         </div>
-                        <div className="flex items-center justify-center gap-4">
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
                             <a
                                 href="https://www.linkedin.com/in/arsalaan-pm/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 px-6 py-3 border border-neutral-200 bg-white text-neutral-700 font-medium rounded-xl hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all shadow-sm group"
+                                className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-neutral-200 bg-white text-neutral-700 text-sm sm:text-base font-medium rounded-xl hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all shadow-sm group"
                             >
-                                <FaLinkedin className="text-xl text-[#0077B5] group-hover:text-white transition-colors" />
+                                <FaLinkedin className="text-lg sm:text-xl text-[#0077B5] group-hover:text-white transition-colors" />
                                 <span>LinkedIn</span>
                             </a>
                             <a
                                 href="https://www.youtube.com/@ArsalaanMd25"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 px-6 py-3 border border-neutral-200 bg-white text-neutral-700 font-medium rounded-xl hover:border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all shadow-sm group"
+                                className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-neutral-200 bg-white text-neutral-700 text-sm sm:text-base font-medium rounded-xl hover:border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all shadow-sm group"
                             >
-                                <FaYoutube className="text-xl text-[#FF0000] group-hover:text-white transition-colors" />
+                                <FaYoutube className="text-lg sm:text-xl text-[#FF0000] group-hover:text-white transition-colors" />
                                 <span>YouTube</span>
                             </a>
                         </div>
@@ -205,22 +208,22 @@ const BlogPost = () => {
                 </motion.article>
 
                 {/* Related Posts */}
-                <div className="max-w-4xl mx-auto mt-16 mb-24">
-                    <h3 className="text-2xl font-bold text-primary mb-8">More Articles</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="max-w-4xl mx-auto mt-8 sm:mt-12 md:mt-16 mb-12 sm:mb-16 md:mb-24">
+                    <h3 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6 md:mb-8">More Articles</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
                             <Link
                                 key={relatedPost.id}
                                 to={`/blog/${relatedPost.slug}`}
-                                className="group bg-white rounded-xl border border-neutral-100 p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
+                                className="group bg-white rounded-xl border border-neutral-100 p-4 sm:p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
                             >
-                                <h4 className="text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">
+                                <h4 className="text-lg sm:text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">
                                     {relatedPost.title}
                                 </h4>
-                                <p className="text-sm text-neutral-500 line-clamp-2 mb-4">
+                                <p className="text-xs sm:text-sm text-neutral-500 line-clamp-2 mb-3 sm:mb-4">
                                     {relatedPost.excerpt}
                                 </p>
-                                <span className="text-sm text-purple-600 font-medium group-hover:underline">
+                                <span className="text-xs sm:text-sm text-purple-600 font-medium group-hover:underline">
                                     Read More →
                                 </span>
                             </Link>

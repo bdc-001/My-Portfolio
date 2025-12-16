@@ -1,81 +1,77 @@
-import{RiReactjsLine} from "react-icons/ri";
-import{SiJira} from "react-icons/si";
-import { SiApachesuperset } from "react-icons/si";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { FaNodeJs } from "react-icons/fa";
-import { SiMixpanel } from "react-icons/si";
-import {motion} from "framer-motion";
+import { TOOLKIT } from "../constants";
+import { motion } from "framer-motion";
+import { RiNotionFill, RiReactjsLine } from "react-icons/ri";
+import { SiJira, SiMiro, SiCanva, SiMixpanel, SiApachesuperset, SiGoogleanalytics } from "react-icons/si";
+import { FaFigma, FaNodeJs } from "react-icons/fa";
 
-const iconVariants = (duration) => ({
-    initial: { y: -10 },
-    animate: {
-        y: [10, -10],
-        transition: {
-            duration: duration,
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: "reverse",
-        }
-    },
-});
+// Map string names to actual icon components
+const IconMap = {
+    "RiNotionFill": RiNotionFill,
+    "SiJira": SiJira,
+    "SiMiro": SiMiro,
+    "FaFigma": FaFigma,
+    "SiCanva": SiCanva,
+    "SiMixpanel": SiMixpanel,
+    "SiApachesuperset": SiApachesuperset,
+    "SiGoogleanalytics": SiGoogleanalytics,
+    "RiReactjsLine": RiReactjsLine,
+    "FaNodeJs": FaNodeJs
+};
 
-const Technologies = () => {
-  return (
-    <div className="border-b border-neutral-800 pb-24">
-     <motion.h2 
-     whileInView={{ opacity: 1, y:0 }}
-     initial={{opacity:0, y: -100}}
-     transition={{duration: 1.5}}
-     className="my-20 text-center text-4xl">Tools & Technologies</motion.h2>
-     <motion.div 
-     whileInView={{opacity: 1, x: 0}}
-     initial= {{opacity:0, x: -100}}
-     transition={{duration: 0.5}}
-     className="flex flex-wrap items-center justify-center gap-4">
-     <motion.div 
-     variants= {iconVariants(2.5)}
-     initial= "initial"
-     animate="animate"
-     className="rounded-2xl border-4 border-neutral-800 p-4">
-        <RiReactjsLine className="text-7xl text-cyan-400" />
-    </motion.div>   
-    <motion.div 
-    variants= {iconVariants(3)}
-    initial= "initial"
-    animate="animate"
-    className="rounded-2xl border-4 border-neutral-800 p-4">
-        <SiApachesuperset className="text-7xl text-blue-900" />
-    </motion.div>  
-    <motion.div
-    variants= {iconVariants(3.5)}
-    initial= "initial"
-    animate="animate"
-    className="rounded-2xl border-4 border-neutral-800 p-4">
-        <FaNodeJs className="text-7xl text-green-500" />
-    </motion.div>  
-    <motion.div
-    variants= {iconVariants(4)}
-    initial= "initial"
-    animate="animate"
-    className="rounded-2xl border-4 border-neutral-800 p-4">
-        <SiJira className="text-7xl text-blue-500" />
-    </motion.div>   
-    <motion.div 
-    variants= {iconVariants(4.5)}
-    initial= "initial"
-    animate="animate"
-    className="rounded-2xl border-4 border-neutral-800 p-4">
-        <BiLogoPostgresql className="text-7xl text-sky-700" />
-    </motion.div>   
-    <motion.div 
-    variants= {iconVariants(5)}
-    initial= "initial"
-    animate="animate"
-    className="rounded-2xl border-4 border-neutral-800 p-4">
-        <SiMixpanel className="text-7xl text-purple-700" />
-    </motion.div>  
-     </motion.div>
-    </div>
-  )
-}
-export default Technologies
+const Toolkit = () => {
+    // Flatten the toolkit object into a single array of tools
+    const allTools = Object.values(TOOLKIT).flat();
+    // Duplicate the list to create a seamless loop
+    const marqueeTools = [...allTools, ...allTools];
+
+    return (
+        <div className="border-b border-neutral-100 pb-24 pt-10 overflow-hidden">
+            <h2 className="mb-16 text-3xl font-bold tracking-tight text-primary">
+                Product Toolkit
+            </h2>
+
+            <div className="relative flex overflow-x-hidden group">
+                <motion.div
+                    className="flex flex-nowrap gap-16"
+                    animate={{ x: "-50%" }}
+                    transition={{
+                        x: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 30, // Adjust speed here (higher = slower)
+                            ease: "linear",
+                        },
+                    }}
+                >
+                    {marqueeTools.map((tool, index) => {
+                        const IconComponent = IconMap[tool.icon];
+                        return (
+                            <div key={index} className="flex items-center gap-3 flex-shrink-0">
+                                {tool.isImage ? (
+                                    <img
+                                        src={tool.icon}
+                                        alt={tool.name}
+                                        className="w-6 h-6 object-contain opacity-60 grayscale transition-all hover:grayscale-0 hover:opacity-100"
+                                    />
+                                ) : (
+                                    IconComponent && (
+                                        <IconComponent className="text-2xl text-neutral-400 transition-colors hover:text-primary" />
+                                    )
+                                )}
+                                <span className="text-lg font-medium text-neutral-500 whitespace-nowrap">
+                                    {tool.name}
+                                </span>
+                            </div>
+                        );
+                    })}
+                </motion.div>
+
+                {/* Gradient masks for smooth fade edges */}
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white/90 to-transparent z-10"></div>
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white/90 to-transparent z-10"></div>
+            </div>
+        </div>
+    );
+};
+
+export default Toolkit;

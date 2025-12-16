@@ -1,37 +1,42 @@
-import {CONTACT} from "../constants";
-import {motion} from "framer-motion";
+import { CONTACT } from "../constants";
+import { motion } from "framer-motion";
 
-const Contacts = () => {
+const Contact = () => {
   return (
-    <div className="border-b border-neutral-900 pb-20">
-        <motion.h2 
-        whileInView={{opacity: 1, y:0}}
-        initial= {{opacity:0, y: -100}}
-        transition={{duration: 0.5}}
-        className="my-10 text-center text-4xl"> Let's Connect!</motion.h2>
-        <div className="text-center tracking-tighter">
-        <motion.p 
-        whileInView={{opacity: 1, x:0}}
-        initial= {{opacity:0, x: 100}}
-        transition={{duration: 1}}
-        className="my-4">{CONTACT.address}
-        </motion.p>
-        <motion.p 
-        whileInView={{opacity: 1, x:0}}
-        initial= {{opacity:0, x: 100}}
-        transition={{duration: 1}}
-        className="my-4">{CONTACT.phoneNo}
-        </motion.p>
-        <motion.a 
-        whileInView={{opacity: 1, x:0}}
-        initial= {{opacity:0, x: 100}}
-        transition={{duration: 1}}
-        href="#" className="border-b">
-          {CONTACT.email}
-        </motion.a>
-        </div>
-    </div>
-  )
-}
+    <div id="contact" className="border-b border-neutral-100 pb-20 pt-20">
+      <div className="text-center tracking-tighter">
+        <motion.h2
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5 }}
+          className="my-10 text-center text-4xl lg:text-6xl font-bold text-primary tracking-tight"
+        >
+          Let's build something bold.
+        </motion.h2>
 
-export default Contacts
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col items-center gap-6"
+        >
+          <p className="text-xl text-secondary">
+            Ready to maximize your product's potential?
+          </p>
+          <a href={`mailto:${CONTACT.email}`} className="text-2xl lg:text-3xl font-medium text-primary hover:text-purple-600 transition-colors border-b-2 border-transparent hover:border-purple-600 pb-1">
+            {CONTACT.email}
+          </a>
+          <div className="flex gap-4 mt-8 text-secondary text-sm">
+            <span>{CONTACT.address}</span>
+          </div>
+
+          <p className="text-xs text-neutral-400 mt-20">
+            © {new Date().getFullYear()} Arsalaan Mohammed. All rights reserved.
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;

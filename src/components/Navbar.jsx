@@ -1,35 +1,65 @@
-import logo from "../assets/iitismlogo.png";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { GiFeather } from "react-icons/gi";
-
-
-function IconButton({ onClick, icon: Icon, color }) {
-  return (
-    <button onClick={onClick} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
-      <Icon size={24} style={{ color: color }} />
-    </button>
-  );
-}
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const handleLinkedInClick = () => {
-    window.open('https://www.linkedin.com/in/arsalaan-mohammed-52b831276/', '_blank', 'noopener,noreferrer');
-  };
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
-  const handleGithubClick = () => {
-    window.open('https://github.com/md-arsalaan25', '_blank', 'noopener,noreferrer');
+  const handleScroll = (id) => {
+    if (!isHome) {
+      // If not on home, we just follow the link to home with hash
+      return;
+    }
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <nav className="mb-20 flex items-center justify-between py-6">
+    <nav className="mb-10 flex items-center justify-between py-6 container mx-auto px-8">
+      {/* Name / Brand */}
       <div className="flex flex-shrink-0 items-center">
-        <img className="mx-2 w-20" src={logo} alt="logo" />
+        <Link to="/" className="text-xl font-bold tracking-tight text-primary hover:text-purple-600 transition-colors">
+          Arsalaan Mohammed <span className="font-light text-secondary hidden sm:inline">| Product Manager</span>
+        </Link>
       </div>
-      <div className="m-8 flex items-center justify-center gap-4 text-2xl">
-         <GiFeather />
-        <IconButton onClick={handleLinkedInClick} icon={FaLinkedin} />
-        <IconButton onClick={handleGithubClick} icon={FaGithub}/>
+
+      {/* Navigation Text Links */}
+      <div className="flex gap-8 text-sm font-medium">
+        <Link
+          to="/work"
+          className={`transition-colors hover:text-purple-600 ${location.pathname === '/work' ? 'text-purple-600 font-bold' : 'text-neutral-600'}`}
+        >
+          Work
+        </Link>
+
+        <Link
+          to="/blog"
+          className={`transition-colors hover:text-purple-600 ${location.pathname.startsWith('/blog') ? 'text-purple-600 font-bold' : 'text-neutral-600'}`}
+        >
+          Blog
+        </Link>
+
+        {/* For About and Contact, we want to scroll on Home, or go to Home#section on other pages */}
+        {isHome ? (
+          <>
+            <button onClick={() => handleScroll('about')} className="text-neutral-600 hover:text-purple-600 transition-colors">
+              About
+            </button>
+            <button onClick={() => handleScroll('contact')} className="text-neutral-600 hover:text-purple-600 transition-colors">
+              Contact
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/#about" className="text-neutral-600 hover:text-purple-600 transition-colors">
+              About
+            </Link>
+            <Link to="/#contact" className="text-neutral-600 hover:text-purple-600 transition-colors">
+              Contact
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

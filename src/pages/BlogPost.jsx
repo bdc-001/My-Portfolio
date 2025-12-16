@@ -1,13 +1,15 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { BLOG_POSTS } from "../constants/blogs";
-import { motion } from "framer-motion";
-import { FiClock, FiArrowLeft, FiShare2 } from "react-icons/fi";
-import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiClock, FiArrowLeft, FiShare2, FiCopy, FiCheck } from "react-icons/fi";
+import { FaLinkedin, FaYoutube } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const BlogPost = () => {
     const { slug } = useParams();
     const navigate = useNavigate();
     const post = BLOG_POSTS.find(p => p.slug === slug);
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -24,6 +26,12 @@ const BlogPost = () => {
         );
     }
 
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(window.location.href);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
     const handleShare = () => {
         if (navigator.share) {
             navigator.share({
@@ -32,8 +40,7 @@ const BlogPost = () => {
                 url: window.location.href,
             });
         } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert('Link copied to clipboard!');
+            handleCopyLink();
         }
     };
 
@@ -62,20 +69,8 @@ const BlogPost = () => {
                     transition={{ duration: 0.6 }}
                     className="max-w-4xl mx-auto"
                 >
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                        {post.tags.map((tag, index) => (
-                            <span
-                                key={index}
-                                className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-
                     {/* Title */}
-                    <h1 className="text-4xl lg:text-6xl font-bold text-primary tracking-tight mb-6 leading-tight">
+                    <h1 className="text-4xl lg:text-6xl font-bold text-primary tracking-tight mb-8 leading-tight">
                         {post.title}
                     </h1>
 
@@ -88,13 +83,22 @@ const BlogPost = () => {
                                 {post.readTime}
                             </span>
                         </div>
-                        <button
-                            onClick={handleShare}
-                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
-                        >
-                            <FiShare2 className="w-4 h-4" />
-                            Share
-                        </button>
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={handleCopyLink}
+                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium border border-neutral-200 text-neutral-700 hover:border-purple-300 hover:bg-purple-50 hover:text-purple-600 rounded-lg transition-all"
+                            >
+                                {copied ? <FiCheck className="w-4 h-4" /> : <FiCopy className="w-4 h-4" />}
+                                {copied ? 'Copied!' : 'Copy Link'}
+                            </button>
+                            <button
+                                onClick={handleShare}
+                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-colors shadow-sm"
+                            >
+                                <FiShare2 className="w-4 h-4" />
+                                Share
+                            </button>
+                        </div>
                     </div>
 
                     {/* Cover Image */}
@@ -135,15 +139,52 @@ const BlogPost = () => {
 
                     {/* Share Section */}
                     <div className="mt-16 pt-8 border-t border-neutral-100">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <p className="text-lg text-neutral-600">Found this helpful? Share it with your network.</p>
-                            <button
-                                onClick={handleShare}
-                                className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                            <div className="flex items-center gap-3">
+                                <button
+                                    onClick={handleCopyLink}
+                                    className="flex items-center gap-2 px-6 py-3 border border-neutral-200 text-neutral-700 font-medium rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors"
+                                >
+                                    {copied ? <FiCheck /> : <FiCopy />}
+                                    {copied ? 'Copied!' : 'Copy Link'}
+                                </button>
+                                <button
+                                    onClick={handleShare}
+                                    className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                                >
+                                    <FiShare2 />
+                                    Share Article
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Connect Section */}
+                    <div className="mt-16 pt-8 border-t border-neutral-100">
+                        <div className="text-center mb-6">
+                            <h3 className="text-2xl font-bold text-primary mb-2">Let's Connect</h3>
+                            <p className="text-neutral-600">Follow my journey on LinkedIn and YouTube</p>
+                        </div>
+                        <div className="flex items-center justify-center gap-4">
+                            <a
+                                href="https://www.linkedin.com/in/arsalaan-pm/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 px-6 py-3 border border-neutral-200 bg-white text-neutral-700 font-medium rounded-xl hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all shadow-sm group"
                             >
-                                <FiShare2 />
-                                Share Article
-                            </button>
+                                <FaLinkedin className="text-xl text-[#0077B5] group-hover:text-white transition-colors" />
+                                <span>LinkedIn</span>
+                            </a>
+                            <a
+                                href="https://www.youtube.com/@ArsalaanMd25"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 px-6 py-3 border border-neutral-200 bg-white text-neutral-700 font-medium rounded-xl hover:border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all shadow-sm group"
+                            >
+                                <FaYoutube className="text-xl text-[#FF0000] group-hover:text-white transition-colors" />
+                                <span>YouTube</span>
+                            </a>
                         </div>
                     </div>
                 </motion.article>
@@ -155,7 +196,7 @@ const BlogPost = () => {
                         {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
                             <Link
                                 key={relatedPost.id}
-                                to={`/blog/${relatedPost.slug}`}
+                                to={`/ blog / ${relatedPost.slug} `}
                                 className="group bg-white rounded-xl border border-neutral-100 p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
                             >
                                 <h4 className="text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">

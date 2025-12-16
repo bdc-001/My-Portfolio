@@ -5,6 +5,21 @@ import { FiClock, FiArrowLeft, FiShare2, FiCopy, FiCheck } from "react-icons/fi"
 import { FaLinkedin, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
+const formatDateWithOrdinal = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleDateString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+    
+    const getOrdinal = (n) => {
+        const s = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    };
+    
+    return `${getOrdinal(day)} ${month}, ${year}`;
+};
+
 const BlogPost = () => {
     const { slug } = useParams();
     const navigate = useNavigate();
@@ -77,7 +92,7 @@ const BlogPost = () => {
                     {/* Meta */}
                     <div className="flex items-center justify-between mb-12 pb-8 border-b border-neutral-100">
                         <div className="flex items-center gap-6 text-sm text-neutral-500">
-                            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                            <span>{formatDateWithOrdinal(post.date)}</span>
                             <span className="flex items-center gap-1">
                                 <FiClock className="w-4 h-4" />
                                 {post.readTime}

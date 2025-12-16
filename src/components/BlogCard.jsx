@@ -2,6 +2,21 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FiClock, FiArrowRight } from "react-icons/fi";
 
+const formatDateWithOrdinal = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleDateString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+    
+    const getOrdinal = (n) => {
+        const s = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    };
+    
+    return `${getOrdinal(day)} ${month}, ${year}`;
+};
+
 const BlogCard = ({ post, featured = false }) => {
     return (
         <motion.article
@@ -54,7 +69,7 @@ const BlogCard = ({ post, featured = false }) => {
                                     <FiClock className="w-4 h-4" />
                                     {post.readTime}
                                 </span>
-                                <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                <span>{formatDateWithOrdinal(post.date)}</span>
                             </div>
                             <div className="flex items-center gap-2 text-primary font-medium group-hover:text-purple-600 transition-colors">
                                 Read More <FiArrowRight className="group-hover:translate-x-1 transition-transform" />

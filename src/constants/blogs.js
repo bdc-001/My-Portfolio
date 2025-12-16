@@ -156,7 +156,7 @@ I still visit Darjeeling. The mist is still there. The mountains are still breat
 But now when I look at them, I don't see limits. I see where I started.
 
 And the view from here? It's incredible.`,
-        date: "2024-12-16",
+        date: "2025-12-17",
         readTime: "8 min read",
         tags: ["Personal", "IIT", "Journey", "Career"],
         coverImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop"

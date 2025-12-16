@@ -29,13 +29,17 @@ I still sketched. I still wrote poetry. But now I was writing about a city that 
 
 2020. COVID-19.
 
-The world shut down. JEE got postponed. Then postponed again. Then... I just couldn't take it that year.
+The world shut down. JEE got postponed. Then postponed again.
 
-I remember sitting in my room, watching my carefully planned timeline collapse. Everyone had a plan for 2020. Mine was supposed to be: Study → JEE → IIT → Life.
+Then I got COVID.
 
-Instead, it became: Wait → Worry → Wait Some More.
+Quarantined. Isolated. Watching exam dates come and go from behind a bedroom door. I couldn't take the exam that year - not because I wasn't ready, but because the virus had other plans.
 
-I took a drop year. Not by choice, but by circumstance.
+I remember sitting in my room, watching my carefully planned timeline collapse. Everyone had a plan for 2020. Mine was supposed to be: Study -> JEE -> IIT -> Life.
+
+Instead, it became: Wait -> Worry -> Wait Some More.
+
+I took a drop year. Not by choice, but by circumstance. By a virus that didn't care about my dreams.
 
 ## The YouTube University
 
@@ -45,7 +49,7 @@ I couldn't afford expensive coaching. So I turned to YouTube.
 
 Yes, YouTube. The same platform where people watch cat videos became my IIT classroom.
 
-I watched lectures at 1.5x speed. I paused, rewound, and replayed until concepts clicked. I learned that the internet doesn't care about your background—it only cares about your WiFi connection.
+I watched lectures at 1.5x speed. I paused, rewound, and replayed until concepts clicked. I learned that the internet doesn't care about your background - it only cares about your WiFi connection.
 
 Physics from one channel. Chemistry from another. Math from a teacher I'd never meet but who somehow made complex numbers feel... simple.
 
@@ -55,13 +59,29 @@ I didn't have answers. I just had discipline and a dream that was finally gettin
 
 ## The Numbers That Changed Everything
 
-JEE Mains 2021: **98.7 percentile**
+First attempt: **97 percentile**
 
-I stared at the screen. Read it again. Then again.
+Not bad. I felt invincible.
 
-JEE Advanced: **Rank 8800-something**
+Second attempt: **98.7 percentile**
 
-Not the AIR 500 story you read in newspapers. Not the "topped from a village" headline. Just a kid from the hills who studied from YouTube and somehow made it work.
+I stared at the screen. This was it. YouTube worked. I worked.
+
+Then came overconfidence.
+
+I got cocky. Thought I had it figured out. Started slacking on the grind.
+
+Last attempt before Advanced (one month out): **90 percentile**
+
+Panic. Pure, raw panic. I'd gone backward.
+
+Then, the asthma attack hit. Middle of prep. Couldn't breathe. Couldn't focus. Everything I'd built felt like it was collapsing.
+
+Advanced exam day: I walked into that hall with an anti-anxiety pill in my system and a prayer on my lips.
+
+**Result: Rank 8800-something**
+
+Not the AIR 500 story you read in newspapers. Not the "topped from a village" headline. Just a kid from the hills who got COVID, had an asthma attack, studied from YouTube, and somehow - somehow - made it work.
 
 ## IIT Dhanbad: Where I Found Myself
 
@@ -73,9 +93,9 @@ But here's what they don't tell you about IIT: The degree is just the excuse. Th
 
 I became the Coordinator of the Product Management Club. Not because I knew what product management was (I didn't), but because I wanted to build something from scratch.
 
-We went from zero to... something real. Workshops, speaker sessions, a community of students who cared about solving problems, not just passing exams.
+We went from zero to something real. Workshops, speaker sessions, a community of students who cared about solving problems, not just passing exams.
 
-That's where I learned: **0 → 1 is harder than 1 → 100. But it's also more fun.**
+That's where I learned: **0 to 1 is harder than 1 to 100. But it's also more fun.**
 
 ### The Travels
 
@@ -125,7 +145,7 @@ The degree will get you in the door. But it's the skills, the network, and the h
 **To anyone reading this:**
 Your path doesn't have to be linear. Mine certainly wasn't.
 
-Sheltered kid → City shock → Pandemic → YouTube → JEE → IIT → Startup → Product Management → Bangalore
+Sheltered kid -> City shock -> Pandemic -> YouTube -> JEE -> IIT -> Startup -> Product Management -> Bangalore
 
 It's messy. It's real. And it's mine.
 

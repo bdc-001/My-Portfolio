@@ -26,7 +26,7 @@ const Beliefs = () => {
                             <motion.g
                                 initial={{ x: -10 }}
                                 animate={{ x: 0 }}
-                                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                                transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                             >
                                 {/* U-Shape */}
                                 <path
@@ -51,7 +51,7 @@ const Beliefs = () => {
                             <motion.g
                                 initial={{ x: 10 }}
                                 animate={{ x: 0 }}
-                                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                                transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                             >
                                 <circle
                                     cx="240"
@@ -80,7 +80,7 @@ const Beliefs = () => {
                                 strokeWidth="1.5"
                                 strokeDasharray="4 4"
                                 animate={{ strokeDashoffset: [20, 0] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                             />
 
                             {/* Center Field Line */}
@@ -91,7 +91,7 @@ const Beliefs = () => {
                                 strokeWidth="1.5"
                                 strokeDasharray="4 4"
                                 animate={{ strokeDashoffset: [20, 0] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                             />
 
                             {/* Bottom Field Line */}
@@ -102,7 +102,7 @@ const Beliefs = () => {
                                 strokeWidth="1.5"
                                 strokeDasharray="4 4"
                                 animate={{ strokeDashoffset: [20, 0] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                             />
                         </svg>
                     </motion.div>
@@ -116,12 +116,13 @@ const Beliefs = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="p-8 bg-white rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md transition-shadow group"
+                            className="p-10 bg-white rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md transition-all duration-300 group"
                         >
-                            <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-purple-600 transition-colors">
-                                {belief.id}. {belief.title}
+                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 group-hover:text-purple-600 transition-colors">
+                                <span className="text-neutral-300 mr-3 text-lg align-middle transform translate-y-[-2px] inline-block">0{index + 1}.</span>
+                                {belief.title}
                             </h3>
-                            <p className="text-neutral-500 leading-relaxed text-sm">
+                            <p className="text-neutral-500 leading-relaxed text-base md:text-lg pl-0 md:pl-10">
                                 {belief.description}
                             </p>
                         </motion.div>

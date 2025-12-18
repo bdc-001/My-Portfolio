@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 const Beliefs = () => {
     return (
         <div className="py-24 border-b border-neutral-100">
-            <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
                 {/* Left Side: Headline */}
-                <div className="flex-1 lg:sticky lg:top-32 lg:self-start">
+                <div className="w-full lg:w-[42%] lg:sticky lg:top-32 lg:self-start">
 
                     <h2 className="text-6xl lg:text-8xl font-bold text-primary tracking-tighter leading-[0.9] mb-12">
                         What I<br />
@@ -19,7 +19,7 @@ const Beliefs = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ duration: 1 }}
-                        className="hidden lg:block relative mt-16 opacity-90"
+                        className="hidden lg:block relative mt-16 opacity-90 max-w-sm"
                     >
                         <svg width="100%" height="160" viewBox="0 0 320 120" className="overflow-visible">
                             {/* Magnet (Source/Beliefs) - Minimal Line Art */}
@@ -109,7 +109,7 @@ const Beliefs = () => {
                 </div>
 
                 {/* Right Side: List */}
-                <div className="flex-1 flex flex-col gap-6">
+                <div className="w-full lg:w-[58%] flex flex-col gap-6">
                     {BELIEFS.map((belief, index) => (
                         <motion.div
                             key={index}

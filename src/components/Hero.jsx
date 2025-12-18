@@ -15,7 +15,7 @@ const Hero = () => {
     return (
         <div className="border-b border-neutral-100 pb-12 sm:pb-16 md:pb-24 lg:mb-32">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
-                <div className="w-full lg:w-2/3">
+                <div className="w-full lg:w-1/2">
                     <div className="flex flex-col font-sans">
                         <motion.span
                             variants={container(0)}
@@ -43,7 +43,7 @@ const Hero = () => {
                         </motion.p>
                     </div>
                 </div>
-                <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
+                <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
@@ -53,7 +53,7 @@ const Hero = () => {
                         <img
                             src={profilePic}
                             alt="Arsalaan Mohammed"
-                            className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96 rounded-2xl object-cover grayscale transition-all duration-500 hover:grayscale-0 shadow-2xl skew-y-3"
+                            className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-[28rem] lg:h-[36rem] rounded-2xl object-cover grayscale transition-all duration-500 hover:grayscale-0 shadow-2xl skew-y-3"
                         />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10"></div>
                     </motion.div>

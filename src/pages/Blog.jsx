@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BLOG_POSTS } from "../constants/blogs";
 import BlogCard from "../components/BlogCard";
+import WorkList from "../components/WorkList";
 
 const Blog = () => {
 
@@ -48,6 +49,9 @@ const Blog = () => {
                         />
                     ))}
                 </div>
+
+                {/* Selected Work */}
+                <WorkList />
             </div>
         </div>
     );

@@ -18,53 +18,120 @@ const Beliefs = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="hidden lg:block relative"
+                        className="hidden lg:block relative mt-8"
                     >
-                        <svg width="300" height="300" viewBox="0 0 200 200" className="opacity-80">
+                        <svg width="100%" height="280" viewBox="0 0 400 200" className="overflow-visible">
                             <defs>
-                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style={{ stopColor: '#a855f7', stopOpacity: 0.2 }} />
-                                    <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.2 }} />
+                                <linearGradient id="magnetGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="#ef4444" /> {/* Red-ish like a magnet */}
+                                    <stop offset="50%" stopColor="#f87171" />
+                                    <stop offset="100%" stopColor="#ef4444" />
                                 </linearGradient>
+                                <radialGradient id="ballGradient" cx="30%" cy="30%" r="70%">
+                                    <stop offset="0%" stopColor="#e5e5e5" />
+                                    <stop offset="100%" stopColor="#a3a3a3" />
+                                </radialGradient>
+                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="2" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
                             </defs>
 
-                            {/* Abstract Geometric Shapes */}
-                            <motion.circle
-                                cx="100" cy="100" r="80"
-                                stroke="url(#grad1)" strokeWidth="1" fill="none"
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            />
-                            <motion.circle
-                                cx="100" cy="100" r="60"
-                                stroke="currentColor" strokeWidth="0.5" className="text-neutral-200" fill="none"
-                                animate={{ rotate: -360 }}
-                                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            />
-
-                            {/* Connecting Nodes */}
-                            <g className="text-neutral-300" fill="currentColor">
-                                <circle cx="100" cy="20" r="4" />
-                                <circle cx="180" cy="100" r="4" />
-                                <circle cx="100" cy="180" r="4" />
-                                <circle cx="20" cy="100" r="4" />
-                            </g>
-
-                            {/* Cross lines */}
+                            {/* Magnet Body (U-Shape) */}
                             <motion.path
-                                d="M100 20 L100 180 M20 100 L180 100"
-                                stroke="currentColor"
-                                strokeWidth="0.5"
-                                className="text-neutral-200"
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                transition={{ duration: 1.5, delay: 0.5 }}
+                                d="M 50 50 L 50 100 A 60 60 0 0 0 170 100 L 170 50 L 130 50 L 130 100 A 20 20 0 0 1 90 100 L 90 50 Z"
+                                fill="url(#magnetGradient)"
+                                stroke="#dc2626"
+                                strokeWidth="2"
+                                transform="rotate(-90, 110, 100) translate(-20, 0)" // Rotated to face right
+                                filter="url(#glow)"
+                                initial={{ x: -20 }}
+                                animate={{ x: 0 }}
+                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                             />
+
+                            {/* Magnet Poles (White Tips) */}
+                            <motion.path
+                                d="M 50 50 L 90 50 L 90 70 L 50 70 Z"
+                                fill="white"
+                                transform="rotate(-90, 110, 100) translate(-20, 0)"
+                                opacity="0.9"
+                                initial={{ x: -20 }}
+                                animate={{ x: 0 }}
+                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                            />
+                            <motion.path
+                                d="M 130 50 L 170 50 L 170 70 L 130 70 Z"
+                                fill="white"
+                                transform="rotate(-90, 110, 100) translate(-20, 0)"
+                                opacity="0.9"
+                                initial={{ x: -20 }}
+                                animate={{ x: 0 }}
+                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                            />
+
+                            {/* Text on Magnet */}
+                            <text
+                                x="80"
+                                y="115"
+                                transform="rotate(0)"
+                                fill="white"
+                                fontSize="14"
+                                fontWeight="bold"
+                                letterSpacing="1"
+                                className="font-sans"
+                            >
+                                BELIEFS
+                            </text>
+
+                            {/* Attraction Lines (Lightning/Force) */}
+                            <motion.g
+                                stroke="#a855f7"
+                                strokeWidth="2"
+                                fill="none"
+                                strokeDasharray="4 4"
+                                opacity="0.6"
+                            >
+                                <motion.path d="M 180 80 Q 230 70 280 90"
+                                    animate={{ strokeDashoffset: [0, -20] }}
+                                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                />
+                                <motion.path d="M 180 100 L 275 100"
+                                    animate={{ strokeDashoffset: [0, -20] }}
+                                    transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                                />
+                                <motion.path d="M 180 120 Q 230 130 280 110"
+                                    animate={{ strokeDashoffset: [0, -20] }}
+                                    transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+                                />
+                            </motion.g>
+
+                            {/* Ball (Actions) */}
+                            <motion.circle
+                                cx="300"
+                                cy="100"
+                                r="40"
+                                fill="url(#ballGradient)"
+                                stroke="#737373"
+                                strokeWidth="1"
+                                initial={{ x: 10 }}
+                                animate={{ x: 0 }}
+                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                            >
+                            </motion.circle>
+
+                            {/* Text on Ball */}
+                            <text x="300" y="105" textAnchor="middle" fill="#404040" fontSize="10" fontWeight="bold" className="font-sans uppercase">
+                                Actions
+                            </text>
+
+                            {/* Reflection on Ball */}
+                            <circle cx="285" cy="85" r="10" fill="white" opacity="0.4" />
                         </svg>
 
-                        {/* Floating visual elements */}
-                        <div className="absolute top-0 right-10 w-20 h-20 bg-purple-100 rounded-full blur-3xl -z-10 mix-blend-multiply opacity-50 animate-blob"></div>
-                        <div className="absolute bottom-10 left-10 w-24 h-24 bg-blue-100 rounded-full blur-3xl -z-10 mix-blend-multiply opacity-50 animate-blob animation-delay-2000"></div>
+                        {/* Background Glows */}
+                        <div className="absolute top-10 left-10 w-32 h-32 bg-red-100 rounded-full blur-3xl -z-10 mix-blend-multiply opacity-40"></div>
+                        <div className="absolute top-10 right-20 w-32 h-32 bg-purple-100 rounded-full blur-3xl -z-10 mix-blend-multiply opacity-40"></div>
                     </motion.div>
                 </div>
 

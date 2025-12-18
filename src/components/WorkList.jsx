@@ -7,9 +7,9 @@ const WorkList = () => {
     const allWork = [...EXPERIENCES, ...PROJECTS].slice(0, 4); // Display top 4 items
 
     return (
-        <div className="border-b border-neutral-100 pb-20 pt-10">
-            <div className="flex justify-between items-end mb-12">
-                <h2 className="text-3xl font-bold tracking-tight text-primary">
+        <div className="py-20 lg:py-24 border-b border-neutral-100">
+            <div className="flex justify-between items-end mb-16">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
                     Selected Work
                 </h2>
                 <Link to="/work" className="text-secondary hover:text-primary flex items-center gap-2 text-sm transition-colors mb-1">

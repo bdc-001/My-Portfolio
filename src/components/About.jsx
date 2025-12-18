@@ -6,13 +6,13 @@ const About = () => {
     const paragraphs = ABOUT_TEXT.split('\n\n');
 
     return (
-        <div id="about" className="border-b border-neutral-100 pb-12 sm:pb-16 md:pb-20 pt-6 sm:pt-8 md:pt-10">
+        <div id="about" className="py-20 lg:py-24 border-b border-neutral-100">
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="mb-6 sm:mb-8 md:mb-12 text-2xl sm:text-3xl font-bold tracking-tight text-primary"
+                className="mb-12 md:mb-16 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary"
             >
                 The Story Behind the Work
             </motion.h2>

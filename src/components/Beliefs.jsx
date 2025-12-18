@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 const Beliefs = () => {
     return (
-        <div className="py-24 border-b border-neutral-100">
-            <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
+        <div className="py-20 lg:py-24 border-b border-neutral-100">
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                 {/* Left Side: Headline */}
                 <div className="w-full lg:w-[42%] lg:sticky lg:top-32 lg:self-start">
 

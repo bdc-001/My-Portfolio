@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 
 const Testimonials = () => {
     return (
-        <div className="py-24 border-b border-neutral-100">
+        <div className="py-20 lg:py-24 border-b border-neutral-100">
             <div className="text-center mb-16">
                 <h2 className="text-5xl lg:text-7xl font-bold text-primary tracking-tighter mb-4 text-balance">
                     Don't take my word for it<span className="text-purple-600">*</span>

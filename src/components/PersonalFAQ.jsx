@@ -19,7 +19,7 @@ const PersonalFAQ = () => {
     };
 
     return (
-        <div className="py-24 border-b border-neutral-100">
+        <div className="py-20 lg:py-24 border-b border-neutral-100">
             <h2 className="text-5xl lg:text-7xl font-bold text-primary tracking-tighter text-center mb-20 text-balance">
                 Off the grid <span className="text-neutral-300">(but still me)</span>
             </h2>

@@ -6,7 +6,7 @@ const Beliefs = () => {
         <div className="py-24 border-b border-neutral-100">
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
                 {/* Left Side: Headline */}
-                <div className="flex-1">
+                <div className="flex-1 lg:sticky lg:top-32 lg:self-start">
 
                     <h2 className="text-6xl lg:text-8xl font-bold text-primary tracking-tighter leading-[0.9]">
                         What I<br />

@@ -19,7 +19,7 @@ const About = () => {
 
             <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 md:gap-16 items-start">
                 {/* Text Content - Left Side */}
-                <div className="w-full lg:w-2/3 space-y-8 sm:space-y-10 md:space-y-12">
+                <div className="w-full lg:w-1/2 space-y-8 sm:space-y-10 md:space-y-12">
                     {/* Staggered Paragraphs */}
                     <div className="space-y-4 sm:space-y-6">
                         {paragraphs.map((paragraph, index) => (
@@ -75,7 +75,7 @@ const About = () => {
                 </div>
 
                 {/* Image - Right Side */}
-                <div className="w-full lg:w-1/3">
+                <div className="w-full lg:w-1/2">
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}

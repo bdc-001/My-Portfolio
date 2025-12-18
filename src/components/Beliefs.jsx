@@ -14,124 +14,97 @@ const Beliefs = () => {
                     </h2>
 
                     {/* Decorative Graphic */}
+                    {/* Minimalist Graphic: Alignment */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="hidden lg:block relative mt-8"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className="hidden lg:block relative mt-16 opacity-90"
                     >
-                        <svg width="100%" height="280" viewBox="0 0 400 200" className="overflow-visible">
-                            <defs>
-                                <linearGradient id="magnetGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor="#ef4444" /> {/* Red-ish like a magnet */}
-                                    <stop offset="50%" stopColor="#f87171" />
-                                    <stop offset="100%" stopColor="#ef4444" />
-                                </linearGradient>
-                                <radialGradient id="ballGradient" cx="30%" cy="30%" r="70%">
-                                    <stop offset="0%" stopColor="#e5e5e5" />
-                                    <stop offset="100%" stopColor="#a3a3a3" />
-                                </radialGradient>
-                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="2" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-
-                            {/* Magnet Body (U-Shape) */}
-                            <motion.path
-                                d="M 50 50 L 50 100 A 60 60 0 0 0 170 100 L 170 50 L 130 50 L 130 100 A 20 20 0 0 1 90 100 L 90 50 Z"
-                                fill="url(#magnetGradient)"
-                                stroke="#dc2626"
-                                strokeWidth="2"
-                                transform="rotate(-90, 110, 100) translate(-20, 0)" // Rotated to face right
-                                filter="url(#glow)"
-                                initial={{ x: -20 }}
-                                animate={{ x: 0 }}
-                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                            />
-
-                            {/* Magnet Poles (White Tips) */}
-                            <motion.path
-                                d="M 50 50 L 90 50 L 90 70 L 50 70 Z"
-                                fill="white"
-                                transform="rotate(-90, 110, 100) translate(-20, 0)"
-                                opacity="0.9"
-                                initial={{ x: -20 }}
-                                animate={{ x: 0 }}
-                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                            />
-                            <motion.path
-                                d="M 130 50 L 170 50 L 170 70 L 130 70 Z"
-                                fill="white"
-                                transform="rotate(-90, 110, 100) translate(-20, 0)"
-                                opacity="0.9"
-                                initial={{ x: -20 }}
-                                animate={{ x: 0 }}
-                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                            />
-
-                            {/* Text on Magnet */}
-                            <text
-                                x="80"
-                                y="115"
-                                transform="rotate(0)"
-                                fill="white"
-                                fontSize="14"
-                                fontWeight="bold"
-                                letterSpacing="1"
-                                className="font-sans"
-                            >
-                                BELIEFS
-                            </text>
-
-                            {/* Attraction Lines (Lightning/Force) */}
+                        <svg width="100%" height="160" viewBox="0 0 320 120" className="overflow-visible">
+                            {/* Magnet (Source/Beliefs) - Minimal Line Art */}
                             <motion.g
-                                stroke="#a855f7"
-                                strokeWidth="2"
-                                fill="none"
-                                strokeDasharray="4 4"
-                                opacity="0.6"
+                                initial={{ x: -10 }}
+                                animate={{ x: 0 }}
+                                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                             >
-                                <motion.path d="M 180 80 Q 230 70 280 90"
-                                    animate={{ strokeDashoffset: [0, -20] }}
-                                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                {/* U-Shape */}
+                                <path
+                                    d="M 40 30 L 100 30 A 30 30 0 0 1 100 90 L 40 90"
+                                    fill="none"
+                                    stroke="#262626"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
                                 />
-                                <motion.path d="M 180 100 L 275 100"
-                                    animate={{ strokeDashoffset: [0, -20] }}
-                                    transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                                <path
+                                    d="M 40 42 L 95 42 A 18 18 0 0 1 95 78 L 40 78"
+                                    fill="none"
+                                    stroke="#e5e5e5"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
                                 />
-                                <motion.path d="M 180 120 Q 230 130 280 110"
-                                    animate={{ strokeDashoffset: [0, -20] }}
-                                    transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
-                                />
+                                {/* Label */}
+                                <text x="35" y="105" className="font-sans text-[10px] tracking-[0.2em] font-semibold fill-neutral-400">BELIEFS</text>
                             </motion.g>
 
-                            {/* Ball (Actions) */}
-                            <motion.circle
-                                cx="300"
-                                cy="100"
-                                r="40"
-                                fill="url(#ballGradient)"
-                                stroke="#737373"
-                                strokeWidth="1"
+                            {/* Ball (Target/Actions) - Solid Circle */}
+                            <motion.g
                                 initial={{ x: 10 }}
                                 animate={{ x: 0 }}
-                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                             >
-                            </motion.circle>
+                                <circle
+                                    cx="240"
+                                    cy="60"
+                                    r="14"
+                                    fill="#262626"
+                                />
+                                {/* Label */}
+                                <text x="240" y="105" textAnchor="middle" className="font-sans text-[10px] tracking-[0.2em] font-semibold fill-neutral-400">ACTIONS</text>
+                            </motion.g>
 
-                            {/* Text on Ball */}
-                            <text x="300" y="105" textAnchor="middle" fill="#404040" fontSize="10" fontWeight="bold" className="font-sans uppercase">
-                                Actions
-                            </text>
+                            {/* Force Lines - Subtle Dash Animation */}
+                            <defs>
+                                <linearGradient id="fadeLine" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0" stopColor="#a855f7" stopOpacity="0" />
+                                    <stop offset="0.5" stopColor="#a855f7" stopOpacity="0.4" />
+                                    <stop offset="1" stopColor="#a855f7" stopOpacity="0" />
+                                </linearGradient>
+                            </defs>
 
-                            {/* Reflection on Ball */}
-                            <circle cx="285" cy="85" r="10" fill="white" opacity="0.4" />
+                            {/* Top Field Line */}
+                            <motion.path
+                                d="M 120 40 Q 180 40 220 55"
+                                fill="none"
+                                stroke="url(#fadeLine)"
+                                strokeWidth="1.5"
+                                strokeDasharray="4 4"
+                                animate={{ strokeDashoffset: [20, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            />
+
+                            {/* Center Field Line */}
+                            <motion.path
+                                d="M 120 60 L 215 60"
+                                fill="none"
+                                stroke="url(#fadeLine)"
+                                strokeWidth="1.5"
+                                strokeDasharray="4 4"
+                                animate={{ strokeDashoffset: [20, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            />
+
+                            {/* Bottom Field Line */}
+                            <motion.path
+                                d="M 120 80 Q 180 80 220 65"
+                                fill="none"
+                                stroke="url(#fadeLine)"
+                                strokeWidth="1.5"
+                                strokeDasharray="4 4"
+                                animate={{ strokeDashoffset: [20, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            />
                         </svg>
-
-                        {/* Background Glows */}
-                        <div className="absolute top-10 left-10 w-32 h-32 bg-red-100 rounded-full blur-3xl -z-10 mix-blend-multiply opacity-40"></div>
-                        <div className="absolute top-10 right-20 w-32 h-32 bg-purple-100 rounded-full blur-3xl -z-10 mix-blend-multiply opacity-40"></div>
                     </motion.div>
                 </div>
 

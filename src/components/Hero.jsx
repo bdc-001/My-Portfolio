@@ -53,7 +53,7 @@ const Hero = () => {
                         <img
                             src={profilePic}
                             alt="Arsalaan Mohammed"
-                            className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-[28rem] lg:h-[36rem] rounded-2xl object-cover grayscale transition-all duration-500 hover:grayscale-0 shadow-2xl skew-y-3"
+                            className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-[28rem] lg:h-[36rem] lg:mt-12 rounded-2xl object-cover grayscale transition-all duration-500 hover:grayscale-0 shadow-2xl skew-y-3"
                         />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10"></div>
                     </motion.div>

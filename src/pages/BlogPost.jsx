@@ -10,13 +10,13 @@ const formatDateWithOrdinal = (dateString) => {
     const day = date.getDate();
     const month = date.toLocaleDateString('en-US', { month: 'long' });
     const year = date.getFullYear();
-    
+
     const getOrdinal = (n) => {
         const s = ["th", "st", "nd", "rd"];
         const v = n % 100;
         return n + (s[(v - 20) % 10] || s[v] || s[0]);
     };
-    
+
     return `${getOrdinal(day)} ${month}, ${year}`;
 };
 
@@ -178,58 +178,31 @@ const BlogPost = () => {
                         </div>
                     </div>
 
-                    {/* Connect Section */}
-                    <div className="mt-8 sm:mt-12 md:mt-16 pt-6 sm:pt-8 border-t border-neutral-100">
-                        <div className="text-center mb-4 sm:mb-6">
-                            <h3 className="text-xl sm:text-2xl font-bold text-primary mb-2">Let's Connect</h3>
-                            <p className="text-sm sm:text-base text-neutral-600">Follow my journey on LinkedIn and YouTube</p>
+                    {/* Related Posts - Only show if there are other posts */}
+                    {BLOG_POSTS.filter(p => p.id !== post.id).length > 0 && (
+                        <div className="max-w-4xl mx-auto mt-8 sm:mt-12 md:mt-16 mb-12 sm:mb-16 md:mb-24">
+                            <h3 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6 md:mb-8">More Articles</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                                {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
+                                    <Link
+                                        key={relatedPost.id}
+                                        to={`/blog/${relatedPost.slug}`}
+                                        className="group bg-white rounded-xl border border-neutral-100 p-4 sm:p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
+                                    >
+                                        <h4 className="text-lg sm:text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">
+                                            {relatedPost.title}
+                                        </h4>
+                                        <p className="text-xs sm:text-sm text-neutral-500 line-clamp-2 mb-3 sm:mb-4">
+                                            {relatedPost.excerpt}
+                                        </p>
+                                        <span className="text-xs sm:text-sm text-purple-600 font-medium group-hover:underline">
+                                            Read More →
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
-                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
-                            <a
-                                href="https://www.linkedin.com/in/arsalaan-pm/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-neutral-200 bg-white text-neutral-700 text-sm sm:text-base font-medium rounded-xl hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all shadow-sm group"
-                            >
-                                <FaLinkedin className="text-lg sm:text-xl text-[#0077B5] group-hover:text-white transition-colors" />
-                                <span>LinkedIn</span>
-                            </a>
-                            <a
-                                href="https://www.youtube.com/@ArsalaanMd25"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-neutral-200 bg-white text-neutral-700 text-sm sm:text-base font-medium rounded-xl hover:border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all shadow-sm group"
-                            >
-                                <FaYoutube className="text-lg sm:text-xl text-[#FF0000] group-hover:text-white transition-colors" />
-                                <span>YouTube</span>
-                            </a>
-                        </div>
-                    </div>
-                </motion.article>
-
-                {/* Related Posts */}
-                <div className="max-w-4xl mx-auto mt-8 sm:mt-12 md:mt-16 mb-12 sm:mb-16 md:mb-24">
-                    <h3 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6 md:mb-8">More Articles</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
-                            <Link
-                                key={relatedPost.id}
-                                to={`/blog/${relatedPost.slug}`}
-                                className="group bg-white rounded-xl border border-neutral-100 p-4 sm:p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
-                            >
-                                <h4 className="text-lg sm:text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">
-                                    {relatedPost.title}
-                                </h4>
-                                <p className="text-xs sm:text-sm text-neutral-500 line-clamp-2 mb-3 sm:mb-4">
-                                    {relatedPost.excerpt}
-                                </p>
-                                <span className="text-xs sm:text-sm text-purple-600 font-medium group-hover:underline">
-                                    Read More →
-                                </span>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+                    )}
             </div>
         </div>
     );

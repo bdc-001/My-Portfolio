@@ -2,20 +2,30 @@ import { motion } from "framer-motion";
 import { BLOG_POSTS } from "../constants/blogs";
 import BlogCard from "../components/BlogCard";
 
-const Blog = () => {
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.3
+        }
+    }
+};
 
+const Blog = () => {
     return (
-        <div className="pt-16 sm:pt-20">
-            <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="pt-16 sm:pt-20 bg-white bg-dots">
+            <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-7xl">
                 {/* Breadcrumb */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4 }}
-                    className="pt-4 sm:pt-6 md:pt-8 pb-3 sm:pb-4"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="pt-6 sm:pt-8 md:pt-10 pb-4"
                 >
                     <div className="flex items-center gap-2 text-xs sm:text-sm">
-                        <a href="/" className="text-neutral-400 hover:text-primary transition-colors">Home</a>
+                        <a href="/" className="text-neutral-500 hover:text-primary transition-colors duration-200">Home</a>
                         <span className="text-neutral-300">/</span>
                         <span className="text-primary font-medium">Blog</span>
                     </div>
@@ -23,31 +33,47 @@ const Blog = () => {
 
                 {/* Hero */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="py-8 sm:py-12 md:py-16 border-b border-neutral-100 mb-8 sm:mb-12 md:mb-16"
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="py-10 sm:py-14 md:py-20 mb-12 sm:mb-16 md:mb-20"
                 >
                     <div className="max-w-4xl">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-primary tracking-tighter mb-4 sm:mb-6 text-balance leading-tight">
-                            Stories from the Journey
-                        </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-secondary leading-relaxed max-w-2xl">
-                            Personal reflections on growth, challenges, and the unexpected paths that lead us where we are. From the hills of Darjeeling to IIT, and beyond—these are the stories that shaped me.
-                        </p>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.2 }}
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary tracking-tight mb-6 sm:mb-8 leading-[1.1]"
+                        >
+                            Stories & Shared Lessons
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.4 }}
+                            className="text-lg sm:text-xl md:text-2xl text-neutral-600 leading-relaxed max-w-3xl"
+                        >
+                            A collection of honest reflections on product, growth, and the occasional pivot, mostly written so I don't forget them myself.
+                        </motion.p>
                     </div>
                 </motion.div>
 
                 {/* Blog Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 pb-12 sm:pb-16 md:pb-24">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 pb-16 sm:pb-20 md:pb-28"
+                >
                     {BLOG_POSTS.map((post, index) => (
                         <BlogCard
                             key={post.id}
                             post={post}
+                            index={index}
                             featured={index === 0}
                         />
                     ))}
-                </div>
+                </motion.div>
             </div>
         </div>
     );

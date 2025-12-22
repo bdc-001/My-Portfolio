@@ -61,7 +61,7 @@ const WorkSection = ({ title, data, id }) => {
                                 <h3 className="text-3xl font-bold text-primary mb-2 leading-tight group-hover:text-purple-600 transition-colors duration-300">
                                     {study.title}
                                 </h3>
-                                <p className="text-lg text-secondary leading-relaxed font-light">{study.subtitle}</p>
+                                <p className="text-lg text-secondary leading-relaxed">{study.subtitle}</p>
                             </motion.div>
 
                             {/* Challenge & Solution */}

@@ -10,7 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <Router>
-      <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+      <div className="overflow-x-hidden text-primary antialiased selection:bg-neutral-100 selection:text-black bg-white bg-dots">
         <div className="fixed top-0 -z-10 h-full w-full"></div>
 
         <Navbar />

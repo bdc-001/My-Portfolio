@@ -32,7 +32,7 @@ const Work = () => {
                             Turning ideas into impact.
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl text-secondary leading-relaxed max-w-2xl">
-                            A deep dive into my product journey—how I identify problems, craft strategies, and ship solutions that drive measurable business growth.
+                            A deep dive into my product journey: how I identify problems, craft strategies, and ship solutions that drive measurable business growth.
                         </p>
                     </div>
                 </motion.div>

@@ -59,9 +59,20 @@ const Contact = () => {
             </div>
           </div>
 
-          <p className="text-xs text-neutral-400 mt-12 sm:mt-16 md:mt-20 px-4">
-            © {new Date().getFullYear()} Arsalaan Mohammed. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-2 mt-12 sm:mt-16 md:mt-20">
+            <a
+              href="/Mohammed_Resume_2025.pdf"
+              download="Arsalaan_Mohammed_Resume.pdf"
+              className="text-sm font-semibold text-neutral-400 hover:text-purple-600 transition-colors flex items-center gap-2 group"
+            >
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity">💼</span>
+              For the HODs & Hiring Managers
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity">🤫</span>
+            </a>
+            <p className="text-xs text-neutral-400 px-4">
+              © {new Date().getFullYear()} Arsalaan Mohammed. All rights reserved.
+            </p>
+          </div>
         </motion.div>
       </div>
     </div>

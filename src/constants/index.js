@@ -166,17 +166,17 @@ export const BELIEFS = [
   {
     id: "02",
     title: "Strategy is part of the craft",
-    description: "I don't wait for the \"why\" — I shape it with product and business."
+    description: "I don't wait for the \"why\" - I shape it with product and business."
   },
   {
     id: "03",
     title: "Simplify, don't dumb down",
-    description: "Even complex tools can feel intuitive — with the right intent."
+    description: "Even complex tools can feel intuitive - with the right intent."
   },
   {
     id: "04",
     title: "Systems scale, context guides",
-    description: "Reusable patterns are powerful — adapt with intent."
+    description: "Reusable patterns are powerful - adapt with intent."
   }
 ];
 
@@ -202,7 +202,7 @@ export const FAQS = [
   },
   {
     question: "A Product Manager who sings?",
-    answer: "Absolutely. I'm a vocalist and I play the guitar. Music is my meditation—it helps me find rhythm in chaos, which surprisingly translates well to managing product roadmaps."
+    answer: "Absolutely. I'm a vocalist and I play the guitar. Music is my meditation-it helps me find rhythm in chaos, which surprisingly translates well to managing product roadmaps."
   },
   {
     question: "Urdu Shayari in a tech portfolio?",
@@ -210,7 +210,7 @@ export const FAQS = [
   },
   {
     question: "Finance & Investing?",
-    answer: "I love the numbers game. From analyzing stocks to understanding market trends, I believe in the power of compounding—whether it's wealth or knowledge."
+    answer: "I love the numbers game. From analyzing stocks to understanding market trends, I believe in the power of compounding-whether it's wealth or knowledge."
   },
   {
     question: "What's 'Off the grid' for you?",

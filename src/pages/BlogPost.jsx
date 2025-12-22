@@ -1,9 +1,10 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { BLOG_POSTS } from "../constants/blogs";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiClock, FiArrowLeft, FiShare2, FiCopy, FiCheck } from "react-icons/fi";
+import { FiClock, FiArrowLeft, FiShare2, FiCopy, FiCheck, FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import { FaLinkedin, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import profilePic from "../assets/HeroImageFinal.png";
 
 const formatDateWithOrdinal = (dateString) => {
     const date = new Date(dateString);
@@ -20,22 +21,94 @@ const formatDateWithOrdinal = (dateString) => {
     return `${getOrdinal(day)} ${month}, ${year}`;
 };
 
+const renderContent = (text) => {
+    if (!text) return null;
+
+    // Split text by **bold** tags
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+
+    return parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={i} className="font-bold text-primary">{part.slice(2, -2)}</strong>;
+        }
+        return part;
+    });
+};
+
 const BlogPost = () => {
     const { slug } = useParams();
     const navigate = useNavigate();
     const post = BLOG_POSTS.find(p => p.slug === slug);
     const [copied, setCopied] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [stats, setStats] = useState({ likes: 0, dislikes: 0 });
+    const [userVote, setUserVote] = useState(null); // 'like', 'dislike', or null
+
+    useEffect(() => {
+        const storedStats = localStorage.getItem(`v3-blog-stats-${post?.id}`);
+        const storedVote = localStorage.getItem(`v3-blog-vote-${post?.id}`);
+
+        if (storedStats) {
+            setStats(JSON.parse(storedStats));
+        } else {
+            const initialStats = { likes: 0, dislikes: 0 };
+            setStats(initialStats);
+            localStorage.setItem(`v3-blog-stats-${post?.id}`, JSON.stringify(initialStats));
+        }
+
+        if (storedVote) {
+            setUserVote(storedVote);
+        }
+    }, [post?.id]);
+
+    const handleVote = (type) => {
+        let newStats = { ...stats };
+        let newVote = type;
+
+        if (userVote === type) {
+            // Remove vote
+            newStats[type === 'like' ? 'likes' : 'dislikes'] = Math.max(0, newStats[type === 'like' ? 'likes' : 'dislikes'] - 1);
+            newVote = null;
+        } else if (userVote) {
+            // Switch vote
+            newStats[userVote === 'like' ? 'likes' : 'dislikes'] = Math.max(0, newStats[userVote === 'like' ? 'likes' : 'dislikes'] - 1);
+            newStats[type === 'like' ? 'likes' : 'dislikes']++;
+        } else {
+            // New vote
+            newStats[type === 'like' ? 'likes' : 'dislikes']++;
+        }
+
+        setStats(newStats);
+        setUserVote(newVote);
+        localStorage.setItem(`v3-blog-stats-${post?.id}`, JSON.stringify(newStats));
+        if (newVote) {
+            localStorage.setItem(`v3-blog-vote-${post?.id}`, newVote);
+        } else {
+            localStorage.removeItem(`v3-blog-vote-${post?.id}`);
+        }
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const currentScroll = window.scrollY;
+            setScrollProgress((currentScroll / totalScroll) * 100);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+    }, [slug]);
 
     if (!post) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center bg-white">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold text-primary mb-4">Post Not Found</h1>
-                    <Link to="/blog" className="text-purple-600 hover:underline">← Back to Blog</Link>
+                    <h1 className="text-4xl font-bold text-primary mb-4 tracking-tight">Post Not Found</h1>
+                    <Link to="/blog" className="text-neutral-500 hover:text-black transition-colors font-medium underline underline-offset-4">← Back to Stories</Link>
                 </div>
             </div>
         );
@@ -60,150 +133,224 @@ const BlogPost = () => {
     };
 
     return (
-        <div className="pt-16 sm:pt-20">
-            <div className="container mx-auto px-4 sm:px-6 md:px-8">
-                {/* Back Button */}
+        <div className="pt-24 sm:pt-32 min-h-screen bg-white bg-dots selection:bg-neutral-100 selection:text-black">
+            {/* Progress Bar */}
+            <div className="fixed top-0 left-0 w-full h-[3px] bg-neutral-50 z-[100]">
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4 }}
-                    className="pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-8"
+                    className="h-full bg-black origin-left"
+                    style={{ scaleX: scrollProgress / 100 }}
+                />
+            </div>
+
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
+                {/* Back Nav */}
+                <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="max-w-[800px] mx-auto mb-16"
                 >
                     <button
                         onClick={() => navigate('/blog')}
-                        className="flex items-center gap-2 text-sm sm:text-base text-neutral-500 hover:text-primary transition-colors"
+                        className="flex items-center gap-2 text-sm text-neutral-400 hover:text-primary transition-colors font-medium group"
                     >
-                        <FiArrowLeft className="w-4 h-4" /> <span className="hidden sm:inline">Back to Blog</span><span className="sm:hidden">Back</span>
+                        <FiArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        <span>Back to Blog</span>
                     </button>
                 </motion.div>
 
-                {/* Article Header */}
-                <motion.article
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-4xl mx-auto"
-                >
-                    {/* Title */}
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-primary tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight">
-                        {post.title}
-                    </h1>
+                <div className="max-w-[840px] mx-auto">
+                    {/* Header */}
+                    <header className="mb-8">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <h1 className="text-4xl sm:text-5xl md:text-[52px] font-bold text-primary tracking-tight leading-[1.1] mb-10">
+                                {post.title}
+                            </h1>
 
-                    {/* Meta */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 sm:mb-10 md:mb-12 pb-6 sm:pb-8 border-b border-neutral-100">
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-xs sm:text-sm text-neutral-500">
-                            <span>{formatDateWithOrdinal(post.date)}</span>
-                            <span className="flex items-center gap-1">
-                                <FiClock className="w-3 h-3 sm:w-4 sm:h-4" />
-                                {post.readTime}
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                            <button
-                                onClick={handleCopyLink}
-                                className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium border border-neutral-200 text-neutral-700 hover:border-purple-300 hover:bg-purple-50 hover:text-purple-600 rounded-lg transition-all flex-1 sm:flex-initial justify-center"
-                            >
-                                {copied ? <FiCheck className="w-3 h-3 sm:w-4 sm:h-4" /> : <FiCopy className="w-3 h-3 sm:w-4 sm:h-4" />}
-                                <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy Link'}</span>
-                                <span className="sm:hidden">{copied ? 'Copied' : 'Copy'}</span>
-                            </button>
-                            <button
-                                onClick={handleShare}
-                                className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-colors shadow-sm flex-1 sm:flex-initial justify-center"
-                            >
-                                <FiShare2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                                Share
-                            </button>
-                        </div>
-                    </div>
+                            <div className="flex items-center justify-between gap-6 pb-8">
+                                <div className="flex items-center gap-5 text-sm text-neutral-400 font-medium">
+                                    <span>{formatDateWithOrdinal(post.date)}</span>
+                                    <span className="flex items-center gap-2">
+                                        <FiClock className="w-4 h-4" />
+                                        {post.readTime}
+                                    </span>
+                                </div>
 
-                    {/* Cover Image */}
-                    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-8 sm:mb-10 md:mb-12 aspect-[21/9]">
+                                <div className="flex items-center gap-3">
+                                    <button
+                                        onClick={handleCopyLink}
+                                        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-neutral-100 text-[13px] font-medium text-neutral-500 hover:bg-neutral-50 transition-all active:scale-95"
+                                    >
+                                        {copied ? <FiCheck className="w-3.5 h-3.5 text-green-600" /> : <FiCopy className="w-3.5 h-3.5" />}
+                                        <span>Copy Link</span>
+                                    </button>
+                                    <button
+                                        onClick={handleShare}
+                                        className="flex items-center gap-2 px-5 py-2 rounded-lg bg-purple-600 text-white text-[13px] font-semibold hover:bg-purple-700 transition-all active:scale-95 shadow-sm shadow-purple-100"
+                                    >
+                                        <FiShare2 className="w-3.5 h-3.5" />
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </header>
+
+                    {/* Content Image */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative aspect-video rounded-[24px] overflow-hidden mb-16 shadow-2xl shadow-neutral-200/50 bg-neutral-50"
+                    >
                         <img
                             src={post.coverImage}
                             alt={post.title}
                             className="w-full h-full object-cover"
                         />
-                    </div>
+                    </motion.div>
 
-                    {/* Content */}
-                    <div className="prose prose-lg max-w-none">
+                    {/* Main Content Body */}
+                    <article className="prose prose-neutral max-w-none mb-24">
                         {post.content.split('\n\n').map((paragraph, index) => {
-                            // Handle headings
-                            if (paragraph.startsWith('## ')) {
+                            const pText = paragraph.trim();
+
+                            // Headers
+                            if (pText.startsWith('## ')) {
                                 return (
-                                    <h2 key={index} className="text-2xl sm:text-3xl font-bold text-primary mt-8 sm:mt-10 md:mt-12 mb-4 sm:mb-6">
-                                        {paragraph.replace('## ', '')}
-                                    </h2>
+                                    <motion.h2
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        className="text-2xl sm:text-3xl font-bold text-purple-600 mt-16 mb-8 tracking-tight leading-tight"
+                                    >
+                                        {pText.replace('## ', '')}
+                                    </motion.h2>
                                 );
                             }
-                            if (paragraph.startsWith('### ')) {
+
+                            if (pText.startsWith('### ')) {
                                 return (
-                                    <h3 key={index} className="text-xl sm:text-2xl font-bold text-primary mt-6 sm:mt-8 mb-3 sm:mb-4">
-                                        {paragraph.replace('### ', '')}
-                                    </h3>
+                                    <motion.h3
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        className="text-xl sm:text-2xl font-bold text-purple-600 mt-12 mb-6 tracking-tight leading-snug"
+                                    >
+                                        {pText.replace('### ', '')}
+                                    </motion.h3>
                                 );
                             }
+
+                            // Bullet Lists
+                            if (pText.startsWith('- ')) {
+                                const items = paragraph.split('\n');
+                                return (
+                                    <motion.ul
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        className="list-disc list-outside ml-6 mb-10 space-y-4"
+                                    >
+                                        {items.map((it, i) => (
+                                            <li key={i} className="text-lg sm:text-xl text-neutral-800 leading-relaxed pl-2">
+                                                {renderContent(it.replace('- ', ''))}
+                                            </li>
+                                        ))}
+                                    </motion.ul>
+                                );
+                            }
+
+                            // Numbered Lists (like the Delivery Engine)
+                            if (/^\d+\./.test(pText)) {
+                                return (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        className="text-lg sm:text-xl text-neutral-800 leading-relaxed mb-10 border-l-2 border-neutral-100 pl-6 py-1"
+                                    >
+                                        {renderContent(paragraph)}
+                                    </motion.div>
+                                );
+                            }
+
                             // Regular paragraphs
                             return (
-                                <p key={index} className="text-base sm:text-lg text-secondary leading-relaxed mb-4 sm:mb-6">
-                                    {paragraph}
-                                </p>
+                                <motion.p
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    className="text-lg sm:text-xl text-neutral-800 leading-relaxed mb-10 tracking-normal"
+                                >
+                                    {renderContent(paragraph)}
+                                </motion.p>
                             );
                         })}
-                    </div>
+                    </article>
 
-                    {/* Share Section */}
-                    <div className="mt-8 sm:mt-12 md:mt-16 pt-6 sm:pt-8 border-t border-neutral-100">
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <p className="text-base sm:text-lg text-neutral-600 text-center sm:text-left">Found this helpful? Share it with your network.</p>
-                            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                                <button
-                                    onClick={handleCopyLink}
-                                    className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 border border-neutral-200 text-neutral-700 text-sm sm:text-base font-medium rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors flex-1 sm:flex-initial justify-center"
-                                >
-                                    {copied ? <FiCheck className="w-4 h-4" /> : <FiCopy className="w-4 h-4" />}
-                                    <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy Link'}</span>
-                                    <span className="sm:hidden">{copied ? 'Copied' : 'Copy'}</span>
-                                </button>
-                                <button
-                                    onClick={handleShare}
-                                    className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-purple-600 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-purple-700 transition-colors flex-1 sm:flex-initial justify-center"
-                                >
-                                    <FiShare2 className="w-4 h-4" />
-                                    <span className="hidden sm:inline">Share Article</span>
-                                    <span className="sm:hidden">Share</span>
-                                </button>
+                    {/* Like/Dislike Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col items-center justify-center pt-8 pb-16 border-t border-neutral-100"
+                    >
+                        <h4 className="text-sm font-bold text-primary mb-6 uppercase tracking-widest">Was this helpful?</h4>
+                        <div className="flex items-center gap-6">
+                            <button
+                                onClick={() => handleVote('like')}
+                                className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full border transition-all duration-300 ${userVote === 'like'
+                                    ? 'bg-purple-600 border-purple-600 text-white shadow-lg shadow-purple-200'
+                                    : 'bg-white border-neutral-200 text-neutral-600 hover:border-purple-400 hover:text-purple-600'
+                                    }`}
+                            >
+                                <FiThumbsUp className={`w-5 h-5 ${userVote === 'like' ? 'animate-bounce' : ''}`} />
+                                <span className="font-bold">{stats.likes}</span>
+                            </button>
+
+                            <button
+                                onClick={() => handleVote('dislike')}
+                                className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full border transition-all duration-300 ${userVote === 'dislike'
+                                    ? 'bg-neutral-800 border-neutral-800 text-white shadow-lg shadow-neutral-200'
+                                    : 'bg-white border-neutral-200 text-neutral-600 hover:border-red-400 hover:text-red-600'
+                                    }`}
+                            >
+                                <FiThumbsDown className={`w-5 h-5 ${userVote === 'dislike' ? 'animate-shake' : ''}`} />
+                                <span className="font-bold">{stats.dislikes}</span>
+                            </button>
+                        </div>
+                    </motion.div>
+
+                    {/* Pagination / More Stories */}
+                    {BLOG_POSTS.filter(p => p.id !== post.id).length > 0 && (
+                        <footer className="pt-20 border-t border-neutral-100 pb-20">
+                            <h4 className="text-xs uppercase tracking-[0.3em] font-black text-neutral-400 mb-12 text-center">Continue Reading</h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16">
+                                {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((rel) => (
+                                    <Link key={rel.id} to={`/blog/${rel.slug}`} className="group">
+                                        <div className="aspect-[16/9] rounded-sm overflow-hidden mb-6 bg-neutral-100">
+                                            <img src={rel.coverImage} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" alt="" />
+                                        </div>
+                                        <h5 className="font-bold text-xl text-primary leading-[1.2] mb-3 group-hover:underline decoration-neutral-200 underline-offset-[6px]">
+                                            {rel.title}
+                                        </h5>
+                                        <p className="text-sm text-neutral-500 line-clamp-2">{rel.excerpt}</p>
+                                    </Link>
+                                ))}
                             </div>
-                        </div>
-                    </div>
-                </motion.article>
-
-                {/* Related Posts - Only show if there are other posts */}
-                {BLOG_POSTS.filter(p => p.id !== post.id).length > 0 && (
-                    <div className="max-w-4xl mx-auto mt-8 sm:mt-12 md:mt-16 mb-12 sm:mb-16 md:mb-24">
-                        <h3 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6 md:mb-8">More Articles</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                            {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
-                                <Link
-                                    key={relatedPost.id}
-                                    to={`/blog/${relatedPost.slug}`}
-                                    className="group bg-white rounded-xl border border-neutral-100 p-4 sm:p-6 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
-                                >
-                                    <h4 className="text-lg sm:text-xl font-bold text-primary group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">
-                                        {relatedPost.title}
-                                    </h4>
-                                    <p className="text-xs sm:text-sm text-neutral-500 line-clamp-2 mb-3 sm:mb-4">
-                                        {relatedPost.excerpt}
-                                    </p>
-                                    <span className="text-xs sm:text-sm text-purple-600 font-medium group-hover:underline">
-                                        Read More →
-                                    </span>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                )}
+                        </footer>
+                    )}
+                </div>
             </div>
         </div>
     );

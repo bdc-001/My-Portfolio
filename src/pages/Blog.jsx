@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BLOG_POSTS } from "../constants/blogs";
 import BlogCard from "../components/BlogCard";
+import SEO from "../components/SEO";
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -15,6 +16,11 @@ const containerVariants = {
 
 const Blog = () => {
     return (
+        <>
+            <SEO 
+                title="Blog - Arsalaan Mohammed | Stories from the Journey"
+                description="Personal reflections on growth, challenges, and the unexpected paths that lead us where we are. From the hills of Darjeeling to IIT, and beyond—these are the stories that shaped me."
+            />
         <div className="pt-16 sm:pt-20 bg-white bg-dots">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-7xl">
                 {/* Breadcrumb */}
@@ -76,6 +82,7 @@ const Blog = () => {
                 </motion.div>
             </div>
         </div>
+        </>
     );
 };
 

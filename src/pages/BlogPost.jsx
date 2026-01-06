@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiClock, FiArrowLeft, FiShare2, FiCopy, FiCheck, FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import { FaLinkedin, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import profilePic from "../assets/HeroImageFinal.png";
+import SEO from "../components/SEO";
 
 const formatDateWithOrdinal = (dateString) => {
     const date = new Date(dateString);
@@ -133,6 +133,13 @@ const BlogPost = () => {
     };
 
     return (
+        <>
+            <SEO 
+                title={`${post.title} - Arsalaan Mohammed`}
+                description={post.excerpt}
+                image={post.coverImage}
+                type="article"
+            />
         <div className="pt-24 sm:pt-32 min-h-screen bg-white bg-dots selection:bg-neutral-100 selection:text-black">
             {/* Progress Bar */}
             <div className="fixed top-0 left-0 w-full h-[3px] bg-neutral-50 z-[100]">
@@ -353,6 +360,7 @@ const BlogPost = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

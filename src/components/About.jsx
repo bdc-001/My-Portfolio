@@ -91,7 +91,7 @@ const About = () => {
                             <img
                                 className="relative rounded-xl sm:rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 object-cover w-full h-auto shadow-md hover:shadow-xl"
                                 src={aboutImg}
-                                alt="About Arsalaan"
+                                alt="Arsalaan Mohammed - Product Manager and IIT Dhanbad Graduate"
                             />
                             {/* Overlay */}
                             <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-black/5" />

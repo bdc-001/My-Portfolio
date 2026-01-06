@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
+import SEO from "./components/SEO";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
@@ -10,7 +11,8 @@ import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <Router>
-      <div className="overflow-x-hidden text-primary antialiased selection:bg-neutral-100 selection:text-black bg-white bg-dots">
+      <SEO />
+      <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
         <div className="fixed top-0 -z-10 h-full w-full"></div>
 
         <Navbar />

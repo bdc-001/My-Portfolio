@@ -1,10 +1,16 @@
 import WorkSection from "../components/WorkSection";
 import { EXPERIENCES, PROJECTS } from "../constants";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 const Work = () => {
     return (
-        <div className="pt-16 sm:pt-20">
+        <>
+            <SEO 
+                title="Work - Arsalaan Mohammed | Product Manager Portfolio"
+                description="A deep dive into my product journey—how I identify problems, craft strategies, and ship solutions that drive measurable business growth. Professional experience and selected projects."
+            />
+            <div className="pt-16 sm:pt-20">
             <div className="container mx-auto px-4 sm:px-6 md:px-8">
                 {/* Breadcrumb Navigation */}
                 <motion.div
@@ -42,6 +48,7 @@ const Work = () => {
                 <WorkSection title="Selected Projects" data={PROJECTS} id="projects" />
             </div>
         </div>
+        </>
     );
 };
 

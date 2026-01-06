@@ -9,7 +9,7 @@ const SEO = ({ title, description, image, type = "website" }) => {
 
   // Default values
   const defaultTitle = "Arsalaan Mohammed - Product Manager | IIT Dhanbad | AI Product Builder";
-  const defaultDescription = "Product Manager at Convin.ai | IIT Dhanbad Alumnus | Building AI-powered products that drive business growth. From Darjeeling to IIT to Bangalore - documenting the journey.";
+  const defaultDescription = "Arsalaan Mohammed - Product Manager at Convin.ai specializing in AI-powered products. IIT Dhanbad graduate with expertise in 0-to-1 product development, product strategy, and driving measurable business growth. Based in Bangalore, India.";
   const defaultImage = `${baseUrl}/favicon.png`;
 
   const seoTitle = title || defaultTitle;

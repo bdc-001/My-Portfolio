@@ -23,7 +23,7 @@ const Hero = () => {
                             animate="visible"
                             className="text-base sm:text-lg text-secondary mb-3 sm:mb-4 font-medium"
                         >
-                            Hi! I'm Arsalaan, a Product Manager from India.
+                            Product Manager at Convin.ai | IIT Dhanbad Alumnus
                         </motion.span>
                         <motion.h1
                             variants={container(0.2)}
@@ -31,7 +31,7 @@ const Hero = () => {
                             animate="visible"
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-primary leading-[1.1] mb-4 sm:mb-6 md:mb-8 text-balance"
                         >
-                            Crafting experiences users crave, results businesses trust.
+                            Arsalaan Mohammed - Product Manager | Crafting AI-Powered Experiences
                         </motion.h1>
                         <motion.p
                             variants={container(0.4)}

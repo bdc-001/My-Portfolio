@@ -83,6 +83,8 @@ const BlogCard = ({ post, index, featured = false }) => {
                             src={post.coverImage}
                             alt={post.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
                 </div>

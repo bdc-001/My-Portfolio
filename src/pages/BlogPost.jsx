@@ -115,17 +115,33 @@ const BlogPost = () => {
     }
 
     const handleCopyLink = () => {
-        navigator.clipboard.writeText(window.location.href);
+        // Optimize for INP - use requestIdleCallback for non-critical work
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = window.location.href;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            });
+        }
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
 
     const handleShare = () => {
+        // Optimize for INP - defer non-critical work
         if (navigator.share) {
-            navigator.share({
-                title: post.title,
-                text: post.excerpt,
-                url: window.location.href,
+            requestIdleCallback(() => {
+                navigator.share({
+                    title: post.title,
+                    text: post.excerpt,
+                    url: window.location.href,
+                }).catch(() => {
+                    // User cancelled or error
+                });
             });
         } else {
             handleCopyLink();
@@ -218,6 +234,8 @@ const BlogPost = () => {
                             src={post.coverImage}
                             alt={post.title}
                             className="w-full h-full object-cover"
+                            loading="eager"
+                            fetchPriority="high"
                         />
                     </motion.div>
 
@@ -346,7 +364,7 @@ const BlogPost = () => {
                                 {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((rel) => (
                                     <Link key={rel.id} to={`/blog/${rel.slug}`} className="group">
                                         <div className="aspect-[16/9] rounded-sm overflow-hidden mb-6 bg-neutral-100">
-                                            <img src={rel.coverImage} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" alt="" />
+                                            <img src={rel.coverImage} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" alt={rel.title} loading="lazy" decoding="async" />
                                         </div>
                                         <h5 className="font-bold text-xl text-primary leading-[1.2] mb-3 group-hover:underline decoration-neutral-200 underline-offset-[6px]">
                                             {rel.title}

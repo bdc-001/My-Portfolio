@@ -31,6 +31,8 @@ const WorkSection = ({ title, data, id }) => {
                                     src={study.image}
                                     alt={study.title}
                                     className="w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 {/* Overlay on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -12,11 +12,14 @@ const Navbar = () => {
       // If not on home, we just follow the link to home with hash
       return;
     }
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
+    // Use requestAnimationFrame for better INP
+    requestAnimationFrame(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsMobileMenuOpen(false);
+    });
   };
 
   const navLinks = (

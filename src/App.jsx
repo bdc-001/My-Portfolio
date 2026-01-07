@@ -2,11 +2,14 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
 import SEO from "./components/SEO";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Work from "./pages/Work";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
+import { lazy, Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
+
+// Lazy load pages for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const Work = lazy(() => import("./pages/Work"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 
 const App = () => {
   return (
@@ -17,12 +20,14 @@ const App = () => {
 
         <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-primary">Loading...</div></div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+          </Routes>
+        </Suspense>
 
         <div className="container mx-auto px-8">
           <Contact />

@@ -10,6 +10,9 @@ const Home = lazy(() => import("./pages/Home"));
 const Work = lazy(() => import("./pages/Work"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const CaseStudies = lazy(() => import("./pages/CaseStudies"));
+const CaseStudyCategory = lazy(() => import("./pages/CaseStudyCategory"));
+const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 
 const App = () => {
   return (
@@ -26,6 +29,9 @@ const App = () => {
             <Route path="/work" element={<Work />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/case-studies/:category" element={<CaseStudyCategory />} />
+            <Route path="/case-studies/:category/:id" element={<CaseStudyDetail />} />
           </Routes>
         </Suspense>
 

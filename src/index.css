@@ -46,4 +46,12 @@ html {
   .text-balance {
     text-wrap: balance;
   }
+
+  .term-tooltip {
+    @apply inline-flex items-center gap-1 cursor-help border-b border-dotted border-neutral-400;
+  }
+
+  .term-icon {
+    @apply inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-neutral-100 text-[10px] text-neutral-500 font-bold border border-neutral-200 ml-0.5;
+  }
 }

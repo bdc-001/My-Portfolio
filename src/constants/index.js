@@ -14,13 +14,13 @@ import antigravityLogo from "../assets/tech/antigravity.png";
 
 export const HERO_HEADLINE = "Strategic Product Manager | 0 → 1 Specialist";
 export const HERO_SUBHEADLINE = "Driving Innovation & Business Impact";
-export const HERO_CONTENT = `Product Manager by profession, storyteller by passion. I build products that solve real problems, create YouTube content that documents my journey, strum melodies on my guitar, craft Urdu poetry that speaks to the soul, and decode market trends with the same curiosity I bring to building 0→1 ventures. From IIT Dhanbad to Convin and Aspire, I'm here to blend strategy, creativity, and a hunger for impact.`;
+export const HERO_CONTENT = `Engineer turned Product Manager with a track record of shipping AI products and driving measurable revenue. I combine technical depth with strategic vision to solve ambiguous zero to one problems. Whether reviewing GPU clusters, writing data pipeline specs, or leading enterprise deployments, my focus is always on orchestrating engineering reality with business impact.`;
 
-export const ABOUT_TEXT = `I operate at the intersection of business goals and user needs. I don't just manage backlogs; I orchestrate product value.
+export const ABOUT_TEXT = `I operate at the intersection of business strategy and engineering execution. I don't just manage backlogs; I orchestrate product value.
 
-From co-founding a consulting firm that raised $400k+ for clients to leading digital transformations at Convin and Aspire, my career is built on taking ownership.
+From scaling LLM infrastructure to co-founding a consulting firm that delivered 30+ projects for enterprise clients, my career is built on taking extreme ownership.
 
-I believe in "shipping to learn" and that the best products are born from rigorous empathy and relentless iteration. My technical background (IIT Dhanbad) allows me to bridge the gap between engineering and business seamlessly.`;
+I believe in "shipping to learn" and that the best products emerge from rigorous empathy and rapid iteration. My technical foundation enables me to bridge the gap between complex systems and user-centric solutions seamlessly.`;
 
 export const ABOUT_STATS = [
   { label: "Revenue Impact", value: "10% Cost Red." },
@@ -56,30 +56,30 @@ export const TOOLKIT = {
 export const EXPERIENCES = [
   {
     title: "Convin",
-    subtitle: "Associate Product Manager | Oct 2024 - Present",
-    image: convinImage, // User uploaded image
+    subtitle: "Associate Product Manager | Sept 2023 - Present",
+    image: convinImage,
     category: "B2B SaaS / AI",
-    problem: "Need to drive user adoption for automated QA and improve engineering efficiency.",
-    solution: "Developed Rule Engine for custom SOP flows. Migrated AI features to fine-tuned Gemma models on H200 clusters. Shipped LLM-powered insight delivery system.",
+    problem: "Need to optimize expensive LLM infrastructure, automate QA processes, and expand market reach.",
+    solution: "Led migration to self-hosted H200 GPU clusters with fine-tuned models. Designed a no-code Rule Engine for automated QA and shipped an LLM-powered insight delivery system.",
     impact: [
-      "$1.3M Revenue",
-      "50% Cost Red.",
-      "$1.7M Renewal"
+      "65% Cost Red.",
+      "$1.7M Renewals",
+      "140k API calls/day"
     ],
     role: "Associate Product Manager",
-    stack: ["AI Strategy", "Gemma 7B/27B", "H200 Clusters"]
+    stack: ["LLM Infrastructure", "No-code", "AI Strategy"]
   },
   {
     title: "Aspire",
-    subtitle: "Junior Product Manager | Jan 2024",
-    image: aspireImage, // User uploaded image
+    subtitle: "Junior Product Manager | Jan 2023 - May 2023",
+    image: aspireImage,
     category: "Fintech",
-    problem: "Critical migration of high-value client accounts and inefficient manual accounting workflows.",
-    solution: "Coordinated migration of 800+ clients from Nium-SG to DBS-HK. Integrated QuickBooks/Xero APIs to automate expense feeds.",
+    problem: "Critical migration of high-value accounts and inefficient manual accounting workflows for SME clients.",
+    solution: "Owned full Nium-SG to DBS-HK payment rail migration. Drove QuickBooks Online and Xero API integrations to automate bank feed syncing.",
     impact: [
       "<1.25% Error Rate",
-      "40% Time Saved",
-      "10% Cost Red."
+      "+15% CSAT",
+      "10% Op Cost Red."
     ],
     role: "Junior Product Manager",
     stack: ["Fintech Ops", "API Integration", "Migration"]
@@ -90,7 +90,7 @@ export const PROJECTS = [
   {
     title: "Revenue Attribution Engine",
     subtitle: "AI-Weighted Marketing Model",
-    image: revenueImage, // User uploaded image
+    image: revenueImage,
     category: "Analytics / AI",
     problem: "Inaccurate revenue tracking in CX centers due to fragmented CRM integrations and poor incentive allocation.",
     solution: "Built platform with AI-weighted attribution & MMM for ROI. Added fraud detection and cohort analysis.",
@@ -103,24 +103,24 @@ export const PROJECTS = [
     stack: ["Go", "React", "PostgreSQL"]
   },
   {
-    title: "Corporate Wellbeing",
-    subtitle: "Employee Health Platform",
-    image: wellnessPlatform, // Correctly mapped to wellness platform image
-    category: "HealthTech",
-    problem: "Rising burnout and lack of personalized wellness insights in corporate settings.",
-    solution: "Platform with personalized AI coaching, mood tracking, and burnout assessments. Integrated HR dashboards.",
+    title: "Automated Market Research",
+    subtitle: "OpenClaw Architecture",
+    image: project3,
+    category: "Data Pipeline",
+    problem: "Manual evaluation of public companies is slow and prone to missing high-risk signals.",
+    solution: "Built a daily ingestion and scoring pipeline evaluating Debt-to-Equity and FCF. Automated report delivery via webhooks to Slack/Telegram.",
     impact: [
-      "AI Coaching",
-      "Mood Tracking",
-      "Community Challenges"
+      "Daily Pipeline",
+      "Zero Manual Input",
+      "Multi-channel Alerts"
     ],
     role: "Developer",
-    stack: ["FastAPI", "TypeScript", "Radix UI"]
+    stack: ["Python", "Webhooks", "Data Pipeline"]
   },
   {
     title: "OrganHub",
     subtitle: "Healthcare Coordination Platform",
-    image: project2, // Correctly identified as OrganHub
+    image: project2,
     category: "HealthTech",
     problem: "Fragmented organ donation ecosystem causing delays and coordination failures.",
     solution: "Designed a responsive web app enabling end-to-end coordination across donors, NGOs, and hospitals.",
@@ -134,18 +134,18 @@ export const PROJECTS = [
   },
   {
     title: "Black Diamond Consulting",
-    subtitle: "Student-led Venture Capital Firm",
-    image: project1, // Logo
-    category: "Venture Capital",
+    subtitle: "Co-Founder | IIT (ISM)",
+    image: project1,
+    category: "Consulting / VC",
     problem: "SMEs and startups struggling to scale tech projects and raise pre-seed funding.",
-    solution: "Co-founded a VC consulting firm. Onboarded projects with Accenture Japan, Marico, etc.",
+    solution: "Built a Venture Capital consulting firm from scratch. Validated by IIT (ISM)'s incubation centre.",
     impact: [
-      "$400k+ Raised",
-      "$8.5k Revenue",
-      "30+ Clients"
+      "30+ Projects",
+      "Top Tier Clients",
+      "Tech & Fundraising"
     ],
     role: "Co-Founder",
-    stack: ["Strategy", "Fundraising", "Consulting"]
+    stack: ["Strategy", "Consulting", "Venture Capital"]
   }
 ];
 
@@ -198,7 +198,7 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     question: "You create content?",
-    answer: "Yes! My YouTube channel is my digital garden. I document my journey in tech, product building, and the lessons I learn along the way. It's raw, unfiltered, and real."
+    answer: "Yes! I'm active on LinkedIn where I share my learnings, market research, and product insights. I earned the 'Top Product Management Voice' badge for my contributions. It's my digital garden where I document my journey."
   },
   {
     question: "A Product Manager who sings?",

@@ -40,6 +40,14 @@ const Navbar = () => {
         Blog
       </Link>
 
+      <Link
+        to="/case-studies"
+        onClick={() => setIsMobileMenuOpen(false)}
+        className={`transition-colors hover:text-purple-600 ${location.pathname.startsWith('/case-studies') ? 'text-purple-600 font-bold' : 'text-neutral-600'}`}
+      >
+        Case Studies
+      </Link>
+
       {/* For About and Contact, we want to scroll on Home, or go to Home#section on other pages */}
       {isHome ? (
         <>

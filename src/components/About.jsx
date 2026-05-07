@@ -1,5 +1,5 @@
 import { ABOUT_TEXT, ABOUT_STATS } from "../constants";
-import aboutImg from "../assets/about.png";
+import aboutImg from "../assets/about.webp";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -94,6 +94,8 @@ const About = () => {
                                 alt="Arsalaan Mohammed - Product Manager and IIT Dhanbad Graduate"
                                 loading="lazy"
                                 decoding="async"
+                                width="600"
+                                height="600"
                             />
                             {/* Overlay */}
                             <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-black/5" />

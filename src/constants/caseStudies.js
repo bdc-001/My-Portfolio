@@ -144,9 +144,9 @@ export const CASE_STUDIES = [
 <p><strong>Objective:</strong> Build a privacy-first, AI-driven mobile application that shifts disease management from reactive symptom tracking to proactive flare-up prevention, ultimately improving the patient's day-to-day quality of life.</p>
 <h3>By When?</h3>
 <ul>
-  <li><strong>Phase 1 (MVP - 6 Months):</strong> Launch core ambient voice journaling, local device processing (for privacy), and basic wearable integration (Apple Health/Google Fit) for passive data collection.</li>
-  <li><strong>Phase 2 (V1 - 12 Months):</strong> Roll out the predictive AI model for flare-up forecasting and environmental API integrations (weather, air quality).</li>
-  <li><strong>Phase 3 (Future - 18-24 Months):</strong> Develop generative clinical summary reports for doctors and pursue necessary regulatory compliance (e.g., FDA software-as-a-medical-device guidelines) for deeper health recommendations.</li>
+  <li><strong>Phase 1 (<span class="term-tooltip" data-tooltip="Minimum Viable Product: The simplest version of a product that can be released to early customers to get feedback.">MVP<span class="term-icon">i</span></span> - 6 Months):</strong> Launch core ambient voice journaling, local device processing (for privacy), and basic wearable integration (<span class="term-tooltip" data-tooltip="Application Programming Interface: A way for two different pieces of software to talk to each other.">API<span class="term-icon">i</span></span>s like Apple Health/Google Fit) for passive data collection.</li>
+  <li><strong>Phase 2 (V1 - 12 Months):</strong> Roll out the predictive AI model for flare-up forecasting and environmental <span class="term-tooltip" data-tooltip="Application Programming Interface: A way for two different pieces of software to talk to each other.">API<span class="term-icon">i</span></span> integrations (weather, air quality).</li>
+  <li><strong>Phase 3 (Future - 18-24 Months):</strong> Develop generative clinical summary reports for doctors and pursue necessary regulatory compliance (e.g., <span class="term-tooltip" data-tooltip="Food and Drug Administration: Federal agency that regulates medical devices and software-as-a-medical-device (SaMD) products.">FDA<span class="term-icon">i</span></span> software-as-a-medical-device guidelines) for deeper health recommendations.</li>
 </ul>
 <h3>For whom? (3 Personas)</h3>
 <ul>
@@ -169,7 +169,7 @@ export const CASE_STUDIES = [
 <h4>1. The Passive Data Aggregator (Solving Silos)</h4>
 <p>The AI doesn't ask the user for data. It pulls via API from:</p>
 <ul>
-  <li><strong>Biometrics:</strong> Continuous HRV, SpO2, and Sleep Stages (via Wearable).</li>
+  <li><strong>Biometrics:</strong> Continuous <span class="term-tooltip" data-tooltip="Heart Rate Variability: A measure of the variation in time between each heartbeat, used to track stress and recovery.">HRV<span class="term-icon">i</span></span>, <span class="term-tooltip" data-tooltip="Blood Oxygen Saturation: The amount of oxygen in your blood, measured as a percentage.">SpO2<span class="term-icon">i</span></span>, and Sleep Stages (via Wearable).</li>
   <li><strong>Environment:</strong> Local barometric pressure, pollen counts, and temperature (via Weather API).</li>
   <li><strong>Behavior:</strong> Step counts, calendar intensity, and location (to track "rest time" vs. "active time").</li>
 </ul>
@@ -200,11 +200,11 @@ export const CASE_STUDIES = [
   {
     id: "rca-001",
     category: "root-cause-analysis",
-    title: "DAU Dropped 23% in Q3",
+    title: '<span class="term-tooltip" data-tooltip="Daily Active Users: The number of unique people who use the app every single day.">DAU<span class="term-icon">i</span></span> Dropped 23% in Q3',
     question: "Our daily active users dropped 23% week-over-week after an OS update. Why?",
     snapshot:
       "Segmented users by OS version. Android 13 users showed 0 retention at day 4. Drilled into push notification delivery logs and found the permission prompt was silently suppressed post-update due to a broken notification-channel registration.",
-    approach: ["5-Whys", "Cohort Segmentation", "Log Analysis", "OS-level Debugging"],
+    approach: ['<span class="term-tooltip" data-tooltip="A problem-solving technique used to find the root cause of an issue by asking \'Why?\' five times in a row.">5-Whys<span class="term-icon">i</span></span>', '<span class="term-tooltip" data-tooltip="Grouping users who share a common characteristic (like the date they joined) to track their behavior over time.">Cohort Segmentation<span class="term-icon">i</span></span>', "Log Analysis", "OS-level Debugging"],
     tags: ["Retention", "Android", "Notifications", "5-Whys", "Cohort Analysis"],
     difficulty: "Intermediate",
     company: "Convin",
@@ -217,8 +217,8 @@ export const CASE_STUDIES = [
     title: "3x Spike in Support Tickets Post Launch",
     question: "Support volume tripled within 48 hours of a major feature release. What broke?",
     snapshot:
-      "Fishbone analysis flagged API, UI, and docs as branches. MECE breakdown of ticket themes showed 68% were about data not syncing. Traced to an undocumented breaking change in a third-party API endpoint hitting mid-market accounts only.",
-    approach: ["Fishbone Diagram", "MECE", "Ticket Taxonomy", "API Audit"],
+      'Fishbone analysis flagged <span class="term-tooltip" data-tooltip="Application Programming Interface: A way for two different pieces of software to talk to each other.">API<span class="term-icon">i</span></span>, UI, and docs as branches. <span class="term-tooltip" data-tooltip="Mutually Exclusive, Collectively Exhaustive: A framework to break down a problem so that there are no overlaps or gaps.">MECE<span class="term-icon">i</span></span> breakdown of ticket themes showed 68% were about data not syncing. Traced to an undocumented breaking change in a third-party API endpoint hitting mid-market accounts only.',
+    approach: ['<span class="term-tooltip" data-tooltip="A visual tool used to identify the possible causes of a problem, organized into categories that look like fish bones.">Fishbone Diagram<span class="term-icon">i</span></span>', '<span class="term-tooltip" data-tooltip="Mutually Exclusive, Collectively Exhaustive: A framework to break down a problem so that there are no overlaps or gaps.">MECE<span class="term-icon">i</span></span>', "Ticket Taxonomy", "API Audit"],
     tags: ["Support", "API", "Fishbone", "MECE", "Launch"],
     difficulty: "Advanced",
     company: "Aspire",
@@ -242,7 +242,7 @@ export const CASE_STUDIES = [
   {
     id: "rca-004",
     category: "root-cause-analysis",
-    title: "NPS Fell from 52 to 31 in One Quarter",
+    title: '<span class="term-tooltip" data-tooltip="Net Promoter Score: A metric used to measure how likely customers are to recommend your product to others.">NPS<span class="term-icon">i</span></span> Fell from 52 to 31 in One Quarter',
     question: "What caused a 21-point NPS drop among enterprise customers?",
     snapshot:
       "Segmented NPS by cohort, plan tier, and CSM assignment. Enterprise accounts on a specific plan had an 80% detractor rate. Traced to a UI change that removed a bulk-action feature enterprise users relied on daily.",
@@ -309,31 +309,31 @@ export const CASE_STUDIES = [
   </table>
 </div>
 
-<h3>Step 2: DAU/MAU Ratio</h3>
-<p>Instagram globally runs ~60-65% DAU/MAU. India is a high-engagement, mobile-first market. People doom-scroll Reels hard. So I'll use 65%.</p>
+<h3>Step 2: <span class="term-tooltip" data-tooltip="The ratio of people who use the app every day vs. every month. It shows how addictive an app is.">DAU/MAU Ratio<span class="term-icon">i</span></span></h3>
+<p>Instagram globally runs ~60-65% <span class="term-tooltip" data-tooltip="Daily Active Users divided by Monthly Active Users.">DAU/MAU<span class="term-icon">i</span></span>. India is a high-engagement, mobile-first market. People doom-scroll Reels hard. So I'll use 65%.</p>
 <ul>
-  <li>Instagram India MAU ≈ ~230-250M (reasonable estimate for a market this size)</li>
-  <li><strong>DAU = 250M × 65% ≈ 160M</strong></li>
+  <li>Instagram India <span class="term-tooltip" data-tooltip="Monthly Active Users: The number of unique people who use the app at least once a month.">MAU<span class="term-icon">i</span></span> ≈ ~230-250M (reasonable estimate for a market this size)</li>
+  <li><strong><span class="term-tooltip" data-tooltip="Daily Active Users: The number of unique people who use the app every single day.">DAU<span class="term-icon">i</span></span> = 250M × 65% ≈ 160M</strong></li>
 </ul>
 
 <h3>Step 3: Sanity Checks</h3>
 <ul>
-  <li>WhatsApp India DAU ~500M → Instagram at ~30% of that makes sense (more niche, skews younger/urban)</li>
-  <li>YouTube India DAU ~250M → Instagram slightly below, reasonable since YouTube is more mass-market</li>
+  <li>WhatsApp India <span class="term-tooltip" data-tooltip="Daily Active Users: The number of unique people who use the app every single day.">DAU<span class="term-icon">i</span></span> ~500M → Instagram at ~30% of that makes sense (more niche, skews younger/urban)</li>
+  <li>YouTube India <span class="term-tooltip" data-tooltip="Daily Active Users: The number of unique people who use the app every single day.">DAU<span class="term-icon">i</span></span> ~250M → Instagram slightly below, reasonable since YouTube is more mass-market</li>
   <li>Meta has disclosed India as their #1 or #2 market by users globally, 160M DAU tracks</li>
 </ul>
 
 <div class="mt-8 p-6 bg-emerald-50 rounded-xl border border-emerald-100">
   <h3 class="text-emerald-800 m-0 mb-2">Final Answer</h3>
-  <p class="text-2xl font-bold text-emerald-900 m-0">~150-160 Million Daily Active Users</p>
+  <p class="text-2xl font-bold text-emerald-900 m-0">~150-160 Million <span class="term-tooltip" data-tooltip="Daily Active Users: The number of unique people who use the app every single day.">Daily Active Users<span class="term-icon">i</span></span></p>
 </div>
 
 <div class="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100">
   <h3 class="text-blue-800 m-0 mb-2">💡 Pro Tips for Guesstimates</h3>
   <ul class="text-blue-900 m-0 pl-4">
-    <li><strong>Sanity Check:</strong> Always compare your final number against a known benchmark (like WhatsApp or YouTube users).</li>
+    <li><strong><span class="term-tooltip" data-tooltip="A way to check if your final answer makes sense by comparing it to something you already know.">Sanity Check<span class="term-icon">i</span></span>:</strong> Always compare your final number against a known benchmark (like WhatsApp or YouTube users).</li>
     <li><strong>State Assumptions Clearly:</strong> Interviewers care more about your logic and structure than the exact final number.</li>
-    <li><strong>Segmentation is Key:</strong> Break down populations into logical buckets (e.g., power users vs. occasional users) to show depth of thought.</li>
+    <li><strong><span class="term-tooltip" data-tooltip="Dividing a large group of people into smaller groups based on how they behave or what they need.">Segmentation<span class="term-icon">i</span></span> is Key:</strong> Break down populations into logical buckets (e.g., power users vs. occasional users) to show depth of thought.</li>
   </ul>
 </div>
     `
@@ -352,7 +352,7 @@ export const CASE_STUDIES = [
     date: "2025-05",
     file: "/case-studies/ge-002.pdf",
     detailedSolution: `
-<h3>Step 1: Addressable User Funnel</h3>
+<h3>Step 1: Addressable User <span class="term-tooltip" data-tooltip="A series of steps a person takes from first hearing about a product to finally buying it.">Funnel<span class="term-icon">i</span></span></h3>
 <div class="overflow-x-auto my-6">
   <table class="w-full text-left border-collapse min-w-[600px]">
     <thead>
@@ -367,7 +367,7 @@ export const CASE_STUDIES = [
       <tr><td class="p-3 border-b">Urban Population</td><td class="p-3 border-b">~35% live in cities</td><td class="p-3 border-b">~500M</td></tr>
       <tr><td class="p-3 border-b">Smartphone + Internet Users (Urban)</td><td class="p-3 border-b">~80% of urban</td><td class="p-3 border-b">~400M</td></tr>
       <tr><td class="p-3 border-b">Food Delivery App Installed</td><td class="p-3 border-b">~40% of those, not everyone orders online</td><td class="p-3 border-b">~160M</td></tr>
-      <tr><td class="p-3 border-b">Monthly Active Orderers</td><td class="p-3 border-b">~50% actually order in a given month</td><td class="p-3 border-b font-semibold text-emerald-600">~80M</td></tr>
+      <tr><td class="p-3 border-b">Monthly Active <span class="term-tooltip" data-tooltip="People who actually perform the main action (like ordering food) at least once a month.">Orderers<span class="term-icon">i</span></span></td><td class="p-3 border-b">~50% actually order in a given month</td><td class="p-3 border-b font-semibold text-emerald-600">~80M</td></tr>
     </tbody>
   </table>
 </div>
@@ -392,7 +392,7 @@ export const CASE_STUDIES = [
 </div>
 <p><strong>Total Monthly Orders ≈ ~488M | Daily Orders = 488M ÷ 30 ≈ ~16M/day</strong></p>
 
-<h3>Step 3: Adjust for Quick Commerce Food Players</h3>
+<h3>Step 3: Adjust for <span class="term-tooltip" data-tooltip="Ultra-fast delivery of groceries and food, usually within 10-30 minutes.">Quick Commerce<span class="term-icon">i</span></span> Food Players</h3>
 <p>My funnel above only captures Swiggy/Zomato-type behaviour, planned meal ordering. It misses impulse 10-min orders which have a different user psychology and incrementally add to the market.</p>
 <ul>
   <li>Zepto Café + Bistro + Swish = ~4-5M/day incremental</li>
@@ -453,7 +453,7 @@ export const CASE_STUDIES = [
     image: "/case-studies/aman-gupta.jpg",
     detailedSolution: `
 <h3>How boAt Won by Changing the Rules</h3>
-<p>When boAt started in 2016, the market for headphones was very crowded. This is what we call a <span class="term-tooltip" title="A market where many similar products are sold, making it hard for one brand to stand out.">Commoditized Market<span class="term-icon">i</span></span>. On one side, you had expensive brands like Sony and JBL. On the other side, you had very cheap, low-quality headphones. Most people thought there was no space for a new brand.</p>
+<p>When boAt started in 2016, the market for headphones was very crowded. This is what we call a <span class="term-tooltip" data-tooltip="A market where many similar products are sold, making it hard for one brand to stand out.">Commoditized Market<span class="term-icon">i</span></span>. On one side, you had expensive brands like Sony and JBL. On the other side, you had very cheap, low-quality headphones. Most people thought there was no space for a new brand.</p>
 
 <p>But boAt did something counterintuitive. They stopped trying to out-build Sony. Instead, they decided that headphones should be fashion accessories, not just tools for music. They focused on how the product looked and how it made people feel.</p>
 
@@ -461,13 +461,13 @@ export const CASE_STUDIES = [
 <p>This analysis shows how a new entrepreneur can win against giant companies by reframing what the product is. You will learn how to build a brand that people truly love, even if you don't have the biggest budget.</p>
 
 <h3>1. Changing the Category: From Tools to Fashion</h3>
-<p>Most headphone companies talk about bass and frequency. boAt talked about style. They designed their products to look like jewelry or clothing. They used bright colors and trendy designs. By doing this, they moved out of the electronics category and into the fashion category. This is called <span class="term-tooltip" title="Changing how customers think about a product to avoid direct competition with giants.">Category Reframing<span class="term-icon">i</span></span>.</p>
+<p>Most headphone companies talk about bass and frequency. boAt talked about style. They designed their products to look like jewelry or clothing. They used bright colors and trendy designs. By doing this, they moved out of the electronics category and into the fashion category. This is called <span class="term-tooltip" data-tooltip="Changing how customers think about a product to avoid direct competition with giants.">Category Reframing<span class="term-icon">i</span></span>.</p>
 
 <h3>2. The Power of the boAthead Community</h3>
-<p>Instead of just buying ads, boAt built a tribe. They called their fans boAtheads. They used young influencers and cricketers to make the brand feel cool and local. This created an <span class="term-tooltip" title="A deep emotional connection with customers that makes it hard for them to switch to another brand.">Emotional Moat<span class="term-icon">i</span></span>. Even if Sony made a slightly better speaker, people stayed with boAt because they felt like they belonged to a community.</p>
+<p>Instead of just buying ads, boAt built a tribe. They called their fans boAtheads. They used young influencers and cricketers to make the brand feel cool and local. This created an <span class="term-tooltip" data-tooltip="A deep emotional connection with customers that makes it hard for them to switch to another brand.">Emotional Moat<span class="term-icon">i</span></span>. Even if Sony made a slightly better speaker, people stayed with boAt because they felt like they belonged to a community.</p>
 
 <h3>3. Treating Hardware Like Software</h3>
-<p>In the past, hardware companies took years to launch a new product. boAt acted like a software company. They launched new designs every few months based on what customers said. They used <span class="term-tooltip" title="Quickly using customer comments to fix products or launch new ones.">Feedback Loops<span class="term-icon">i</span></span> to stay ahead of the slow-moving giants. They didn't wait for perfect <span class="term-tooltip" title="Research and Development: The process of creating new technology or improving existing ones.">R&D<span class="term-icon">i</span></span>; they launched fast and learned faster.</p>
+<p>In the past, hardware companies took years to launch a new product. boAt acted like a software company. They launched new designs every few months based on what customers said. They used <span class="term-tooltip" data-tooltip="Quickly using customer comments to fix products or launch new ones.">Feedback Loops<span class="term-icon">i</span></span> to stay ahead of the slow-moving giants. They didn't wait for perfect <span class="term-tooltip" data-tooltip="Research and Development: The process of creating new technology or improving existing ones.">R&D<span class="term-icon">i</span></span>; they launched fast and learned faster.</p>
 
 <div class="mt-8 p-6 bg-emerald-50 rounded-xl border border-emerald-100">
   <h3 class="text-emerald-800 m-0 mb-2">The Big Lesson</h3>
@@ -500,7 +500,7 @@ export const CASE_STUDIES = [
     image: "/case-studies/ritesh-agarwal.jpg",
     detailedSolution: `
 <h3>The Story of How OYO Fixed Broken Hotels</h3>
-<p>In 2013, if you wanted a cheap hotel in India, you never knew what you would get. One hotel might have a clean bed but no water. Another might have water but no privacy. People were scared to book cheap rooms because they didn't trust the quality. This is what we call a <span class="term-tooltip" title="A market where many small players act on their own with no common standard.">Fragmented Market<span class="term-icon">i</span></span>.</p>
+<p>In 2013, if you wanted a cheap hotel in India, you never knew what you would get. One hotel might have a clean bed but no water. Another might have water but no privacy. People were scared to book cheap rooms because they didn't trust the quality. This is what we call a <span class="term-tooltip" data-tooltip="A market where many small players act on their own with no common standard.">Fragmented Market<span class="term-icon">i</span></span>.</p>
 
 <p>Ritesh Agarwal saw that people didn't need fancy lobbies. They just wanted to know that the room would be clean and safe. He decided to fix this trust problem by making every hotel follow the same simple rules.</p>
 
@@ -511,11 +511,11 @@ export const CASE_STUDIES = [
 <p>At first, OYO was just a website that listed hotels. But Ritesh soon realized that just listing a bad hotel doesn't help anyone. He changed the plan. Instead of just listing them, OYO started fixing them. They created a simple list of 30 things every room must have, like white bedsheets, fast Wi-Fi, and clean bathrooms. By making every hotel look and feel the same, they turned a messy room into a trusted product.</p>
 
 <h3>2. The Offer Owners Loved: The Minimum Guarantee</h3>
-<p>How do you get thousands of hotel owners to join you quickly? OYO used a clever plan called the <span class="term-tooltip" title="A promise to pay a business a fixed amount of money every month, even if they don't sell anything.">Minimum Guarantee<span class="term-icon">i</span></span>. They told hotel owners, "We will pay you a fixed amount of money every month, no matter how many guests stay. In return, we get to run your rooms and set the prices."</p>
-<p>This was a win for owners because they didn't have to worry about losing money. For OYO, it meant they could add thousands of rooms very fast. Once they had the rooms, they used <span class="term-tooltip" title="Changing prices based on how many people want the product at that time.">Dynamic Pricing<span class="term-icon">i</span></span> to make more money than they promised the owners.</p>
+<p>How do you get thousands of hotel owners to join you quickly? OYO used a clever plan called the <span class="term-tooltip" data-tooltip="A promise to pay a business a fixed amount of money every month, even if they don't sell anything.">Minimum Guarantee<span class="term-icon">i</span></span>. They told hotel owners, "We will pay you a fixed amount of money every month, no matter how many guests stay. In return, we get to run your rooms and set the prices."</p>
+<p>This was a win for owners because they didn't have to worry about losing money. For OYO, it meant they could add thousands of rooms very fast. Once they had the rooms, they used <span class="term-tooltip" data-tooltip="Changing prices based on how many people want the product at that time.">Dynamic Pricing<span class="term-icon">i</span></span> to make more money than they promised the owners.</p>
 
 <h3>3. Consistency is the Secret Weapon</h3>
-<p>While other companies tried to build fancy hotels, OYO focused on being predictable. For a traveler, knowing exactly what you will get is very valuable. They focused on the basics. This helped them keep costs low while scaling to many cities. In business, having a <span class="term-tooltip" title="A special advantage that makes it hard for competitors to copy or beat you.">Moat<span class="term-icon">i</span></span> often means just being the most reliable choice.</p>
+<p>While other companies tried to build fancy hotels, OYO focused on being predictable. For a traveler, knowing exactly what you will get is very valuable. They focused on the basics. This helped them keep costs low while scaling to many cities. In business, having a <span class="term-tooltip" data-tooltip="A special advantage that makes it hard for competitors to copy or beat you.">Moat<span class="term-icon">i</span></span> often means just being the most reliable choice.</p>
 
 <div class="mt-8 p-6 bg-emerald-50 rounded-xl border border-emerald-100">
   <h3 class="text-emerald-800 m-0 mb-2">The Big Lesson</h3>
@@ -555,14 +555,14 @@ export const CASE_STUDIES = [
 <p>This story shows how a new entrepreneur can win by narrowing their focus and moving faster than anyone else. You will see how to turn speed into a business advantage.</p>
 
 <h3>1. The Power of "Men Only"</h3>
-<p>Most brands try to be "everything to everyone." But when you do that, you become average. Snitch focused only on men's fast fashion. By doing this, they understood their customers better than any general brand. They knew exactly what fit, what colors, and what styles young men wanted. This is what we call a <span class="term-tooltip" title="A small, specific part of a larger market that has its own unique needs.">Niche Market<span class="term-icon">i</span></span>.</p>
+<p>Most brands try to be "everything to everyone." But when you do that, you become average. Snitch focused only on men's fast fashion. By doing this, they understood their customers better than any general brand. They knew exactly what fit, what colors, and what styles young men wanted. This is what we call a <span class="term-tooltip" data-tooltip="A small, specific part of a larger market that has its own unique needs.">Niche Market<span class="term-icon">i</span></span>.</p>
 
 <h3>2. New Styles Every Single Day</h3>
-<p>Traditional brands launch new clothes 4 times a year (Spring, Summer, etc.). Snitch launches dozens of new <span class="term-tooltip" title="Stock Keeping Unit: A unique code for every individual product or style.">SKUs<span class="term-icon">i</span></span> every single day. They act more like a news website than a clothing brand. This keeps their customers coming back to their app daily just to see "what's new."</p>
-<p>Because they launch so many styles in small amounts, they don't get stuck with a lot of old clothes that nobody wants. This is called high <span class="term-tooltip" title="How quickly a company sells its products and replaces them with new ones.">Inventory Turnover<span class="term-icon">i</span></span>, and it is the secret to making money in fashion.</p>
+<p>Traditional brands launch new clothes 4 times a year (Spring, Summer, etc.). Snitch launches dozens of new <span class="term-tooltip" data-tooltip="Stock Keeping Unit: A unique code for every individual product or style.">SKUs<span class="term-icon">i</span></span> every single day. They act more like a news website than a clothing brand. This keeps their customers coming back to their app daily just to see "what's new."</p>
+<p>Because they launch so many styles in small amounts, they don't get stuck with a lot of old clothes that nobody wants. This is called high <span class="term-tooltip" data-tooltip="How quickly a company sells its products and replaces them with new ones.">Inventory Turnover<span class="term-icon">i</span></span>, and it is the secret to making money in fashion.</p>
 
 <h3>3. Selling Directly to the Fan</h3>
-<p>Instead of selling in big malls first, Snitch sold directly through their own website and app. This is the <span class="term-tooltip" title="Direct to Consumer: Selling products directly to customers without using middle-men like big department stores.">D2C Model<span class="term-icon">i</span></span>. It allowed them to keep all the profit and, more importantly, all the data. They knew exactly who was buying and what they liked. This helped them spend their marketing money much more wisely.</p>
+<p>Instead of selling in big malls first, Snitch sold directly through their own website and app. This is the <span class="term-tooltip" data-tooltip="Direct to Consumer: Selling products directly to customers without using middle-men like big department stores.">D2C Model<span class="term-icon">i</span></span>. It allowed them to keep all the profit and, more importantly, all the data. They knew exactly who was buying and what they liked. This helped them spend their marketing money much more wisely.</p>
 
 <h3>4. Instagram as a Shop Floor</h3>
 <p>Snitch didn't spend millions on TV ads. They used Instagram to show off their new styles every day. They made the brand feel fast, young, and alive. For a new entrepreneur, this is a masterclass in using free or low-cost tools to build a massive brand presence.</p>

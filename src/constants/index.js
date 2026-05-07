@@ -8,9 +8,9 @@ import aspireImage from "../assets/projects/aspire.jpg";
 import revenueImage from "../assets/projects/revenue-attribution.png";
 import wellnessPlatform from "../assets/projects/wellness-platform.png";
 import voiceInterface from "../assets/projects/voice-interface.png";
-import n8nLogo from "../assets/tech/n8n.png";
-import cursorLogo from "../assets/tech/cursor.png";
-import antigravityLogo from "../assets/tech/antigravity.png";
+import n8nLogo from "../assets/tech/n8n.webp";
+import cursorLogo from "../assets/tech/cursor.webp";
+import antigravityLogo from "../assets/tech/antigravity.webp";
 
 export const HERO_HEADLINE = "Strategic Product Manager | 0 → 1 Specialist";
 export const HERO_SUBHEADLINE = "Driving Innovation & Business Impact";

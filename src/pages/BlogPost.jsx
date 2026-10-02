@@ -672,7 +672,7 @@ const BlogPost = () => {
 
   return (
     <>
-      <SEO title={`${post.title} - Arsalaan Mohammed`} description={post.excerpt} image={post.coverImage} type="article" />
+      <SEO title={post.title} description={post.excerpt} image={post.coverImage} type="article" />
       <Article key={post.slug} post={post} />
     </>
   );

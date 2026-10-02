@@ -115,7 +115,7 @@ const Contact = () => {
         <div className="border-t border-white/[0.07]">
           <div className="container-site flex flex-col gap-4 py-7 text-xs text-neutral-500 md:flex-row md:items-center md:justify-between">
             <p>
-              © {new Date().getFullYear()} {PROFILE.name} · {CONTACT.address}
+              © {new Date().getFullYear()} Keep Hustling · {PROFILE.name} · {CONTACT.address}
             </p>
             <a
               href={CONTACT.resume}

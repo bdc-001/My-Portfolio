@@ -67,7 +67,7 @@ const CategoryView = ({ catMeta }) => {
 
   return (
     <div style={categoryAccent(catMeta.color)}>
-      <SEO title={`${catMeta.label} | Case Studies — Arsalaan Mohammed`} description={catMeta.description} />
+      <SEO title={`${catMeta.label} | Case Studies`} description={catMeta.description} />
 
       <section className="relative isolate overflow-hidden">
         <div className="aurora pointer-events-none absolute inset-0 -z-10" aria-hidden />

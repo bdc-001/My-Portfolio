@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import AmbientField from "./components/AmbientField";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
-import SEO from "./components/SEO";
 import SmoothScroll from "./components/motion/SmoothScroll";
 import Cursor from "./components/motion/Cursor";
 import PageTransition from "./components/motion/PageTransition";
@@ -125,7 +124,6 @@ const Shell = () => {
 const App = () => (
   <Router>
     <MotionConfig reducedMotion="user">
-      <SEO />
       <SmoothScroll />
       <Shell />
     </MotionConfig>

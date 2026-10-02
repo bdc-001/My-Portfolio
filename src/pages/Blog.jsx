@@ -110,7 +110,7 @@ const Blog = () => {
   return (
     <>
       <SEO
-        title="Blog - Arsalaan Mohammed | Stories from the Journey"
+        title="Blog by Arsalaan Mohammed: Stories from the Journey"
         description="Personal reflections on product, AI, growth, and the unexpected paths that lead us where we are. From the hills of Darjeeling to IIT, and beyond."
       />
 

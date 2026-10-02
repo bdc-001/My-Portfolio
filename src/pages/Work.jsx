@@ -224,7 +224,7 @@ const EarlierCard = ({ item }) => {
 const Work = () => (
   <>
     <SEO
-      title="Work - Arsalaan Mohammed | Product Manager Portfolio"
+      title="Work by Arsalaan Mohammed, Product Manager"
       description="Product roles at Convin and Aspire, plus AI products I've built and shipped: Stayora, Product OS, QuanTum and AccessShield."
     />
 

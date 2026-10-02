@@ -77,7 +77,7 @@ const CategoryCard = ({ category, index }) => {
 const CaseStudies = () => (
   <>
     <SEO
-      title="Case Studies | Arsalaan Mohammed"
+      title="Product Case Studies by Arsalaan Mohammed"
       description="A curated library of PM case studies covering product design walkthroughs, root cause analyses, and guesstimate breakdowns by Arsalaan Mohammed."
     />
 

@@ -35,7 +35,7 @@ const CaseStudyDetail = () => {
 
   return (
     <div style={categoryAccent(catMeta.color)}>
-      <SEO title={`${stripHtml(study.title)} | Case Studies — Arsalaan Mohammed`} description={study.snapshot} />
+      <SEO title={`${stripHtml(study.title)} | Case Studies`} description={study.snapshot} />
 
       <article className="relative isolate pt-32 md:pt-40">
         <div className="aurora pointer-events-none absolute inset-x-0 top-0 -z-10 h-[680px]" aria-hidden />

@@ -11,7 +11,7 @@ const NotFound = ({
   backLabel = "Back home",
 }) => (
   <>
-    <SEO title="Not found | Arsalaan Mohammed" noindex />
+    <SEO title="Not found" noindex />
     <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden" aria-labelledby="not-found-title">
       <div className="aurora pointer-events-none absolute inset-0 -z-10" aria-hidden />
       <div className="grid-fade pointer-events-none absolute inset-x-0 top-0 -z-10 h-[800px]" aria-hidden />

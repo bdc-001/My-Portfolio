@@ -40,7 +40,7 @@ const WorkDetail = () => {
   return (
     <>
       <SEO
-        title={`${item.title} - Work | Arsalaan Mohammed`}
+        title={`${item.title} | Work`}
         description={`${item.subtitle} ${item.solution}`.slice(0, 300)}
       />
 

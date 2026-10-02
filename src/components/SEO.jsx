@@ -3,29 +3,12 @@ import { useLocation } from "react-router-dom";
 import { POSTS } from "../lib/posts";
 
 const BASE_URL = "https://keephustling.in";
+const SITE_NAME = "Keep Hustling";
+const DEFAULT_TITLE = `${SITE_NAME} | Arsalaan Mohammed, Product Manager`;
 
-const PERSON = {
-  "@type": "Person",
-  name: "Arsalaan Mohammed",
-  url: BASE_URL,
-  image: `${BASE_URL}/og-image.jpg`,
-  jobTitle: "Product Manager",
-  worksFor: { "@type": "Organization", name: "Convin.ai", url: "https://convin.ai" },
-  alumniOf: {
-    "@type": "EducationalOrganization",
-    name: "Indian Institute of Technology Dhanbad",
-    alternateName: "IIT Dhanbad",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Bangalore",
-    addressRegion: "Karnataka",
-    addressCountry: "IN",
-  },
-  email: "arsalaan.bdc@gmail.com",
-  sameAs: ["https://www.linkedin.com/in/arsalaan-pm/", "https://www.youtube.com/@ArsalaanMd25"],
-  description: "Product Manager at Convin.ai | IIT Dhanbad Alumnus | Building AI-powered products that drive business growth",
-};
+// Full Person and WebSite entities live in index.html; pages reference them by @id.
+const PERSON_REF = { "@type": "Person", "@id": `${BASE_URL}/#person`, name: "Arsalaan Mohammed", url: BASE_URL };
+const WEBSITE_REF = { "@id": `${BASE_URL}/#website` };
 
 const absoluteUrl = (url) => (/^https?:\/\//.test(url) ? url : `${BASE_URL}${url.startsWith("/") ? "" : "/"}${url}`);
 
@@ -33,10 +16,10 @@ const Seo = ({ title, description, image, type = "website", noindex = false }) =
   const location = useLocation();
   const currentUrl = `${BASE_URL}${location.pathname}`;
 
-  const seoTitle = title || "Arsalaan Mohammed - Product Manager | IIT Dhanbad | AI Product Builder";
+  const seoTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const seoDescription =
     description ||
-    "Arsalaan Mohammed - Product Manager at Convin.ai specializing in AI-powered products. IIT Dhanbad graduate with expertise in 0-to-1 product development, product strategy, and driving measurable business growth. Based in Bangalore, India.";
+    "Keep Hustling is the personal website of Arsalaan Mohammed, Product Manager at Convin.ai and IIT Dhanbad alum. AI products, 0-to-1 work, and honest stories from the journey. Based in Bangalore, India.";
   const seoImage = absoluteUrl(image || "/og-image.jpg");
 
   useEffect(() => {
@@ -72,7 +55,7 @@ const Seo = ({ title, description, image, type = "website", noindex = false }) =
       updateMetaTag("og:title", seoTitle);
       updateMetaTag("og:description", seoDescription);
       updateMetaTag("og:image", seoImage);
-      updateMetaTag("og:site_name", "Arsalaan Mohammed");
+      updateMetaTag("og:site_name", SITE_NAME);
 
       updateMetaTag("twitter:card", "summary_large_image");
       updateMetaTag("twitter:url", currentUrl);
@@ -80,7 +63,7 @@ const Seo = ({ title, description, image, type = "website", noindex = false }) =
       updateMetaTag("twitter:description", seoDescription);
       updateMetaTag("twitter:image", seoImage);
 
-      let script = document.querySelector('script[type="application/ld+json"]');
+      let script = document.querySelector("script[data-page-schema]");
       let structuredData = null;
 
       if (type === "article") {
@@ -95,18 +78,27 @@ const Seo = ({ title, description, image, type = "website", noindex = false }) =
             datePublished: post.date,
             dateModified: post.date,
             mainEntityOfPage: currentUrl,
-            author: PERSON,
-            publisher: { "@type": "Person", name: "Arsalaan Mohammed" },
+            author: PERSON_REF,
+            publisher: PERSON_REF,
+            isPartOf: WEBSITE_REF,
           };
         }
       } else if (location.pathname === "/") {
-        structuredData = { "@context": "https://schema.org", ...PERSON };
+        structuredData = {
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          url: BASE_URL,
+          name: DEFAULT_TITLE,
+          mainEntity: PERSON_REF,
+          isPartOf: WEBSITE_REF,
+        };
       }
 
       if (structuredData) {
         if (!script) {
           script = document.createElement("script");
           script.setAttribute("type", "application/ld+json");
+          script.setAttribute("data-page-schema", "");
           document.head.appendChild(script);
         }
         script.textContent = JSON.stringify(structuredData);

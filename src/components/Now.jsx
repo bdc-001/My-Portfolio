@@ -28,8 +28,9 @@ const BangaloreClock = () => {
   }, []);
 
   return (
-    <span className="inline-flex items-center gap-2" aria-label="Local time in Bangalore">
+    <span className="inline-flex items-center gap-2">
       <span className="h-1.5 w-1.5 rounded-full bg-mint shadow-[0_0_8px_rgba(127,224,195,0.8)]" aria-hidden />
+      <span className="sr-only">Local time in Bangalore:</span>
       <time className="font-mono text-[12px] tabular-nums text-neutral-300" dateTime={now.toISOString()}>
         {clockFormat.format(now)}
       </time>

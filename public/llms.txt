@@ -1,0 +1,50 @@
+# Keep Hustling
+
+> Keep Hustling (keephustling.in) is the personal website of Arsalaan Mohammed, an Associate Product Manager at Convin.ai in Bangalore and a B.Tech graduate of IIT (ISM) Dhanbad. It covers his product work, side builds, product case studies, and a blog about AI products and his journey.
+
+Arsalaan works on AI products for enterprise contact centres: self-hosted LLM infrastructure (a 65% cut in LLM costs), multilingual voice agents, and a no-code QA rule engine. Before Convin he was a Junior Product Manager at Aspire in Singapore. Contact: arsalaan.bdc@gmail.com.
+
+## About
+
+- [Home](https://keephustling.in/): Who Arsalaan is, what he is working on now, his journey from Darjeeling to IIT Dhanbad to product management, and testimonials.
+- [Resume (PDF)](https://keephustling.in/Mohammed_Resume_2026.pdf): One-page resume with experience, achievements, projects and skills.
+
+## Work
+
+- [All work](https://keephustling.in/work): Overview of roles and side builds.
+- [Convin](https://keephustling.in/work/convin): Making enterprise conversation intelligence cheaper, smarter, and self-serve.
+- [Aspire](https://keephustling.in/work/aspire): Migrating high-value accounts and automating SME accounting, without breaking trust.
+- [Stayora](https://keephustling.in/work/stayora): Hotel booking for India, with an AI travel agent that plans the whole trip and waits for approval before anyone pays.
+- [Product OS](https://keephustling.in/work/product-os): A self-hosted workspace for product work with a copilot that knows your tickets and your code.
+- [QuanTum](https://keephustling.in/work/quantum): An equity research agent for Indian markets that scores stocks across three horizons and learns from its misses.
+- [AccessShield](https://keephustling.in/work/accessshield): Four AI agents that audit a website for ADA compliance and explain the fixes in plain English.
+- [Revenue Attribution Engine](https://keephustling.in/work/revenue-attribution-engine): An AI-weighted attribution and marketing-mix model for CX revenue.
+- [Black Diamond Consulting](https://keephustling.in/work/black-diamond-consulting): A venture-capital consulting firm co-founded at IIT (ISM) Dhanbad.
+- [OrganHub](https://keephustling.in/work/organhub): Coordinating organ donation across donors, NGOs, and hospitals.
+
+## Blog
+
+- [All posts](https://keephustling.in/blog): Stories and lessons on product, AI, and the long way round.
+- [AI & Lead Identification: Uncovering the Gold in Rejected Conversations](https://keephustling.in/blog/the-gold-in-rejected-calls): Why the shortest sales calls often hold the most valuable intelligence.
+- [From Darjeeling's Mist to IIT's Dreams: My Unlikely Journey](https://keephustling.in/blog/from-darjeeling-to-iit-dhanbad): How a sheltered kid from the hills, a pandemic, and YouTube led to IIT Dhanbad.
+
+## Case studies
+
+- [All case studies](https://keephustling.in/case-studies): Product design, root cause analysis, guesstimates, and business analysis.
+- [AI Health Coach for Chronic Illness](https://keephustling.in/case-studies/product-design/pd-005): End-to-end product design case.
+- [DAU dropped 23% in Q3](https://keephustling.in/case-studies/root-cause-analysis/rca-001): Root cause analysis.
+- [3x spike in support tickets after launch](https://keephustling.in/case-studies/root-cause-analysis/rca-002): Root cause analysis.
+- [Revenue attribution discrepancy](https://keephustling.in/case-studies/root-cause-analysis/rca-003): Root cause analysis.
+- [NPS fell from 52 to 31 in one quarter](https://keephustling.in/case-studies/root-cause-analysis/rca-004): Root cause analysis.
+- [Instagram daily active users in India](https://keephustling.in/case-studies/guesstimate/ge-001): Guesstimate.
+- [Daily Swiggy and Zomato orders in India](https://keephustling.in/case-studies/guesstimate/ge-002): Guesstimate.
+- [How did boAt beat JBL and Sony?](https://keephustling.in/case-studies/business-analysis/ba-001): Business analysis.
+- [How did OYO spread?](https://keephustling.in/case-studies/business-analysis/ba-002): Business analysis.
+- [How did Snitch grow so rapidly?](https://keephustling.in/case-studies/business-analysis/ba-003): Business analysis.
+
+## Optional
+
+- [Sitemap](https://keephustling.in/sitemap.xml): Every public URL on the site.
+- [Blog stats API](https://keephustling.in/api/stats): Read-only JSON with view and vote counts per blog post.
+- [LinkedIn](https://www.linkedin.com/in/arsalaan-pm/): Arsalaan's LinkedIn profile.
+- [GitHub](https://github.com/bdc-001): Code for his side builds.

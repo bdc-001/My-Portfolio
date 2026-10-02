@@ -14,6 +14,8 @@ const ScrollLitText = ({ as: Tag = "p", dim = 0.18, start = "top 82%", end = "bo
           contextSafe(() =>
             SplitText.create(ref.current, {
               type: "words",
+              // Words stay readable as plain spans; SplitText's default aria-label isn't permitted on <p>.
+              aria: "none",
               autoSplit: true,
               onSplit: (self) =>
                 gsap.fromTo(

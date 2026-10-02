@@ -56,7 +56,7 @@ const RefreshOnMount = () => {
 
 const PageFallback = () => (
   <div className="flex min-h-[100svh] items-center justify-center">
-    <span className="h-px w-16 animate-pulse bg-white/30" aria-label="Loading" />
+    <span className="h-px w-16 animate-pulse bg-white/30" role="status" aria-label="Loading" />
   </div>
 );
 

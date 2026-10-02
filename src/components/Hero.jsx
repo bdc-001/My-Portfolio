@@ -1,73 +1,89 @@
-import { HERO_CONTENT } from "../constants";
-import profilePic from "../assets/HeroImageFinal.webp";
-import { motion } from "framer-motion";
-
-const container = (delay) => ({
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.8, delay: delay, ease: "easeOut" },
-    },
-});
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { FiArrowRight } from "react-icons/fi";
+import { PROFILE } from "../constants";
+import { MOTION_OK, gsap, useGSAP } from "../lib/motion";
+import SplitReveal from "./motion/SplitReveal";
+import Magnetic from "./motion/Magnetic";
+import RoadmapBoard from "./RoadmapBoard";
 
 const Hero = () => {
-    return (
-        <div className="border-b border-neutral-100 py-20 lg:py-24">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
-                <div className="w-full lg:w-1/2">
-                    <div className="flex flex-col font-sans">
-                        <motion.div
-                            variants={container(0)}
-                            initial="hidden"
-                            animate="visible"
-                            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-purple-600 bg-purple-50 border border-purple-100 px-3 py-1.5 rounded-full mb-6 w-max"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse"></span>
-                            Product Manager
-                        </motion.div>
-                        <motion.h1
-                            variants={container(0.2)}
-                            initial="hidden"
-                            animate="visible"
-                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-neutral-900 leading-[1.1] mb-6 text-balance"
-                        >
-                            Arsalaan Mohammed <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-500 to-emerald-500">
-                                Crafting AI Products !
-                            </span>
-                        </motion.h1>
-                        <motion.p
-                            variants={container(0.4)}
-                            initial="hidden"
-                            animate="visible"
-                            className="max-w-xl text-lg sm:text-xl text-neutral-500 leading-relaxed font-medium"
-                        >
-                            {HERO_CONTENT}
-                        </motion.p>
-                    </div>
-                </div>
-                <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10"
-                    >
-                        <img
-                            src={profilePic}
-                            alt="Arsalaan Mohammed - Product Manager"
-                            className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-[28rem] lg:h-[34rem] object-cover grayscale transition-all duration-500 hover:grayscale-0 hover:scale-105"
-                            fetchPriority="high"
-                            loading="eager"
-                            width="448"
-                            height="544"
-                        />
-                    </motion.div>
-                </div>
-            </div>
+  const root = useRef(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MOTION_OK, () => {
+        gsap
+          .timeline({ delay: 0.1 })
+          .from("[data-hero-eyebrow]", { y: 16, opacity: 0, duration: 0.8 })
+          .from("[data-hero-visual]", { y: 32, opacity: 0, duration: 1.2 }, 0.35)
+          .from("[data-hero-rest]", { y: 24, opacity: 0, duration: 1, stagger: 0.1 }, 0.75);
+
+        gsap.to("[data-hero-cue]", {
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: { trigger: root.current, start: "top top", end: "15% top", scrub: true },
+        });
+      });
+    },
+    { scope: root }
+  );
+
+  return (
+    <section ref={root} className="relative isolate overflow-hidden" aria-label="Introduction">
+      <div className="aurora pointer-events-none absolute inset-0 -z-10" aria-hidden />
+      <div className="grid-fade pointer-events-none absolute inset-x-0 top-0 -z-10 h-[900px]" aria-hidden />
+
+      <div className="container-site grid items-center gap-16 pb-20 pt-32 md:pt-40 lg:min-h-[100svh] lg:grid-cols-12 lg:gap-10 lg:pb-24 lg:pt-28">
+        <div className="relative z-10 lg:col-span-7">
+          <p data-hero-eyebrow className="label">
+            {PROFILE.role}, {PROFILE.company} · Bangalore
+          </p>
+
+          <SplitReveal
+            as="h1"
+            trigger="load"
+            delay={0.2}
+            className="display mt-7 text-pretty text-[clamp(2.6rem,4.7vw,4rem)] leading-[1.04]"
+          >
+            Hi, I&apos;m Arsalaan. <span className="text-neutral-500">{PROFILE.headline}</span>
+          </SplitReveal>
+
+          <p data-hero-rest className="mt-8 max-w-lg text-pretty text-lg leading-relaxed text-neutral-400">
+            {PROFILE.tagline}
+          </p>
+
+          <div data-hero-rest className="mt-10 flex flex-wrap items-center gap-3">
+            <Magnetic strength={0.25}>
+              <Link to="/work" className="btn-primary group !px-6 !py-3">
+                See my work
+                <FiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
+            </Magnetic>
+            <Link to="/blog" className="btn-ghost !px-6 !py-3">
+              Read the blog
+            </Link>
+          </div>
         </div>
-    );
+
+        <div data-hero-visual className="relative w-full max-w-[500px] justify-self-center lg:col-span-5 lg:justify-self-end">
+          <RoadmapBoard />
+        </div>
+      </div>
+
+      <div
+        data-hero-cue
+        className="pointer-events-none absolute inset-x-0 bottom-8 hidden flex-col items-center gap-3 lg:flex"
+        aria-hidden
+      >
+        <span className="label">Scroll</span>
+        <span className="relative h-10 w-px overflow-hidden bg-white/10">
+          <span className="absolute inset-x-0 top-0 h-1/2 animate-[cue_1.8s_cubic-bezier(0.16,1,0.3,1)_infinite] bg-bone" />
+        </span>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

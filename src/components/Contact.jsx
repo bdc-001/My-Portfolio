@@ -1,81 +1,141 @@
-import { CONTACT } from "../constants";
-import { motion } from "framer-motion";
-import { FaLinkedin, FaYoutube } from "react-icons/fa";
+import { useRef, useState } from "react";
+import { FaGithub, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { FiArrowUp, FiArrowUpRight, FiCheck, FiCopy, FiDownload } from "react-icons/fi";
+import { CONTACT, PROFILE } from "../constants";
+import { MOTION_OK, gsap, scrollToTarget, useGSAP } from "../lib/motion";
+import GlowCard from "./motion/GlowCard";
+import Magnetic from "./motion/Magnetic";
+import SplitReveal from "./motion/SplitReveal";
+
+const SOCIALS = [
+  { href: CONTACT.linkedin, label: "LinkedIn", Icon: FaLinkedinIn },
+  { href: CONTACT.youtube, label: "YouTube", Icon: FaYoutube },
+  { href: CONTACT.github, label: "GitHub", Icon: FaGithub },
+];
 
 const Contact = () => {
+  const root = useRef(null);
+  const [copied, setCopied] = useState(false);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MOTION_OK, () => {
+        gsap.fromTo(
+          "[data-footer-inner]",
+          { yPercent: -12 },
+          { yPercent: 0, ease: "none", scrollTrigger: { trigger: root.current, start: "top bottom", end: "bottom bottom", scrub: true } }
+        );
+        gsap.fromTo(
+          "[data-wordmark]",
+          { yPercent: 70, opacity: 0.2 },
+          { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: "[data-wordmark]", start: "top bottom", end: "bottom bottom", scrub: true } }
+        );
+      });
+    },
+    { scope: root }
+  );
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${CONTACT.email}`;
+    }
+  };
+
   return (
-    <div id="contact" className="border-b border-neutral-100 pb-12 sm:pb-16 md:pb-20 pt-12 sm:pt-16 md:pt-20">
-      <div className="text-center tracking-tighter">
-        <motion.h2
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
-          className="my-6 sm:my-8 md:my-10 text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-primary tracking-tight px-4"
-        >
-          Let's build something bold.
-        </motion.h2>
+    <footer id="contact" ref={root} className="relative overflow-hidden">
+      <div data-footer-inner className="will-change-transform">
+        <div className="container-site pt-28 md:pt-44">
+          <GlowCard className="overflow-hidden !rounded-[28px] px-6 py-14 sm:px-12 md:px-16 md:py-20">
+            <div
+              className="pointer-events-none absolute -right-32 -top-40 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(closest-side,rgb(var(--accent)/0.22),transparent)]"
+              aria-hidden
+            />
 
-        <motion.div
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col items-center gap-4 sm:gap-6"
-        >
-          <p className="text-base sm:text-lg md:text-xl text-secondary px-4">
-            Ready to maximize your product's potential?
+            <div className="relative">
+              <SplitReveal className="display max-w-[11em] text-[clamp(2.75rem,7.5vw,6.25rem)] leading-[0.98]">
+                Let&apos;s build <span className="text-neutral-500">something bold.</span>
+              </SplitReveal>
+              <p className="mt-6 max-w-md text-pretty text-lg leading-relaxed text-neutral-400">
+                Product problems, hiring conversations, or a good ghazal recommendation. My inbox is open.
+              </p>
+
+              <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                <div className="flex flex-wrap items-center gap-3">
+                  <Magnetic strength={0.2}>
+                    <a
+                      href={`mailto:${CONTACT.email}`}
+                      className="group inline-flex items-center gap-3 rounded-full bg-bone px-5 py-3.5 text-[15px] font-medium tracking-normal text-ink transition-colors hover:bg-white sm:pl-6 sm:pr-3.5 sm:text-lg"
+                    >
+                      <span className="break-all">{CONTACT.email}</span>
+                      <span className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-bone transition-transform duration-500 ease-expo group-hover:rotate-45 sm:flex">
+                        <FiArrowUpRight className="h-4 w-4" />
+                      </span>
+                    </a>
+                  </Magnetic>
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-neutral-300 transition-colors hover:border-white/40 hover:text-bone"
+                    aria-label={copied ? "Email copied" : "Copy email address"}
+                  >
+                    {copied ? <FiCheck className="h-4 w-4" /> : <FiCopy className="h-4 w-4" />}
+                  </button>
+                </div>
+
+                <ul className="flex flex-wrap gap-2">
+                  {SOCIALS.map(({ href, label, Icon }) => (
+                    <li key={label}>
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                        <Icon className="h-4 w-4" aria-hidden />
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </GlowCard>
+        </div>
+
+        <div className="container-site mt-14 overflow-hidden pb-3 [container-type:inline-size] md:mt-20 md:pb-5">
+          <p
+            data-wordmark
+            className="select-none whitespace-nowrap bg-gradient-to-b from-white/[0.16] to-white/[0.02] bg-clip-text text-center font-display text-[length:11.6cqw] font-light leading-[1.05] tracking-[-0.05em] text-transparent"
+            aria-hidden
+          >
+            {PROFILE.name}
           </p>
-          <a href={`mailto:${CONTACT.email}`} className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-primary hover:text-purple-600 transition-colors border-b-2 border-transparent hover:border-purple-600 pb-1 break-all px-4">
-            {CONTACT.email}
-          </a>
-          <div className="flex gap-4 mt-4 sm:mt-6 md:mt-8 text-secondary text-xs sm:text-sm px-4">
-            <span>{CONTACT.address}</span>
-          </div>
+        </div>
 
-          {/* Social Links */}
-          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-neutral-100 w-full px-4">
-            <div className="text-center mb-4 sm:mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-2">Let's Connect</h3>
-              <p className="text-sm sm:text-base text-neutral-600">Follow my journey on LinkedIn and YouTube</p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto">
-              <a
-                href="https://www.linkedin.com/in/arsalaan-pm/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-neutral-200 bg-white text-neutral-700 text-sm sm:text-base font-medium rounded-xl hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all shadow-sm group"
-              >
-                <FaLinkedin className="text-lg sm:text-xl text-[#0077B5] group-hover:text-white transition-colors" />
-                <span>LinkedIn</span>
-              </a>
-              <a
-                href="https://www.youtube.com/@ArsalaanMd25"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-neutral-200 bg-white text-neutral-700 text-sm sm:text-base font-medium rounded-xl hover:border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all shadow-sm group"
-              >
-                <FaYoutube className="text-lg sm:text-xl text-[#FF0000] group-hover:text-white transition-colors" />
-                <span>YouTube</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center gap-2 mt-12 sm:mt-16 md:mt-20">
-            <a
-              href="/Mohammed_Resume_2025.pdf"
-              download="Arsalaan_Mohammed_Resume.pdf"
-              className="text-sm font-semibold text-neutral-400 hover:text-purple-600 transition-colors flex items-center gap-2 group"
-            >
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity">💼</span>
-              For the HODs & Hiring Managers
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity">🤫</span>
-            </a>
-            <p className="text-xs text-neutral-400 px-4">
-              © {new Date().getFullYear()} Arsalaan Mohammed. All rights reserved.
+        <div className="border-t border-white/[0.07]">
+          <div className="container-site flex flex-col gap-4 py-7 text-xs text-neutral-500 md:flex-row md:items-center md:justify-between">
+            <p>
+              © {new Date().getFullYear()} {PROFILE.name} · {CONTACT.address}
             </p>
+            <a
+              href={CONTACT.resume}
+              download="Arsalaan_Mohammed_Resume.pdf"
+              className="inline-flex items-center gap-2 transition-colors hover:text-bone"
+            >
+              <FiDownload className="h-3.5 w-3.5" aria-hidden />
+              For the HODs &amp; hiring managers
+            </a>
+            <button
+              type="button"
+              onClick={() => scrollToTarget(0)}
+              className="inline-flex items-center gap-2 transition-colors hover:text-bone"
+            >
+              Back to top <FiArrowUp className="h-3.5 w-3.5" aria-hidden />
+            </button>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

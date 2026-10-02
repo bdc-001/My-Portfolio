@@ -1,14 +1,28 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: "Figtree", sans-serif;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #666666;
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f5f5f5;
+  --color-text-primary: #f4f4f2;
+  --color-text-secondary: #b9b8b4;
+  --color-bg-primary: #1a1a1d;
+  --color-bg-secondary: #222226;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.14);
+  --accent: 169 189 255;
+  color-scheme: dark;
+}
+
+[data-accent="work"] {
+  --accent: 124 108 255;
+}
+
+[data-accent="blog"] {
+  --accent: 255 138 92;
+}
+
+[data-accent="cases"] {
+  --accent: 127 224 195;
 }
 
 body,
@@ -16,61 +30,300 @@ button,
 input,
 textarea,
 select {
-  font-family: "Figtree", sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: var(--color-bg-primary);
 }
 
 body {
   margin: 0;
   background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-}
-
-html {
-  scroll-behavior: smooth;
+  color: #cfcecb;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: rgba(0, 0, 0, 0.05);
-  color: #000;
+  background-color: rgb(var(--accent));
+  color: #141416;
+}
+
+* {
+  scrollbar-color: #3e3e45 transparent;
+}
+
+:focus-visible {
+  outline: 1px solid rgb(var(--accent) / 0.9);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Room for descenders inside SplitText line masks (class is added at runtime, so kept outside @layer). */
+.split-line-mask {
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-label text-neutral-500;
+  }
+
+  .eyebrow-dot {
+    @apply h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_10px_rgb(var(--accent)/0.8)];
+  }
+
+  .hairline {
+    border-color: var(--hairline);
+  }
+
+  /* Light, tightly tracked display type in the ElevenLabs style. */
+  .display {
+    @apply font-display font-light tracking-display text-bone;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-bone px-5 py-2.5 text-sm font-medium tracking-normal text-ink transition-[background-color,transform] duration-300 hover:bg-white active:scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.04] px-5 py-2.5 text-sm font-medium tracking-normal text-bone backdrop-blur-md transition-[background-color,border-color,transform] duration-300 hover:border-white/30 hover:bg-white/[0.08] active:scale-[0.97];
+  }
+
+  .chip {
+    @apply rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-neutral-300;
+  }
+
+  .card {
+    @apply glass rounded-card;
+  }
+
+  /* Card whose border and surface light up around the pointer (see GlowCard). */
+  .glow-card {
+    @apply glass relative isolate rounded-card;
+    --x: 50%;
+    --y: 50%;
+  }
+
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(320px circle at var(--x) var(--y), rgb(var(--accent) / 0.7), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .glow-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(520px circle at var(--x) var(--y), rgb(var(--accent) / 0.08), transparent 55%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .glow-card:hover::before,
+  .glow-card:hover::after,
+  .glow-card:focus-within::before {
+    opacity: 1;
+  }
+
+  .img-mono {
+    @apply grayscale transition-[filter,transform] duration-700 ease-expo;
+  }
+
+  /* Same tone as .img-mono but without a transform transition, for GSAP-driven images. */
+  .img-tone {
+    @apply grayscale transition-[filter] duration-700 ease-expo;
+  }
+
+  .group:hover .img-mono,
+  .img-mono:hover,
+  .group:hover .img-tone {
+    filter: grayscale(0);
+  }
+
+  .img-invert {
+    @apply grayscale invert transition-transform duration-700 ease-expo;
+  }
+
+  .link-underline {
+    @apply bg-gradient-to-r from-current to-current bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 ease-expo hover:bg-[length:100%_1px];
+  }
 }
 
 @layer utilities {
-  .bg-dots {
-    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
   .text-balance {
     text-wrap: balance;
   }
 
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Frosted glass surface: translucent fill, blur of whatever sits behind, and a
+     brighter top-left edge where the light catches. */
+  .glass {
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025) 48%, rgba(255, 255, 255, 0.04));
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+      0 30px 60px -32px rgba(0, 0, 0, 0.7);
+  }
+
+  .aurora {
+    background:
+      radial-gradient(40% 50% at 78% 18%, rgb(var(--accent) / 0.16), transparent 70%),
+      radial-gradient(35% 40% at 15% 0%, rgba(255, 138, 92, 0.07), transparent 70%);
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, black 25%, transparent 75%);
+  }
+
+  .fade-mask-x {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
   .term-tooltip {
-    @apply relative inline-flex items-center gap-0.5 cursor-help border-b border-dotted border-neutral-400 text-neutral-800 font-medium;
+    @apply relative inline-flex items-center gap-0.5 cursor-help border-b border-dotted border-neutral-500 text-bone font-medium;
   }
 
   .term-icon {
-    @apply inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-neutral-100 text-[10px] text-neutral-500 font-bold border border-neutral-200 ml-0.5 transition-colors;
+    @apply inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-white/10 text-[10px] text-neutral-300 font-bold border border-white/10 ml-0.5 transition-colors;
   }
 
   .term-tooltip:hover .term-icon {
-    @apply bg-neutral-900 text-white border-neutral-900;
+    @apply bg-bone text-ink border-bone;
   }
 
-  /* Premium Tooltip Bubble */
   .term-tooltip::after {
     content: attr(data-tooltip);
-    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-neutral-900 text-white text-[11px] leading-relaxed rounded-lg opacity-0 pointer-events-none transition-all duration-200 shadow-xl z-50 text-center font-normal;
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-bone text-ink text-[11px] leading-relaxed rounded-lg opacity-0 pointer-events-none transition-all duration-200 shadow-xl z-50 text-center font-normal;
   }
 
   .term-tooltip::before {
     content: '';
-    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-1 border-4 border-transparent border-t-neutral-900 opacity-0 pointer-events-none transition-all duration-200 z-50;
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-1 border-4 border-transparent border-t-bone opacity-0 pointer-events-none transition-all duration-200 z-50;
   }
 
   .term-tooltip:hover::after,
   .term-tooltip:hover::before {
     @apply opacity-100;
+  }
+}
+
+/* Case study solutions are authored as HTML with light-theme utility classes;
+   neutralise those so they sit correctly on the dark theme. */
+.case-prose [class*="bg-"] {
+  background-color: rgba(255, 255, 255, 0.035) !important;
+}
+
+.case-prose [class*="border"] {
+  border-color: var(--hairline) !important;
+}
+
+.case-prose [class*="text-"]:not(.term-tooltip):not(.term-icon) {
+  color: inherit !important;
+}
+
+.case-prose div > :is(h2, h3, h4):first-child {
+  margin-top: 0;
+}
+
+.case-prose table {
+  @apply text-sm;
+}
+
+.case-prose th {
+  @apply text-bone;
+}
+
+/* Static colour field behind the page so glass surfaces have something to frost. */
+.ambient-blob {
+  position: absolute;
+  width: 62vmax;
+  height: 62vmax;
+  border-radius: 9999px;
+}
+
+.ambient-a {
+  left: -18vmax;
+  top: -24vmax;
+  background: radial-gradient(closest-side, rgb(var(--accent) / 0.16), transparent);
+  transition: background 1.2s ease;
+}
+
+.ambient-b {
+  right: -24vmax;
+  top: 30vh;
+  background: radial-gradient(closest-side, rgba(124, 108, 255, 0.1), transparent);
+}
+
+.ambient-c {
+  left: 15vw;
+  bottom: -36vmax;
+  background: radial-gradient(closest-side, rgba(255, 138, 92, 0.06), transparent);
+}
+
+@media (max-width: 767px) {
+  .glass,
+  .glow-card {
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }

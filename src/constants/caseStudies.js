@@ -15,9 +15,6 @@ export const CASE_STUDY_CATEGORIES = [
     description:
       "End-to-end product thinking covering user research, wireframes, prototypes and PRDs. Each case documents how I move from ambiguous problems to shipped features.",
     color: "purple",
-    gradient: "from-purple-500 to-violet-600",
-    lightBg: "bg-purple-50",
-    border: "border-purple-100",
     countLabel: (n) => `${n} case${n !== 1 ? "s" : ""}`,
     frameworkFile: "/case-studies/product-design-framework.pdf", // e.g. "/case-studies/product-design-framework.pdf"
   },
@@ -30,9 +27,6 @@ export const CASE_STUDY_CATEGORIES = [
     description:
       "Structured problem breakdowns using 5-Whys, fishbone and MECE frameworks. These are real product incidents dissected with data and first principles.",
     color: "blue",
-    gradient: "from-blue-500 to-sky-600",
-    lightBg: "bg-blue-50",
-    border: "border-blue-100",
     countLabel: (n) => `${n} case${n !== 1 ? "s" : ""}`,
     frameworkFile: "/case-studies/root-cause-analysis-framework.pdf", // e.g. "/case-studies/rca-framework.pdf"
   },
@@ -45,9 +39,6 @@ export const CASE_STUDY_CATEGORIES = [
     description:
       "Fermi estimation and market-sizing walkthroughs with annotated workings. Every question is answered with explicit assumptions and sanity checks.",
     color: "emerald",
-    gradient: "from-emerald-500 to-teal-600",
-    lightBg: "bg-emerald-50",
-    border: "border-emerald-100",
     countLabel: (n) => `${n} question${n !== 1 ? "s" : ""}`,
     frameworkFile: "/case-studies/guesstimate-framework.pdf", // e.g. "/case-studies/guesstimate-framework.pdf"
   },
@@ -60,65 +51,32 @@ export const CASE_STUDY_CATEGORIES = [
     description:
       "Process mapping, requirements gathering, and strategic alignment. Documenting the bridge between business goals and engineering output.",
     color: "amber",
-    gradient: "from-amber-500 to-orange-600",
-    lightBg: "bg-amber-50",
-    border: "border-amber-100",
     countLabel: (n) => `${n} case${n !== 1 ? "s" : ""}`,
     frameworkFile: "/case-studies/business-analysis-framework.pdf",
   },
 ];
 
-// Colour tokens used by both the landing card and the detail page
+// Each category's accent from the orb palette, as "R G B" for the --accent custom property.
 export const CAT_COLORS = {
-  purple: {
-    badge:     "bg-purple-50 text-purple-700 border-purple-100",
-    tag:       "bg-purple-50 text-purple-600 border-purple-100",
-    tagActive: "bg-purple-600 text-white border-purple-600",
-    btn:       "bg-purple-600 hover:bg-purple-700 text-white",
-    outline:   "border-purple-200 text-purple-700 hover:bg-purple-50",
-    dot:       "bg-purple-400",
-    heading:   "text-purple-600",
-    ring:      "ring-purple-200",
-    glow:      "hover:shadow-purple-100",
-    select:    "focus:ring-purple-400 focus:border-purple-400",
-  },
-  blue: {
-    badge:     "bg-blue-50 text-blue-700 border-blue-100",
-    tag:       "bg-blue-50 text-blue-600 border-blue-100",
-    tagActive: "bg-blue-600 text-white border-blue-600",
-    btn:       "bg-blue-600 hover:bg-blue-700 text-white",
-    outline:   "border-blue-200 text-blue-700 hover:bg-blue-50",
-    dot:       "bg-blue-400",
-    heading:   "text-blue-600",
-    ring:      "ring-blue-200",
-    glow:      "hover:shadow-blue-100",
-    select:    "focus:ring-blue-400 focus:border-blue-400",
-  },
-  emerald: {
-    badge:     "bg-emerald-50 text-emerald-700 border-emerald-100",
-    tag:       "bg-emerald-50 text-emerald-600 border-emerald-100",
-    tagActive: "bg-emerald-600 text-white border-emerald-600",
-    btn:       "bg-emerald-600 hover:bg-emerald-700 text-white",
-    outline:   "border-emerald-200 text-emerald-700 hover:bg-emerald-50",
-    dot:       "bg-emerald-400",
-    heading:   "text-emerald-600",
-    ring:      "ring-emerald-200",
-    glow:      "hover:shadow-emerald-100",
-    select:    "focus:ring-emerald-400 focus:border-emerald-400",
-  },
-  amber: {
-    badge:     "bg-amber-50 text-amber-700 border-amber-100",
-    tag:       "bg-amber-50 text-amber-600 border-amber-100",
-    tagActive: "bg-amber-600 text-white border-amber-600",
-    btn:       "bg-amber-600 hover:bg-amber-700 text-white",
-    outline:   "border-amber-200 text-amber-700 hover:bg-amber-50",
-    dot:       "bg-amber-400",
-    heading:   "text-amber-600",
-    ring:      "ring-amber-200",
-    glow:      "hover:shadow-amber-100",
-    select:    "focus:ring-amber-400 focus:border-amber-400",
-  },
+  purple: "124 108 255",
+  blue: "169 189 255",
+  emerald: "127 224 195",
+  amber: "255 138 92",
 };
+
+/** Inline style that re-tints everything accent-coloured inside an element to the category colour. */
+export const categoryAccent = (color) => ({ "--accent": CAT_COLORS[color] ?? CAT_COLORS.emerald });
+
+export const DIFFICULTY_LEVELS = ["Beginner", "Intermediate", "Advanced"];
+
+export const DIFFICULTY_DOT = {
+  Beginner: "bg-mint",
+  Intermediate: "bg-periwinkle",
+  Advanced: "bg-coral",
+};
+
+export const formatMonth = (date) =>
+  new Date(`${date}-01`).toLocaleDateString("en-US", { month: "short", year: "numeric" });
 
 // QUESTIONS / CASE STUDIES
 // Each entry belongs to a category and has rich tags for filtering.

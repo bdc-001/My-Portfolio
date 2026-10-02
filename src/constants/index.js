@@ -1,219 +1,406 @@
-import project1 from "../assets/projects/project-1.png";
-import project2 from "../assets/projects/project-2.png";
-import project3 from "../assets/projects/project-3.png";
-import project4 from "../assets/projects/project-4.png";
-import agenticSop from "../assets/projects/agentic-sop.png";
-import convinImage from "../assets/projects/convin.jpg";
-import aspireImage from "../assets/projects/aspire.jpg";
-import revenueImage from "../assets/projects/revenue-attribution.png";
-import wellnessPlatform from "../assets/projects/wellness-platform.png";
-import voiceInterface from "../assets/projects/voice-interface.png";
-import n8nLogo from "../assets/tech/n8n.webp";
-import cursorLogo from "../assets/tech/cursor.webp";
-import antigravityLogo from "../assets/tech/antigravity.webp";
+import project1 from "../assets/projects/project-1.webp";
+import project2 from "../assets/projects/project-2.webp";
+import stayoraImage from "../assets/projects/stayora.webp";
+import productOsImage from "../assets/projects/product-os.webp";
+import quantumImage from "../assets/projects/quantum.webp";
+import accessShieldImage from "../assets/projects/accessshield.webp";
+import convinImage from "../assets/projects/convin.webp";
+import aspireImage from "../assets/projects/aspire.webp";
+import revenueImage from "../assets/projects/revenue-attribution.webp";
 
-export const HERO_HEADLINE = "Strategic Product Manager | 0 → 1 Specialist";
-export const HERO_SUBHEADLINE = "Driving Innovation & Business Impact";
-export const HERO_CONTENT = `Engineer turned Product Manager with a track record of shipping AI products and driving measurable revenue. I combine technical depth with strategic vision to solve ambiguous zero to one problems. Whether reviewing GPU clusters, writing data pipeline specs, or leading enterprise deployments, my focus is always on orchestrating engineering reality with business impact.`;
+export const PROFILE = {
+  name: "Arsalaan Mohammed",
+  role: "Product Manager",
+  company: "Convin.ai",
+  location: "Bangalore, India",
+  headline: "I turn messy, zero-to-one problems into AI products people actually use.",
+  tagline:
+    "Engineer turned product manager. I build AI products at Convin, write about what the work teaches me, and sing when nobody's shipping anything.",
+};
 
-export const ABOUT_TEXT = `I operate at the intersection of business strategy and engineering execution. I don't just manage backlogs; I orchestrate product value.
+export const ABOUT_FACTS = [
+  { label: "Based in", value: "Bangalore, India" },
+  { label: "Grew up in", value: "Darjeeling" },
+  { label: "Studied", value: "IIT (ISM) Dhanbad" },
+  { label: "Recognised", value: "LinkedIn Top PM Voice" },
+];
 
-From scaling LLM infrastructure to co-founding a consulting firm that delivered 30+ projects for enterprise clients, my career is built on taking extreme ownership.
+export const NOW = [
+  {
+    label: "Building",
+    text: "LLM infrastructure and AI insight products at Convin.ai.",
+  },
+  {
+    label: "Writing",
+    text: "About AI, lead intelligence, and the unglamorous parts of product.",
+  },
+  {
+    label: "Off the clock",
+    text: "Guitar, Urdu shayari, and the occasional valuation report.",
+  },
+];
 
-I believe in "shipping to learn" and that the best products emerge from rigorous empathy and rapid iteration. My technical foundation enables me to bridge the gap between complex systems and user-centric solutions seamlessly.`;
+/** The hero board. `stage`: 0 discover, 1 building, 2 shipped. Keep it to what you're actually working on. */
+export const HERO_ROADMAP = [
+  {
+    id: "self-hosted-llms",
+    stage: 2,
+    title: "Self-hosted LLMs",
+    source: "Convin",
+    why: "Third-party LLM bills grew with every call, so we moved to fine-tuned models on our own H200s.",
+    outcome: { value: "−65%", label: "LLM infra cost" },
+    href: "/work/convin",
+  },
+  {
+    id: "stayora",
+    stage: 2,
+    title: "Stayora trip agent",
+    source: "Side build",
+    why: "AI trip planners stop at a paragraph and leave the booking to you.",
+    outcome: { value: "Live", label: "Plan, approve, pay in ₹" },
+    href: "/work/stayora",
+  },
+  {
+    id: "rule-engine",
+    stage: 1,
+    title: "No-code QA rule engine",
+    source: "Convin",
+    why: "Every new QA rule for a CX team needed an engineer to write it.",
+    outcome: { value: "No-code", label: "QA rules set by CX teams" },
+    href: "/work/convin",
+  },
+  {
+    id: "product-os",
+    stage: 1,
+    title: "Product OS copilot",
+    source: "Side build",
+    why: "Every PRD started with an hour of digging through Jira, chat and code.",
+    outcome: { value: "4", label: "Sources, one copilot" },
+    href: "/work/product-os",
+  },
+  {
+    id: "rejected-calls",
+    stage: 0,
+    title: "Rejected-call study",
+    source: "Convin",
+    why: "30-second “rejected” calls were skipped, or misread as hot leads.",
+    outcome: { value: "100", label: "Calls heard end to end" },
+    href: "/blog/the-gold-in-rejected-calls",
+  },
+  {
+    id: "quantum",
+    stage: 0,
+    title: "QuanTum stock agent",
+    source: "Side build",
+    why: "Can a research agent learn from the picks it got wrong? Every call is checked against the Nifty.",
+    outcome: { value: "9", label: "Scoring factors, 3 horizons" },
+    href: "/work/quantum",
+  },
+];
+
+export const ABOUT_PARAGRAPHS = [
+  "I grew up in Darjeeling, a sheltered kid who thought the world ended where the mist began. A city school in Kolkata, a pandemic, a drop year spent learning from YouTube, and four years at IIT (ISM) Dhanbad changed that.",
+  "Somewhere between coordinating the Product Management Club and co-founding Black Diamond Consulting, I found the work I wanted to do: taking ambiguous, zero-to-one problems and turning them into things people actually use.",
+  "Today I sit between business strategy and engineering at Convin.ai, where I've owned everything from self-hosted GPU clusters to no-code QA engines. I believe in shipping to learn, in extreme ownership, and in listening to the 30-second calls everyone else skips.",
+];
 
 export const ABOUT_STATS = [
-  { label: "Revenue Impact", value: "10% Cost Red." },
-  { label: "Capital Raised", value: "$400k+" },
-  { label: "Efficiency", value: "71% Vel. Boost" },
-  { label: "Products", value: "20+ Shipped" },
+  { value: "65%", label: "LLM infra cost cut" },
+  { value: "$1.7M", label: "Renewals influenced" },
+  { value: "30+", label: "Consulting projects" },
+  { value: "$400k+", label: "Capital raised" },
 ];
 
-export const TOOLKIT = {
-  strategy: [
-    { name: "Notion", icon: "RiNotionFill" },
-    { name: "Jira", icon: "SiJira" },
-    { name: "Miro", icon: "SiMiro" }
-  ],
-  design: [
-    { name: "Figma", icon: "FaFigma" },
-    { name: "Canva", icon: "SiCanva" }
-  ],
-  analytics: [
-    { name: "Mixpanel", icon: "SiMixpanel" },
-    { name: "Superset", icon: "SiApachesuperset" },
-    { name: "Google Analytics", icon: "SiGoogleanalytics" }
-  ],
-  tech: [
-    { name: "React", icon: "RiReactjsLine" },
-    { name: "Node.js", icon: "FaNodeJs" },
-    { name: "n8n", icon: n8nLogo, isImage: true },
-    { name: "Cursor", icon: cursorLogo, isImage: true },
-    { name: "Antigravity", icon: antigravityLogo, isImage: true }
-  ]
-};
-
-export const EXPERIENCES = [
+export const JOURNEY = [
   {
-    title: "Convin",
-    subtitle: "Associate Product Manager | Sept 2023 - Present",
-    image: convinImage,
-    category: "B2B SaaS / AI",
-    problem: "Need to optimize expensive LLM infrastructure, automate QA processes, and expand market reach.",
-    solution: "Led migration to self-hosted H200 GPU clusters with fine-tuned models. Designed a no-code Rule Engine for automated QA and shipped an LLM-powered insight delivery system.",
-    impact: [
-      "65% Cost Red.",
-      "$1.7M Renewals",
-      "140k API calls/day"
-    ],
-    role: "Associate Product Manager",
-    stack: ["LLM Infrastructure", "No-code", "AI Strategy"]
+    when: "The hills",
+    title: "North Point, Darjeeling",
+    text: "Single child, protective parents, a beautiful cage with a view. I sketched, wrote poetry, and dreamed small.",
   },
   {
+    when: "The city",
+    title: "Frank Anthony Public School, Kolkata",
+    text: "Pure science on paper. In practice, solving calculus in the margins of my biology notes.",
+  },
+  {
+    when: "2020",
+    title: "A pandemic and a drop year",
+    text: "COVID cost me an attempt. YouTube at 1.5x became my coaching centre; 98.7 percentile followed.",
+  },
+  {
+    when: "IIT (ISM)",
+    title: "B.Tech, Chemical Engineering, IIT Dhanbad",
+    text: "Coordinated the Product Management Club, co-founded Black Diamond Consulting, and travelled like I was making up for lost time.",
+  },
+  {
+    when: "Jan – May 2023",
+    title: "Junior Product Manager, Aspire",
+    text: "Owned a payment-rail migration for high-value accounts and automated accounting integrations for SMEs.",
+  },
+  {
+    when: "Sept 2023 – now",
+    title: "Associate Product Manager, Convin.ai",
+    text: "Joined on a PPO. Now shaping LLM infrastructure, automated QA, and AI insight delivery for enterprise CX teams.",
+  },
+];
+
+export const WORK = [
+  {
+    slug: "convin",
+    type: "experience",
+    featured: true,
+    title: "Convin",
+    subtitle: "Making enterprise conversation intelligence cheaper, smarter, and self-serve.",
+    role: "Associate Product Manager",
+    period: "Sept 2023 – Present",
+    image: convinImage,
+    category: "B2B SaaS · AI",
+    problem:
+      "Convin's AI stack depended on expensive third-party LLM infrastructure, QA for customer conversations was largely manual, and insights rarely reached the people who could act on them.",
+    solution:
+      "Led the migration to self-hosted H200 GPU clusters running fine-tuned models. Designed a no-code Rule Engine so CX teams could automate QA without engineering help, and shipped an LLM-powered insight delivery system that pushes what matters to reps and leaders.",
+    impact: [
+      { value: "65%", label: "LLM infrastructure cost reduction" },
+      { value: "$1.7M", label: "Renewals influenced" },
+      { value: "140k", label: "API calls served per day" },
+    ],
+    stack: ["LLM Infrastructure", "No-code Rule Engine", "AI Strategy", "Enterprise CX"],
+    relatedPosts: ["the-gold-in-rejected-calls"],
+  },
+  {
+    slug: "aspire",
+    type: "experience",
+    featured: true,
     title: "Aspire",
-    subtitle: "Junior Product Manager | Jan 2023 - May 2023",
+    subtitle: "Migrating high-value accounts and automating SME accounting, without breaking trust.",
+    role: "Junior Product Manager",
+    period: "Jan 2023 – May 2023",
     image: aspireImage,
     category: "Fintech",
-    problem: "Critical migration of high-value accounts and inefficient manual accounting workflows for SME clients.",
-    solution: "Owned full Nium-SG to DBS-HK payment rail migration. Drove QuickBooks Online and Xero API integrations to automate bank feed syncing.",
+    problem:
+      "A critical migration of high-value accounts between payment rails, alongside slow, manual accounting workflows for SME customers.",
+    solution:
+      "Owned the end-to-end Nium-SG to DBS-HK payment rail migration. Drove QuickBooks Online and Xero API integrations to automate bank-feed syncing for customers.",
     impact: [
-      "<1.25% Error Rate",
-      "+15% CSAT",
-      "10% Op Cost Red."
+      { value: "<1.25%", label: "Migration error rate" },
+      { value: "+15%", label: "CSAT" },
+      { value: "10%", label: "Operating cost reduction" },
     ],
-    role: "Junior Product Manager",
-    stack: ["Fintech Ops", "API Integration", "Migration"]
-  }
-];
-
-export const PROJECTS = [
+    stack: ["Payment Rails", "API Integrations", "Migration Planning", "Fintech Ops"],
+    relatedPosts: [],
+  },
   {
+    slug: "stayora",
+    type: "project",
+    track: "flagship",
+    title: "Stayora",
+    subtitle: "Hotel booking for India, with an AI travel agent that plans the whole trip and waits for your approval before anyone pays.",
+    role: "Solo builder",
+    period: "2026",
+    image: stayoraImage,
+    category: "Travel · AI agents",
+    repo: "https://github.com/bdc-001/Stayora",
+    live: "https://stayora-psi.vercel.app/plan-trip",
+    pipeline: ["Describe the trip", "Agent plans", "You approve", "Pay in ₹"],
+    problem:
+      "Planning a trip in India means juggling a dozen tabs: hotels in one, ideas in another, payments somewhere else. Most AI trip planners stop at a nice paragraph and leave the actual booking to you.",
+    solution:
+      "Built a full booking platform (search, filters, Stripe checkout in rupees, bookings and refunds, an owner dashboard with business insights) and put an itinerary agent on top. You describe the trip in plain language, the agent proposes stays and day plans, you approve, and the bookable hotels go straight to checkout. A human signs off on every rupee.",
+    impact: [
+      { value: "3", label: "Services: React app, Express API, Python agent" },
+      { value: "98", label: "Commits, shipped solo" },
+      { value: "100%", label: "Bookings human-approved" },
+    ],
+    stack: ["React", "TypeScript", "Express", "MongoDB", "FastAPI", "PydanticAI", "Stripe", "Playwright"],
+    relatedPosts: [],
+  },
+  {
+    slug: "product-os",
+    type: "project",
+    track: "build",
+    title: "Product OS",
+    subtitle: "A self-hosted workspace for product work: notes, PRDs, prototypes, roadmap and launch docs in one place, with a copilot that knows your tickets and your code.",
+    role: "Solo builder",
+    period: "2026",
+    image: productOsImage,
+    category: "Product tooling · AI",
+    repo: "https://github.com/bdc-001/Product-OS",
+    pipeline: ["Jira, chat & code", "Index the context", "Draft PRD or prototype", "Approve & ship"],
+    problem:
+      "A PM's context is scattered across Jira, team chat, docs, the codebase and a dozen drafts. Every PRD, release note and campaign starts with an hour of digging before any real thinking happens.",
+    solution:
+      "Built one workspace that pulls it all together. Jira tickets, team chat and an indexed branch of the codebase feed into notes, PRDs (with AI drafts from tickets and code), interactive prototypes, a searchable document library, the roadmap and release comms. A copilot drafts answers and proposes actions from that context, and any write back to Jira waits for my approval.",
+    impact: [
+      { value: "9", label: "Workspace areas, from notes to marketing" },
+      { value: "4", label: "Integrations: Jira, Cliq, Git, Drive" },
+      { value: "Local", label: "Self-hosted, data stays on your machine" },
+    ],
+    stack: ["Next.js", "TypeScript", "Material UI", "FastAPI", "SQLite", "Playwright"],
+    relatedPosts: [],
+  },
+  {
+    slug: "quantum",
+    type: "project",
+    track: "build",
+    image: quantumImage,
+    title: "QuanTum",
+    subtitle: "An equity research agent for Indian markets that reads the news, scores stocks across three horizons, and learns from its own misses.",
+    role: "Solo builder",
+    period: "2026",
+    category: "Fintech · AI agents",
+    repo: "https://github.com/bdc-001/Market-Research",
+    pipeline: ["Market news", "Gemini extracts", "9-factor score", "Checked vs Nifty"],
+    problem:
+      "Retail research on Indian stocks is either noise from tip channels or hours of reading filings. I wanted a system that starts from what is actually moving the market and holds itself accountable for its picks.",
+    solution:
+      "Headlines from five Indian business outlets are extracted by Gemini into tickers, catalysts and sentiment. Nine factors, weighted by market regime, score each stock for this week, this year and five years. Every pick is later checked against the Nifty: factor weights shift toward what actually produced alpha, and a critic agent writes durable rules from its mistakes.",
+    impact: [
+      { value: "9", label: "Scoring factors" },
+      { value: "3", label: "Investment horizons" },
+      { value: "5", label: "News sources parsed daily" },
+    ],
+    stack: ["Python", "FastAPI", "React", "Gemini", "Turso"],
+    relatedPosts: [],
+  },
+  {
+    slug: "accessshield",
+    type: "project",
+    track: "build",
+    image: accessShieldImage,
+    title: "AccessShield",
+    subtitle: "Four AI agents that audit a website for ADA compliance and hand back the fixes in plain English.",
+    role: "Solo builder",
+    period: "2026",
+    category: "Compliance · AI agents",
+    repo: "https://github.com/bdc-001/ADA-Compliance",
+    pipeline: ["Scout", "Audit", "Fix", "Report"],
+    problem:
+      "Small businesses get hit with ADA lawsuits over issues they didn't know existed, and accessibility reports are written for auditors, not owners.",
+    solution:
+      "A Scout renders the site in a headless browser, an Auditor runs 34 WCAG 2.1 AA checks and scores lawsuit risk, an Engineer uses Gemini Vision to write real alt text and code fixes, and a Closer turns it all into a plain-English report. Know your risk in 30 seconds; fix it in 30 minutes.",
+    impact: [
+      { value: "34", label: "WCAG 2.1 AA checks" },
+      { value: "4", label: "Autonomous agents" },
+      { value: "30s", label: "To a risk score" },
+    ],
+    stack: ["Python", "FastAPI", "Playwright", "Gemini Vision"],
+    relatedPosts: [],
+  },
+  {
+    slug: "revenue-attribution-engine",
+    type: "project",
+    track: "earlier",
     title: "Revenue Attribution Engine",
-    subtitle: "AI-Weighted Marketing Model",
+    subtitle: "An AI-weighted attribution and marketing-mix model for CX revenue.",
+    role: "Developer",
+    period: null,
     image: revenueImage,
-    category: "Analytics / AI",
-    problem: "Inaccurate revenue tracking in CX centers due to fragmented CRM integrations and poor incentive allocation.",
-    solution: "Built platform with AI-weighted attribution & MMM for ROI. Added fraud detection and cohort analysis.",
+    category: "Analytics · AI",
+    problem:
+      "CX centres couldn't trust their revenue numbers. Fragmented CRM integrations made attribution inaccurate and incentives were allocated on guesswork.",
+    solution:
+      "Built a platform with AI-weighted attribution and marketing-mix modelling for ROI, plus fraud detection and cohort analysis on top.",
     impact: [
-      "200+ API Endpoints",
-      "300+ Records Tested",
-      "ROI Opt."
+      { value: "200+", label: "API endpoints" },
+      { value: "300+", label: "Records tested" },
+      { value: "MMM", label: "ROI optimisation model" },
     ],
-    role: "Developer",
-    stack: ["Go", "React", "PostgreSQL"]
+    stack: ["Go", "React", "PostgreSQL"],
+    relatedPosts: ["the-gold-in-rejected-calls"],
   },
   {
-    title: "Automated Market Research",
-    subtitle: "OpenClaw Architecture",
-    image: project3,
-    category: "Data Pipeline",
-    problem: "Manual evaluation of public companies is slow and prone to missing high-risk signals.",
-    solution: "Built a daily ingestion and scoring pipeline evaluating Debt-to-Equity and FCF. Automated report delivery via webhooks to Slack/Telegram.",
+    slug: "black-diamond-consulting",
+    type: "project",
+    track: "earlier",
+    title: "Black Diamond Consulting",
+    subtitle: "A venture-capital consulting firm, built from a college hostel.",
+    role: "Co-Founder",
+    period: "IIT (ISM) Dhanbad",
+    image: project1,
+    imageTreatment: "invert",
+    category: "Consulting · VC",
+    problem:
+      "SMEs and early startups struggled to scale their tech projects and raise pre-seed funding without access to experienced operators.",
+    solution:
+      "Co-founded a venture-capital consulting firm from scratch, validated by IIT (ISM)'s incubation centre, delivering tech builds and fundraising support.",
     impact: [
-      "Daily Pipeline",
-      "Zero Manual Input",
-      "Multi-channel Alerts"
+      { value: "30+", label: "Projects delivered" },
+      { value: "Top-tier", label: "Clients" },
+      { value: "Tech + VC", label: "Builds and fundraising" },
     ],
-    role: "Developer",
-    stack: ["Python", "Webhooks", "Data Pipeline"]
+    stack: ["Strategy", "Consulting", "Venture Capital"],
+    relatedPosts: ["from-darjeeling-to-iit-dhanbad"],
   },
   {
+    slug: "organhub",
+    type: "project",
+    track: "earlier",
     title: "OrganHub",
-    subtitle: "Healthcare Coordination Platform",
+    subtitle: "Coordinating organ donation across donors, NGOs, and hospitals.",
+    role: "Product Designer",
+    period: null,
     image: project2,
     category: "HealthTech",
-    problem: "Fragmented organ donation ecosystem causing delays and coordination failures.",
-    solution: "Designed a responsive web app enabling end-to-end coordination across donors, NGOs, and hospitals.",
+    problem:
+      "The organ donation ecosystem is fragmented, causing delays and coordination failures exactly when time matters most.",
+    solution:
+      "Designed a research-led, responsive web app enabling end-to-end coordination across donors, NGOs, and hospitals.",
     impact: [
-      "15+ Screens",
-      "End-to-End Flow",
-      "Research UX"
+      { value: "15+", label: "Screens designed" },
+      { value: "3", label: "Stakeholder groups" },
+      { value: "E2E", label: "Coordination flow" },
     ],
-    role: "Product Designer",
-    stack: ["UX Research", "Web App", "Healthcare"]
+    stack: ["UX Research", "Web App", "Healthcare"],
+    relatedPosts: [],
   },
-  {
-    title: "Black Diamond Consulting",
-    subtitle: "Co-Founder | IIT (ISM)",
-    image: project1,
-    category: "Consulting / VC",
-    problem: "SMEs and startups struggling to scale tech projects and raise pre-seed funding.",
-    solution: "Built a Venture Capital consulting firm from scratch. Validated by IIT (ISM)'s incubation centre.",
-    impact: [
-      "30+ Projects",
-      "Top Tier Clients",
-      "Tech & Fundraising"
-    ],
-    role: "Co-Founder",
-    stack: ["Strategy", "Consulting", "Venture Capital"]
-  }
 ];
 
-export const CONTACT = {
-  address: "Bangalore, Karnataka",
-  phoneNo: "+91 6289253227",
-  email: "arsalaan.bdc@gmail.com",
-  linkedin: "https://linkedin.com/in/arsalaan-mohammed",
-  github: "https://github.com/bdc-001"
+export const OFF_THE_CLOCK = [
+  {
+    key: "music",
+    title: "Music",
+    text: "I'm a vocalist and I play the guitar. Music is my meditation: it helps me find rhythm in chaos, which translates surprisingly well to roadmaps.",
+  },
+  {
+    key: "markets",
+    title: "Markets",
+    text: "I love the numbers game. Stocks, valuation reports, market cycles. I believe in compounding, whether it's wealth or knowledge.",
+  },
+  {
+    key: "content",
+    title: "Content",
+    text: "I share learnings, market research, and product notes on LinkedIn, where I earned the Top Product Management Voice badge, and on YouTube.",
+  },
+];
+
+export const COUPLET = {
+  lines: [
+    "Khudi ko kar buland itna ke har taqdeer se pehle,",
+    "Khuda bande se khud pooche, bata teri raza kya hai?",
+  ],
+  translation:
+    "Elevate yourself so high that before every decree, God Himself asks you: what is your will?",
+  author: "Allama Iqbal",
 };
-
-export const BELIEFS = [
-  {
-    id: "01",
-    title: "Clarity over noise",
-    description: "Design should surface what matters and hide what doesn't."
-  },
-  {
-    id: "02",
-    title: "Strategy is part of the craft",
-    description: "I don't wait for the \"why\" - I shape it with product and business."
-  },
-  {
-    id: "03",
-    title: "Simplify, don't dumb down",
-    description: "Even complex tools can feel intuitive - with the right intent."
-  },
-  {
-    id: "04",
-    title: "Systems scale, context guides",
-    description: "Reusable patterns are powerful - adapt with intent."
-  }
-];
 
 export const TESTIMONIALS = [
   {
     text: "I had the pleasure of working with Arsalaan on a comprehensive secondary research project focusing on 10+ Japanese and Western automotive OEMs. His work was exceptionally well-organized and thorough, showcasing his strong problem-solving and logical thinking abilities.",
     author: "Anuj Singh",
-    role: "Strategy at AccentureJapan",
-    image: "https://randomuser.me/api/portraits/men/32.jpg" // Placeholder
+    role: "Strategy at Accenture Japan",
   },
   {
     text: "Arsalaan demonstrated exceptional skill and dedication at Mailmodo. He analyzed low PageSpeed pages and focused on improving Core Web Vitals (INP & LCP), providing technical solutions that enhanced mobile scores. His contributions have been invaluable for the organization.",
     author: "Zeeshan Akhtar",
     role: "Ex-Head of Marketing at Mailmodo",
-    image: "https://randomuser.me/api/portraits/men/46.jpg" // Placeholder
-  }
+  },
 ];
 
-export const FAQS = [
-  {
-    question: "You create content?",
-    answer: "Yes! I'm active on LinkedIn where I share my learnings, market research, and product insights. I earned the 'Top Product Management Voice' badge for my contributions. It's my digital garden where I document my journey."
-  },
-  {
-    question: "A Product Manager who sings?",
-    answer: "Absolutely. I'm a vocalist and I play the guitar. Music is my meditation-it helps me find rhythm in chaos, which surprisingly translates well to managing product roadmaps."
-  },
-  {
-    question: "Urdu Shayari in a tech portfolio?",
-    answer: "Why not? Code is logic, Shayari is emotion. My favorite couplet by Allama Iqbal: 'Khudi ko kar buland itna ke har taqder se pehle, Khuda bande se khud pooche, bata teri raza kya hai?' (Elevate yourself so high that before every decree, God Himself asks you: What is your will?)"
-  },
-  {
-    question: "Finance & Investing?",
-    answer: "I love the numbers game. From analyzing stocks to understanding market trends, I believe in the power of compounding-whether it's wealth or knowledge."
-  },
-  {
-    question: "What's 'Off the grid' for you?",
-    answer: "Disconnecting to reconnect. Whether it's a jam session, writing a couplet, or deep-diving into a valuation report, these 'off-grid' moments fuel my on-grid performance."
-  }
-];
+export const CONTACT = {
+  address: "Bangalore, Karnataka",
+  email: "arsalaan.bdc@gmail.com",
+  linkedin: "https://www.linkedin.com/in/arsalaan-pm/",
+  youtube: "https://www.youtube.com/@ArsalaanMd25",
+  github: "https://github.com/bdc-001",
+  resume: "/Mohammed_Resume_2025.pdf",
+};

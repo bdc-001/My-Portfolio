@@ -1,143 +1,129 @@
-import { motion } from "framer-motion";
-import { FiArrowRight, FiLock, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useState } from "react";
-import { CAT_COLORS } from "../constants/caseStudies";
-
-const DIFFICULTY_STYLE = {
-  Beginner:     "bg-green-50 text-green-700 border-green-200",
-  Intermediate: "bg-amber-50  text-amber-700  border-amber-200",
-  Advanced:     "bg-red-50    text-red-700    border-red-200",
-};
-
-const itemVariants = {
-  hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-};
-
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiArrowRight, FiChevronDown, FiLock } from "react-icons/fi";
+import { DIFFICULTY_DOT, formatMonth } from "../constants/caseStudies";
+import { EASE } from "../lib/motion";
+import GlowCard from "./motion/GlowCard";
 
-const QuestionCard = ({ study, color = "purple", activeTag, onTagClick, categorySlug }) => {
+/** Case study titles and approach steps are authored as trusted HTML with glossary tooltips. */
+export const Html = ({ as: Tag = "span", html, className }) => (
+  <Tag className={className} dangerouslySetInnerHTML={{ __html: html }} />
+);
+
+const QuestionCard = ({ study, activeTag, onTagClick, categorySlug }) => {
   const [expanded, setExpanded] = useState(false);
-  const c = CAT_COLORS[color] || CAT_COLORS.purple;
   const hasSolution = Boolean(study.file || study.detailedSolution);
 
   return (
-    <motion.article
-      variants={itemVariants}
-      layout
-      className={`group bg-white border border-neutral-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl ${c.glow} ring-1 ring-transparent hover:ring-1 hover:${c.ring}`}
-    >
-      {/* Top accent line */}
-      <div className={`h-0.5 w-full bg-gradient-to-r from-transparent via-current to-transparent opacity-20 ${c.dot.replace("bg-", "text-")}`} />
-
-      {/* Optional Card Image */}
+    <GlowCard as="article" className="group flex h-full flex-col p-2.5">
       {study.image && (
-        <div className="w-full h-52 overflow-hidden border-b border-neutral-100 bg-neutral-50 relative">
-          <img 
-            src={study.image} 
-            alt={study.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[16px] bg-ink-700">
+          <img
+            src={study.image}
+            alt=""
+            className="img-mono h-full w-full object-cover group-hover:scale-[1.05]"
+            loading="lazy"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
         </div>
       )}
 
-      <div className="p-5 sm:p-6">
-        {/* Meta row */}
-        <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
-          <span className={`text-[10px] uppercase tracking-[0.14em] font-bold px-2.5 py-1 rounded-full border ${DIFFICULTY_STYLE[study.difficulty] || DIFFICULTY_STYLE.Intermediate}`}>
+      <div className="flex flex-1 flex-col px-3 pb-3 pt-5 md:px-4 md:pb-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="chip inline-flex items-center gap-1.5">
+            <span className={`h-1.5 w-1.5 rounded-full ${DIFFICULTY_DOT[study.difficulty] ?? "bg-neutral-500"}`} aria-hidden />
             {study.difficulty}
           </span>
-          <span className="text-[11px] text-neutral-400 font-medium">
-            {study.company} · {new Date(study.date + "-01").toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+          <span className="label">
+            {study.company} · {formatMonth(study.date)}
           </span>
         </div>
 
-        {/* Header (Title) */}
-        <p className="text-[11px] font-bold text-neutral-400 mb-2 uppercase tracking-[0.2em]">
-          {study.title}
-        </p>
+        <Html as="p" html={study.title} className="label mt-5 !text-accent" />
+        <h3 className="display mt-2 line-clamp-3 text-pretty text-[1.4rem] leading-[1.2] md:text-[1.55rem]">{study.question}</h3>
 
-        {/* Question (Main Heading) */}
-        <h3 className="text-[17px] sm:text-[19px] font-extrabold text-neutral-900 leading-[1.3] mb-4 group-hover:text-neutral-800 transition-colors min-h-[3.8rem] line-clamp-3">
-          {study.question}
-        </h3>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {study.tags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => onTagClick && onTagClick(tag)}
-              className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border transition-all duration-150 cursor-pointer ${
-                activeTag === tag ? c.tagActive : c.tag
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {study.tags.map((tag) => {
+            const selected = activeTag === tag;
+            return (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => onTagClick?.(tag)}
+                aria-pressed={selected}
+                className={`rounded-full px-2.5 py-0.5 text-[11px] transition-colors duration-300 ${
+                  selected
+                    ? "bg-accent text-ink"
+                    : "text-neutral-400 ring-1 ring-inset ring-white/10 hover:text-bone hover:ring-white/25"
+                }`}
+              >
+                {tag}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Expandable Snapshot */}
-        <div>
-          <button
-            onClick={() => setExpanded((v) => !v)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-neutral-800 transition-colors mb-2"
-          >
-            {expanded ? <FiChevronUp className="w-3.5 h-3.5" /> : <FiChevronDown className="w-3.5 h-3.5" />}
-            {expanded ? "Hide snapshot" : "View snapshot"}
-          </button>
+        <button
+          type="button"
+          onClick={() => setExpanded((open) => !open)}
+          aria-expanded={expanded}
+          className="mt-5 inline-flex w-max items-center gap-1.5 text-xs font-medium text-neutral-400 transition-colors hover:text-bone"
+        >
+          <FiChevronDown className={`h-3.5 w-3.5 transition-transform duration-500 ease-expo ${expanded ? "rotate-180" : ""}`} />
+          {expanded ? "Hide snapshot" : "View snapshot"}
+        </button>
 
+        <AnimatePresence initial={false}>
           {expanded && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.5, ease: EASE }}
               className="overflow-hidden"
             >
-              {/* Approach pills */}
-              {study.approach?.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {study.approach.map((step) => (
-                    <span
-                      key={step}
-                      className="text-[10px] font-medium text-neutral-500 bg-neutral-50 border border-neutral-100 px-2 py-0.5 rounded-md"
-                    >
-                      {step}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* Snapshot text */}
-              <p className="text-sm text-neutral-600 leading-relaxed bg-neutral-50 rounded-xl p-4 border border-neutral-100">
-                {study.snapshot}
-              </p>
+              <div className="pt-4">
+                {study.approach?.length > 0 && (
+                  <ol className="mb-3 flex flex-wrap gap-1.5">
+                    {study.approach.map((step, i) => (
+                      <li key={step} className="rounded-md bg-white/[0.04] px-2 py-0.5 text-[11px] text-neutral-400">
+                        <span className="mr-1 font-mono text-neutral-600">{i + 1}</span>
+                        <Html html={step} />
+                      </li>
+                    ))}
+                  </ol>
+                )}
+                <p className="rounded-xl bg-white/[0.03] p-4 text-sm leading-relaxed text-neutral-300 ring-1 ring-inset ring-white/[0.06]">
+                  {study.snapshot}
+                </p>
+              </div>
             </motion.div>
           )}
-        </div>
+        </AnimatePresence>
 
-        {/* Divider */}
-        <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center justify-between gap-3">
-          {hasSolution ? (
-            <Link
-              to={`/case-studies/${categorySlug}/${study.id}`}
-              className={`inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${c.btn}`}
-              aria-label={`Read ${study.title}`}
-            >
-              Read Solution
-              <FiArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          ) : (
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-100 select-none">
-              <FiLock className="w-3 h-3" />
-              Coming Soon
-            </span>
-          )}
+        <div className="mt-auto pt-6">
+          <div className="border-t border-white/[0.07] pt-5">
+            {hasSolution ? (
+              <Link
+                to={`/case-studies/${categorySlug}/${study.id}`}
+                data-cursor="Read"
+                className="group/link inline-flex items-center gap-2 text-sm font-medium text-bone"
+              >
+                Read the solution
+                <FiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+              </Link>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-xs text-neutral-500">
+                <FiLock className="h-3 w-3" />
+                Coming soon
+              </span>
+            )}
+          </div>
         </div>
       </div>
-    </motion.article>
+    </GlowCard>
   );
 };
 

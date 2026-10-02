@@ -1,0 +1,52 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Keep Hustling · Arsalaan Mohammed",
+    "identifier": "did:web:keephustling.in",
+    "documentationUrl": "https://keephustling.in/",
+    "logoUrl": "https://keephustling.in/icon-512.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:keephustling.in:content:sitemap",
+      "displayName": "Keep Hustling site map",
+      "type": "application/xml",
+      "url": "https://keephustling.in/sitemap.xml",
+      "description": "Every public page on keephustling.in: work, case studies and blog posts by Arsalaan Mohammed, Product Manager.",
+      "tags": ["portfolio", "product management", "blog", "case studies"],
+      "representativeQueries": [
+        "What has Arsalaan Mohammed written about product management?",
+        "List the case studies on keephustling.in",
+        "Find blog posts on Keep Hustling"
+      ],
+      "updatedAt": "2026-10-03T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:keephustling.in:api:blog-stats",
+      "displayName": "Blog reads and votes",
+      "type": "application/json",
+      "url": "https://keephustling.in/api/stats",
+      "description": "Read-only JSON with live view and vote counts for each blog post, keyed by post slug.",
+      "tags": ["blog", "analytics", "public api"],
+      "capabilities": ["BlogStats"],
+      "representativeQueries": [
+        "Which Keep Hustling blog post is most read?",
+        "How many votes does a post on keephustling.in have?"
+      ],
+      "updatedAt": "2026-10-03T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:keephustling.in:profile:resume",
+      "displayName": "Arsalaan Mohammed resume",
+      "type": "application/pdf",
+      "url": "https://keephustling.in/Mohammed_Resume_2026.pdf",
+      "description": "One-page resume: Associate Product Manager at Convin, previously Aspire; B.Tech from IIT (ISM) Dhanbad.",
+      "tags": ["resume", "product manager", "IIT Dhanbad"],
+      "representativeQueries": [
+        "Get Arsalaan Mohammed's resume",
+        "What is Arsalaan Mohammed's work experience?"
+      ],
+      "updatedAt": "2026-10-03T00:00:00Z"
+    }
+  ]
+}

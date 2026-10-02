@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { PROFILE } from "../constants";
 import { MOTION_OK, gsap, useGSAP } from "../lib/motion";
-import SplitReveal from "./motion/SplitReveal";
 import Magnetic from "./motion/Magnetic";
 import RoadmapBoard from "./RoadmapBoard";
 
@@ -14,11 +13,11 @@ const Hero = () => {
     () => {
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
+        // Hero text rises without fading: anything starting at opacity 0 delays Largest Contentful Paint.
         gsap
-          .timeline({ delay: 0.1 })
-          .from("[data-hero-eyebrow]", { y: 16, opacity: 0, duration: 0.8 })
-          .from("[data-hero-visual]", { y: 32, opacity: 0, duration: 1.2 }, 0.35)
-          .from("[data-hero-rest]", { y: 24, opacity: 0, duration: 1, stagger: 0.1 }, 0.75);
+          .timeline()
+          .from("[data-hero-text]", { y: 22, duration: 1, stagger: 0.06 })
+          .from("[data-hero-visual]", { y: 32, opacity: 0, duration: 1.2 }, 0.2);
 
         gsap.to("[data-hero-cue]", {
           opacity: 0,
@@ -37,24 +36,19 @@ const Hero = () => {
 
       <div className="container-site grid items-center gap-16 pb-20 pt-32 md:pt-40 lg:min-h-[100svh] lg:grid-cols-12 lg:gap-10 lg:pb-24 lg:pt-28">
         <div className="relative z-10 lg:col-span-7">
-          <p data-hero-eyebrow className="label">
+          <p data-hero-text className="label">
             {PROFILE.role}, {PROFILE.company} · Bangalore
           </p>
 
-          <SplitReveal
-            as="h1"
-            trigger="load"
-            delay={0.2}
-            className="display mt-7 text-pretty text-[clamp(2.6rem,4.7vw,4rem)] leading-[1.04]"
-          >
+          <h1 data-hero-text className="display mt-7 text-pretty text-[clamp(2.6rem,4.7vw,4rem)] leading-[1.04]">
             Hi, I&apos;m Arsalaan. <span className="text-neutral-500">{PROFILE.headline}</span>
-          </SplitReveal>
+          </h1>
 
-          <p data-hero-rest className="mt-8 max-w-lg text-pretty text-lg leading-relaxed text-neutral-400">
+          <p data-hero-text className="mt-8 max-w-lg text-pretty text-lg leading-relaxed text-neutral-400">
             {PROFILE.tagline}
           </p>
 
-          <div data-hero-rest className="mt-10 flex flex-wrap items-center gap-3">
+          <div data-hero-text className="mt-10 flex flex-wrap items-center gap-3">
             <Magnetic strength={0.25}>
               <Link to="/work" className="btn-primary group !px-6 !py-3">
                 See my work

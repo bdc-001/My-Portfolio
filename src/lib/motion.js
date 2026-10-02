@@ -20,6 +20,14 @@ export const prefersReducedMotion = () => !matches(MOTION_OK);
 export const hasFinePointer = () => matches(FINE_POINTER);
 export const isSmallScreen = () => matches("(max-width: 767px)");
 
+/**
+ * Runs `setup` once the element is within half a viewport of the fold, so text splitting and
+ * tween creation for below-the-fold content stays off the main thread during page load.
+ */
+export function whenNear(element, setup) {
+  return ScrollTrigger.create({ trigger: element, start: "top bottom+=50%", end: "max", once: true, onEnter: setup });
+}
+
 let lenis = null;
 
 export const setLenis = (instance) => {

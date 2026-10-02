@@ -8,10 +8,10 @@ import Contact from "./components/Contact";
 import SmoothScroll from "./components/motion/SmoothScroll";
 import Cursor from "./components/motion/Cursor";
 import PageTransition from "./components/motion/PageTransition";
+import Home from "./pages/Home";
 import { ScrollTrigger, scrollToTarget } from "./lib/motion";
 import { accentFor, routeLabel } from "./lib/routes";
 
-const loadHome = () => import("./pages/Home");
 const loadWork = () => import("./pages/Work");
 const loadWorkDetail = () => import("./pages/WorkDetail");
 const loadBlog = () => import("./pages/Blog");
@@ -20,7 +20,6 @@ const loadCaseStudies = () => import("./pages/CaseStudies");
 const loadCaseStudyCategory = () => import("./pages/CaseStudyCategory");
 const loadCaseStudyDetail = () => import("./pages/CaseStudyDetail");
 
-const Home = lazy(loadHome);
 const Work = lazy(loadWork);
 const WorkDetail = lazy(loadWorkDetail);
 const Blog = lazy(loadBlog);
@@ -30,7 +29,12 @@ const CaseStudyCategory = lazy(loadCaseStudyCategory);
 const CaseStudyDetail = lazy(loadCaseStudyDetail);
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const PREFETCH = [loadHome, loadWork, loadWorkDetail, loadBlog, loadBlogPost, loadCaseStudies];
+const PREFETCH = [loadWork, loadBlog, loadWorkDetail];
+
+const canPrefetch = () => {
+  const connection = navigator.connection;
+  return !connection || (!connection.saveData && !/2g|3g/.test(connection.effectiveType ?? ""));
+};
 
 const scrollToHash = (hash) => {
   let attempts = 0;
@@ -74,10 +78,24 @@ const Shell = () => {
     previousPath.current = location.pathname;
   }, [location.pathname, location.hash, location.key]);
 
+  // Warm the next likely pages only once the landing page is fully loaded and the main thread is quiet.
   useEffect(() => {
-    const idle = window.requestIdleCallback ?? ((fn) => setTimeout(fn, 1500));
-    const id = idle(() => PREFETCH.forEach((load) => load().catch(() => {})));
-    return () => (window.cancelIdleCallback ?? clearTimeout)(id);
+    if (!canPrefetch()) return undefined;
+    const idle = window.requestIdleCallback ?? ((fn) => setTimeout(fn, 1));
+    let timer;
+    let idleId;
+    const schedule = () => {
+      timer = setTimeout(() => {
+        idleId = idle(() => PREFETCH.forEach((load) => load().catch(() => {})), { timeout: 4000 });
+      }, 3500);
+    };
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.removeEventListener("load", schedule);
+      clearTimeout(timer);
+      if (idleId) (window.cancelIdleCallback ?? clearTimeout)(idleId);
+    };
   }, []);
 
   const settleScroll = () => {

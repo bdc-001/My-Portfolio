@@ -402,5 +402,5 @@ export const CONTACT = {
   linkedin: "https://www.linkedin.com/in/arsalaan-pm/",
   youtube: "https://www.youtube.com/@ArsalaanMd25",
   github: "https://github.com/bdc-001",
-  resume: "/Mohammed_Resume_2025.pdf",
+  resume: "/Mohammed_Resume_2026.pdf",
 };

@@ -18,9 +18,9 @@ const SplitReveal = ({
   const ref = useRef(null);
 
   useGSAP(
-    (_, contextSafe) => {
+    () => {
       const mm = gsap.matchMedia();
-      mm.add(MOTION_OK, () => {
+      mm.add(MOTION_OK, (_, contextSafe) => {
         const split = contextSafe(() =>
           SplitText.create(ref.current, {
             type: by === "chars" ? "lines,words,chars" : "lines,words",

@@ -6,9 +6,9 @@ const ScrollLitText = ({ as: Tag = "p", dim = 0.18, start = "top 82%", end = "bo
   const ref = useRef(null);
 
   useGSAP(
-    (_, contextSafe) => {
+    () => {
       const mm = gsap.matchMedia();
-      mm.add(MOTION_OK, () => {
+      mm.add(MOTION_OK, (_, contextSafe) => {
         whenNear(
           ref.current,
           contextSafe(() =>

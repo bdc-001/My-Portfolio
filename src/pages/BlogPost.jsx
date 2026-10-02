@@ -128,6 +128,12 @@ const Block = ({ block, isLead }) => {
           &ldquo;{block.text}&rdquo;
         </blockquote>
       );
+    case "verse":
+      return (
+        <blockquote className="my-10 border-l-2 border-accent/60 pl-6 text-pretty text-[1.2rem] italic leading-[1.75] text-neutral-200 md:text-[1.35rem]">
+          <Lines lines={block.lines} />
+        </blockquote>
+      );
     case "dialogue":
       return (
         <div className="card my-10 space-y-3 p-5 md:p-6">

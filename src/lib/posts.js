@@ -85,7 +85,7 @@ const IMAGE = /^!\[([^\]]*)\]\(\s*(\S+?)(?:\s+"([^"]*)")?\s*\)$/;
 /**
  * Parses the lightweight markdown used in posts into typed blocks:
  * ## / ### headings, "- " lists, "1." ordered lists, speaker transcripts, one-line "quotes",
- * images as `![alt](./file.webp "Caption | Photo credit")`, and paragraphs.
+ * "> " verse (line breaks kept), images as `![alt](./file.webp "Caption | Photo credit")`, and paragraphs.
  */
 export function parseContent(content, folder = "") {
   const blocks = [];
@@ -107,6 +107,8 @@ export function parseContent(content, folder = "") {
     } else if (chunk.startsWith("## ")) {
       const text = chunk.slice(3).trim();
       blocks.push({ type: "h2", text, id: slugify(text) });
+    } else if (lines.every((line) => line.startsWith(">"))) {
+      blocks.push({ type: "verse", lines: lines.map((line) => line.replace(/^>\s?/, "")) });
     } else if (lines.every((line) => line.startsWith("- "))) {
       blocks.push({ type: "ul", items: lines.map((line) => line.slice(2)) });
     } else if (/^\d+\.\s/.test(chunk)) {

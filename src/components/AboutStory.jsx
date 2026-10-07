@@ -56,7 +56,7 @@ const AboutStory = () => {
 
   return (
     <section className="container-site relative pb-12 pt-24 md:pb-16 md:pt-32" aria-labelledby="about-heading">
-      <SectionRule index="01" label="About" meta="Darjeeling → Dhanbad → Bangalore" />
+      <SectionRule index="01" label="About" meta="Convin · Bangalore" />
       <h2 id="about-heading" className="sr-only">
         About Arsalaan
       </h2>

@@ -99,9 +99,9 @@ export const HERO_ROADMAP = [
 ];
 
 export const ABOUT_PARAGRAPHS = [
-  "I grew up in Darjeeling, a sheltered kid who thought the world ended where the mist began. A city school in Kolkata, a pandemic, a drop year spent learning from YouTube, and four years at IIT (ISM) Dhanbad changed that.",
-  "Somewhere between coordinating the Product Management Club and co-founding Black Diamond Consulting, I found the work I wanted to do: taking ambiguous, zero-to-one problems and turning them into things people actually use.",
-  "Today I sit between business strategy and engineering at Convin.ai, where I've owned everything from self-hosted GPU clusters to no-code QA engines. I believe in shipping to learn, in extreme ownership, and in listening to the 30-second calls everyone else skips.",
+  "I was hired to keep teams talking. A year later, I make the things those conversations used to hand off.",
+  "At Convin there is no design team left to draw the screen, so I prototype it in Lovable and put it in front of people while the question is still warm. The words that leave with a feature are built the same way. I coded pipelines that read a release from the codebase and turn it into the LinkedIn post, the carousel, the product video, the one-pager and the sales brief. Gumloop only carries them out.",
+  "The morning is already on the desk before I sit down. Sourabh, a PM OS I built, has the Jira tickets, the internal messages and the codebase in one place, and customer calls come in through Fireflies. I look for the thread they share, and the PRD starts there. Cursor stays open on the repo. Claude drafts. Lately Grok runs the next step, and I still read the end before anything is allowed to move.",
 ];
 
 export const ABOUT_STATS = [

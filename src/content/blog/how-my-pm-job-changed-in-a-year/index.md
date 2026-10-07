@@ -1,16 +1,16 @@
 ---
 title: "How My Job as a PM Changed in One Year"
-excerpt: I joined on 9 June 2025 to connect teams. The design team is gone. I prototype in Lovable, and I coded the pipelines that turn a release into the content that goes out.
+excerpt: I joined on 9 June 2025 sure the job was to connect people. The year let me keep that idea just long enough to trust it.
 date: 2026-10-07
 tags: [Product, Career, AI, Building]
 cover: ./team.webp
 coverAlt: The team gathered outdoors in front of a green wall at Area83
 coverCredit: A day out with the team
 summary:
-  - I joined on 9 June 2025. The job was to connect design, engineering and marketing.
-  - The company changed direction. There were layoffs. The design team is gone. There are no designers now.
-  - I build the screens in Lovable. No design team is in that step.
-  - I coded the content system myself. A release in the codebase becomes a LinkedIn post, a carousel, a product video, a one-pager and a sales brief. Each one has its own pipeline. Gumloop only distributes them.
+  - I joined on 9 June 2025. As I understood it, the job was to keep design, engineering and marketing in one conversation.
+  - For a while, that really was the job.
+  - Then the company moved, and the work did not get smaller just because the room did.
+  - I am still in the same seat. The days are not the same days.
 ---
 
 9 June 2025. My first day.

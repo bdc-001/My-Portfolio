@@ -69,7 +69,7 @@ const Lines = ({ lines }) =>
 const Figure = ({ block }) => (
   <figure className="my-12 sm:-mx-4 md:my-14 lg:-mx-10 xl:mx-0">
     <div className="overflow-hidden rounded-2xl bg-ink-800 ring-1 ring-inset ring-white/[0.06]">
-      <img src={block.src} alt={block.alt} className="aspect-[3/2] w-full object-cover" loading="lazy" decoding="async" />
+      <img src={block.src} alt={block.alt} className="h-auto w-full" loading="lazy" decoding="async" />
     </div>
     {(block.caption || block.credit) && (
       <figcaption className="mt-3.5 flex flex-col gap-1 px-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
@@ -372,6 +372,7 @@ const Hero = ({ post, stats, share }) => {
           src={post.coverImage}
           alt={post.coverAlt ?? ""}
           className="h-full w-full object-cover"
+          style={{ objectPosition: post.coverPosition || "center" }}
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.6, ease: EASE }}
@@ -420,16 +421,21 @@ const Hero = ({ post, stats, share }) => {
         </Reveal>
       </div>
 
-      {post.coverCredit && (
-        <a
-          href={post.coverCreditUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute bottom-3 right-4 font-mono text-[10px] uppercase tracking-wider text-neutral-500 transition-colors hover:text-neutral-300 sm:right-6"
-        >
-          Photo: {post.coverCredit}
-        </a>
-      )}
+      {post.coverCredit &&
+        (post.coverCreditUrl ? (
+          <a
+            href={post.coverCreditUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-3 right-4 font-mono text-[10px] uppercase tracking-wider text-neutral-500 transition-colors hover:text-neutral-300 sm:right-6"
+          >
+            Photo: {post.coverCredit}
+          </a>
+        ) : (
+          <p className="absolute bottom-3 right-4 font-mono text-[10px] uppercase tracking-wider text-neutral-500 sm:right-6">
+            {post.coverCredit}
+          </p>
+        ))}
     </header>
   );
 };

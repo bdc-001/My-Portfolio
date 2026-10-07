@@ -1,6 +1,6 @@
 ---
-title: "The Parts of Me That Don't Fit in a Calendar Invite: Why Hobbies Matter in Corporate Life"
-excerpt: Long rides, a pencil, a guitar and a few lines of poetry. Why the things I do for no reason at all are the reason I can still do my job well.
+title: "Why Hobbies Matter in Corporate Life"
+excerpt: Long rides, a pencil, a guitar, and a few lines of poetry. The simple things that keep me myself when work gets too loud.
 date: 2026-10-03
 tags: [Personal, Career, Hobbies, Life]
 cover: ./cover.webp
@@ -8,162 +8,166 @@ coverAlt: Sunrise over a sea of clouds seen from a rocky ledge at Nandi Hills, n
 coverCredit: Yasmeen Syeda · CC BY-SA 4.0
 coverCreditUrl: https://commons.wikimedia.org/w/index.php?curid=49703557
 summary:
-  - Corporate life slowly turns you into your job title, and you don't notice until a hobby goes missing.
-  - Long rides give me perspective, sketching teaches me to see, poetry gives me words for what dashboards can't measure.
-  - Hobbies aren't an escape from work. They are where I recover the person who does the work.
-  - Your title can change in one email. The things you love for no reason are yours to keep.
+  - Work can slowly become your whole life, and you don't even notice.
+  - Riding, sketching, poetry and music bring me back to myself.
+  - A hobby is not a break from work. It's how I stay the person who does the work.
+  - Your job title can change. The things you love are still yours.
 ---
 
-There's a version of me that only exists on weekdays.
+Let me be honest with you.
 
-He wakes up to Slack. He thinks in sprints. He has opinions about acceptance criteria and he says "let's take this offline" without flinching.
+On weekdays, I turn into a different person.
 
-He's good at his job. I'm proud of him.
+I wake up and open Slack. I think about deadlines. I sit in meetings and say things like "let's take this offline." I care a lot about the work.
 
-But he's not the whole story. And for a while, I forgot that.
+I'm not complaining. I like my job. I'm proud of it.
 
-## The Weekday Version of Me
+But that person is not all of me. For a while, I forgot the rest.
 
-When I joined Convin, I was hungry. Intern, then a PPO, then a product manager trying to prove that the kid from the hills deserved the room.
+## I gave my job everything
 
-So I gave the job everything. Early mornings. Late evenings. Weekends that were "just one quick doc."
+When I joined Convin, I really wanted to prove myself. I started as an intern. Then I got a PPO. Then I became a product manager. Somewhere in my head, the kid from the hills still had to earn his seat.
 
-![An office tower at night with rows of lit windows](./office-night.webp "Every lit window is somebody's 'just one more thing'. For a while, one of them was mine. | Photo: Vladimir Kudinov · CC0")
+So I said yes to everything.
 
-Nobody asked me to. That's the thing about corporate life: it rarely takes your time by force. You hand it over, one reasonable yes at a time.
+Early mornings. Late nights. Weekends that were supposed to be "just one small doc."
 
-And somewhere in all those reasonable yeses, things started going quiet.
+![An office tower at night with rows of lit windows](./office-night.webp "Late nights at the office. For a while, this was my whole week. | Photo: Vladimir Kudinov · CC0")
 
-## The Day I Noticed the Silence
+Nobody forced me. That's the tricky part of a corporate job. It doesn't take your time. You give it away, one small yes at a time.
 
-It wasn't dramatic. There was no burnout movie moment.
+And slowly, the other parts of my life went quiet.
 
-I just opened a drawer one Sunday and found my sketchbook. The last page was months old. Half a drawing. A face I never finished.
+## I didn't even notice
 
-I sat on the floor and stared at it for a long time.
+Nothing big happened. There was no burnout moment.
 
-Because I realised I hadn't stopped sketching because I'd lost interest. I'd stopped because I'd stopped making room. And the scariest part? I hadn't even missed it. I'd just gotten used to being less of myself.
+One Sunday I opened a drawer and found my sketchbook. The last page was months old. Half a face. I never finished it.
 
-That's how hobbies die in corporate life. Not with a goodbye. With a slow, polite fade.
+I just sat there and looked at it.
 
-## The Road Doesn't Care About Your Jira
+I hadn't stopped because I got bored of drawing. I stopped because I never made time for it. And the sad part? I didn't even miss it. I had just got used to being less of myself.
 
-The first thing I took back was the road.
+That's how hobbies die once you start working. You don't decide to quit them. They just fade, and one day you notice they're gone.
 
-Long rides have always been my reset button. A 5 a.m. start, the city still asleep, the highway empty, and that first cold wind that hits you like it's trying to wake up a part of you that's been snoozing all week.
+## The road doesn't care about your meetings
 
-![A black Royal Enfield motorcycle parked in a green forest](./royal-enfield.webp "Some people meditate. I check my tyre pressure and leave before sunrise. | Photo: Thomson Martin · CC0")
+The first thing I took back was riding.
 
-Here's what nobody tells you about riding: you can't think about work on a bike. Not really. The road demands all of you. Every curve, every pothole, every truck that thinks lanes are a suggestion.
+Long rides have always cleared my head. I leave around 5 in the morning. The city is still asleep. The highway is empty. And that first cold wind wakes you up in a way coffee never does.
 
-And yet.
+![A black Royal Enfield motorcycle parked in a green forest](./royal-enfield.webp "My reset. I leave before the city wakes up. | Photo: Thomson Martin · CC0")
 
-Somewhere around the second chai stop, the problem I'd been stuck on all week quietly solves itself. Not because I worked on it. Because I finally stopped.
+Here's the thing about a bike. You can't think about work while you're riding. Not really. You have to watch the road. Every turn. Every pothole. Every truck that doesn't stay in its lane.
 
-**Distance gives perspective.** Sometimes literally.
+And still.
 
-I've watched the sun come up over clouds at Nandi Hills and thought about a roadmap debate from Thursday. From up there, it looked exactly as big as it really was: small.
+Somewhere around the second cup of chai, the problem I was stuck on all week just sorts itself out. Not because I worked on it. Because I finally stopped thinking about it.
 
-## Pencil, Paper, Patience
+**A bit of distance helps.** Sometimes for real.
 
-Sketching taught me something I use in every single product review: **how to actually look.**
+I've sat at Nandi Hills and watched the sun come up over the clouds. Then I thought about some roadmap argument from Thursday. From up there, it looked small. Because it was small.
 
-When you draw a face, you can't draw what you think a face looks like. You have to draw what's in front of you. The uneven eyebrow. The shadow under the lip. The thing everyone else walks past.
+## A pencil taught me to look
 
-![An open sketchbook with pencil drawings next to two pencils and a keyboard](./sketchbook.webp "A sketchbook doesn't care about your title. It only cares whether you paid attention. | Photo: Messala Ciulla · CC0")
+Sketching taught me something I still use in product reviews. It taught me to actually look.
 
-That's user research. That's listening to a call recording and hearing the hesitation before "yeah, it's fine." That's noticing the one field everyone skips on a form.
+When you draw a face, you can't draw the face you have in your head. You have to draw the one in front of you. The eyebrow that isn't even. The small shadow under the lip. The things most people walk past.
 
-I didn't learn that in a PM course. I learned it at a desk in Darjeeling, drawing the same hills a thousand times until I finally saw them.
+![An open sketchbook with pencil drawings next to two pencils and a keyboard](./sketchbook.webp "My sketchbook doesn't care about my job title. It only asks me to pay attention. | Photo: Messala Ciulla · CC0")
 
-## The Poetry I Don't Show at Work
+I use the same habit at work. I listen to a call and hear the small pause before someone says "yeah, it's fine." I notice the one box on a form that everyone skips.
 
-At work, I write PRDs. Clear. Structured. Measurable.
+I didn't learn that in a course. I learned it in Darjeeling, drawing the same hills again and again, until I finally saw them.
 
-At night, sometimes, I write poetry. Messy. Honest. Unmeasurable.
+## The poetry I don't show at work
 
-I used to think these were two different people. Now I think they're the same muscle. One helps me say exactly what a feature should do. The other helps me say exactly what I feel. And honestly? The second one is harder.
+At work, my writing is clean. Clear points. Easy to measure.
 
-Corporate life has a vocabulary for everything except feelings. We have words for velocity, churn, and alignment. We don't have a Jira ticket for "I'm tired in a way sleep doesn't fix."
+At night, sometimes, I write poetry. It's messy. It's honest. You can't put a number on it.
 
-Poetry gave me those words. Urdu shayari gave me the courage to say them.
+For a long time I thought these were two different people. They're not. One helps me say what a feature should do. The other helps me say what I actually feel. And I'll be honest, the second one is harder.
+
+At work we have a word for almost everything. Speed. Churn. Alignment. We don't have a word for "I'm tired, and sleep is not fixing it."
+
+Poetry gave me words for that. Urdu shayari gave me the guts to say them.
 
 ![Urdu calligraphy of Allama Iqbal's couplet about the falcon, in black ink on white](./iqbal-calligraphy.webp "Nahin tera nasheman qasr-e-sultani ke gumbad par, tu shaheen hai, basera kar paharon ki chatanon par. Iqbal, reminding me where I'm from. | Photo: IndiaVinitha · CC BY-SA 4.0")
 
-Iqbal wrote it better than I ever could:
+Iqbal said it better than I ever will:
 
 > Your nest is not on the dome of the royal palace.
 > You are a falcon. Make your home on the rocks of the mountains.
 
-I read that line on a bad week once, and it hit different. Not because it told me to quit. Because it reminded me that the dome, the title, the corner desk, was never supposed to be the home.
+I read that line on a bad week. It didn't tell me to quit my job. It reminded me that the title, the desk, the nice office, was never meant to be my whole home.
 
-And on the nights the words do come, they sound something like this:
+Some nights the words come on their own. They sound a bit like this:
 
 > The city asked me who I was,
 > I showed it my calendar.
 > The mountains asked the same thing,
 > and I didn't need to answer.
 
-## Six Strings and a Bad Week
+## A guitar after a bad week
 
-Music is my meditation. I sing, and I play the guitar badly enough to stay humble and well enough to feel something.
+Music is how I slow down. I sing. I also play the guitar. Not very well. Well enough that I feel something.
 
-![Close-up of a hand on the strings of a metal resonator guitar, in black and white](./guitar.webp "Rhythm in chaos. It translates surprisingly well to roadmaps. | Photo: Wilfredo Rafael Rodriguez Hernandez · CC0")
+![Close-up of a hand on the strings of a metal resonator guitar, in black and white](./guitar.webp "Same four chords, after a week that didn't go to plan. | Photo: Wilfredo Rafael Rodriguez Hernandez · CC0")
 
-There's a specific kind of relief in playing the same four chords after a week where nothing went to plan. The song doesn't care that the release slipped. It just wants you to keep time.
+There's a simple kind of relief in playing the same four chords after a week where nothing worked. The song doesn't care that a release got delayed. It just wants you to keep time.
 
-And keeping time, it turns out, is half of product management. Knowing when to push. Knowing when to hold. Knowing that silence between the notes is part of the music.
+That helps at work too. Knowing when to push. Knowing when to wait. And knowing that the quiet bits matter as much as the busy ones.
 
-## 3,500 People Who Know a Different Me
+## A page that is just mine
 
-I also run an Instagram page, [@actually_arsalaan](https://www.instagram.com/actually_arsalaan/). A little over 3,500 people follow it now.
+I also run an Instagram page, [@actually_arsalaan](https://www.instagram.com/actually_arsalaan/). A little over 3,500 people follow it.
 
-It's where the rides, the sketches, the poetry and the late-night thoughts go. The things that don't fit in a quarterly review.
+That's where the rides go. The sketches. The poetry. The thoughts I have late at night. Things that don't belong in a work update.
 
-Here's the funny part: at work, I live inside metrics. Followers, engagement, reach: I understand these numbers better than most.
+Here's the funny part. At work, I live inside numbers. Followers, likes, reach. I understand these numbers pretty well.
 
-But on that page, I made myself one promise: **this is the one place I refuse to optimise.**
+On that page, I made myself one promise. **I will not try to grow it.**
 
-I post what I love, when I feel like it. Some posts do well. Some don't. And for once, I genuinely don't care, because the point was never the number. The point was making something just because I wanted it to exist.
+I post what I like, when I feel like posting. Some posts do well. Some don't. And for once, I don't care. The point was never the number. I just wanted to make something because I felt like it.
 
-Do you remember the last time you did something without a KPI attached to it?
+When was the last time you did something with no target on it?
 
-## Why This Actually Matters for Corporate Life
+## Why this actually helps at work
 
-I'm a product guy, so let me be practical for a minute.
+I'm a product person, so let me say this plainly.
 
-**Hobbies are where you're allowed to be bad.** At work, every mistake has a cost. On a sketchbook page, a wrong line is just a wrong line. That freedom to fail is where real creativity comes back from.
+**A hobby is a place where you're allowed to be bad.** At work, a mistake costs something. On a sketchbook page, a wrong line is just a wrong line. That freedom is where good ideas come back from.
 
-**Rest is not the same as recovery.** Scrolling on the couch is rest. Riding 200 km, finishing a sketch, or nailing a song you've been practising for weeks is recovery. One numbs you. The other refills you.
+**Rest and recovery are not the same thing.** Scrolling on the couch is rest. A long ride, a finished sketch, or a song you've been practising is recovery. One makes you numb. The other fills you back up.
 
-**They make you better at the job.** Riding taught me patience with long timelines. Sketching taught me observation. Poetry taught me to communicate. Music taught me rhythm. None of that is on my resume. All of it shows up in my work.
+**They make you better at the job.** Riding taught me to be patient. Sketching taught me to notice things. Poetry taught me to say what I mean. Music taught me timing. None of this is on my resume. All of it shows up in my work.
 
-**Your identity needs more than one pillar.** Titles change. Teams get reshuffled. Companies have bad quarters. If your entire sense of self lives inside an org chart, one email can knock the ground out from under you. Hobbies are the parts of you no reorg can touch.
+**Don't let the job be the only thing you are.** Titles change. Teams change. Companies have bad months. If your whole sense of self sits inside your job, one email can shake you. A hobby is the part of you that no email can take.
 
-**They keep you human in rooms that forget to be.** The best people I've worked with all had a life outside work. A band. A garden. A marathon. You could feel it in how they disagreed: with curiosity instead of fear.
+**They keep you human.** The best people I've worked with all had a life outside the office. A band. A small garden. A long run on Sunday. You could feel it when they disagreed with you. They were curious, not scared.
 
-## What I'd Tell Anyone Starting Out
+## If this is you
 
-**To the fresher in their first corporate job:**
-Give the job your best. Not your everything. Keep one thing that's only yours.
+**If this is your first job:**
+Give it your best. Don't give it all of you. Keep one thing that is only yours.
 
-**To the version of me that stopped sketching:**
-You didn't lose it. You just put it down. Pick it back up. The pencil remembers.
+**If you stopped, like I stopped sketching:**
+You didn't lose it. You just put it down. Pick it up again.
 
-**To the manager reading this:**
-When someone on your team says they're leaving early for band practice, or taking Friday off to ride to the mountains, that's not a lack of commitment. That's how they come back on Monday with something to give.
+**If you manage a team:**
+When someone leaves a bit early for band practice, or takes a Friday off to go for a ride, that is not a lack of commitment. That is how they come back on Monday with something to give.
 
-**To anyone reading this on a Sunday night with that familiar Monday dread:**
-Go do the thing you used to love. Badly, if you have to. Just do it.
+**If you're reading this on a Sunday night, already worried about Monday:**
+Go do the thing you used to love. Even if you're bad at it now. Just do it.
 
-## The Helmet by the Door
+## The helmet by the door
 
-These days, my helmet sits by the door. My sketchbook lives on my desk, not in a drawer. The guitar is never more than an arm's length away.
+These days my helmet sits by the door. My sketchbook is on the desk, not in a drawer. The guitar is close enough to pick up.
 
 I still give my job a lot. I still love what I do.
 
-But I've made peace with something it took me a while to learn:
+I just finally understood one thing.
 
 **My job is what I do. These are who I am.**
 
-And the version of me who shows up on Monday? He's better for it.
+And the person who shows up on Monday is better because of that.

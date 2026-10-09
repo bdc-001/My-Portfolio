@@ -25,6 +25,7 @@ Arsalaan works on AI products for enterprise contact centres: self-hosted LLM in
 ## Blog
 
 - [All posts](https://keephustling.in/blog): Stories and lessons on product, AI, and the long way round.
+- [What My First Year as a Product Manager Actually Looked Like](https://keephustling.in/blog/first-year-as-a-product-manager): He joined on a PPO. The first months were the gap between the associate product manager title and an ordinary Tuesday.
 - [How My Job as a PM Changed in One Year](https://keephustling.in/blog/how-my-pm-job-changed-in-a-year): The design team is gone. He prototypes in Lovable, and he coded pipelines that turn a codebase release into LinkedIn posts, carousels, product videos, one-pagers and sales briefs. Gumloop distributes them.
 - [Why Hobbies Matter in Corporate Life](https://keephustling.in/blog/why-hobbies-matter-in-corporate-life): Long rides, sketching, poetry and a guitar, and how they keep me myself when work gets too loud.
 - [AI & Lead Identification: Uncovering the Gold in Rejected Conversations](https://keephustling.in/blog/the-gold-in-rejected-calls): Why the shortest sales calls often hold the most valuable intelligence.

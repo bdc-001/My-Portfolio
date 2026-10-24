@@ -22,8 +22,8 @@ const EARLIER = PROJECTS.filter((item) => item.track === "earlier");
 const COUNTERS = [
   { value: String(EXPERIENCE.length).padStart(2, "0"), label: "Product roles" },
   { value: String(PROJECTS.length).padStart(2, "0"), label: "Projects shipped" },
-  { value: "65%", label: "LLM infra cost cut" },
   { value: "$1.7M", label: "Renewals influenced" },
+  { value: "140k", label: "API calls/day" },
 ];
 
 const GithubButton = ({ href, compact = false }) => (

@@ -96,8 +96,8 @@ export const ABOUT_PARAGRAPHS = [
 ];
 
 export const ABOUT_STATS = [
-  { value: "65%", label: "LLM infra cost cut" },
   { value: "$1.7M", label: "Renewals influenced" },
+  { value: "140k", label: "API calls/day" },
   { value: "30+", label: "Consulting projects" },
   { value: "$400k+", label: "Capital raised" },
 ];
@@ -151,9 +151,9 @@ export const WORK = [
     solution:
       "Led the migration to self-hosted H200 GPU clusters running fine-tuned models. Designed a no-code Rule Engine so CX teams could automate QA without engineering help, and shipped an LLM-powered insight delivery system that pushes what matters to reps and leaders.",
     impact: [
-      { value: "65%", label: "LLM infrastructure cost reduction" },
       { value: "$1.7M", label: "Renewals influenced" },
       { value: "140k", label: "API calls served per day" },
+      { value: "Self-hosted", label: "H200 GPU clusters" },
     ],
     stack: ["LLM Infrastructure", "No-code Rule Engine", "AI Strategy", "Enterprise CX"],
     relatedPosts: ["the-gold-in-rejected-calls"],

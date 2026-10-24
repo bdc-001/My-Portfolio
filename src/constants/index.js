@@ -9,13 +9,13 @@ import aspireImage from "../assets/projects/aspire.webp";
 import revenueImage from "../assets/projects/revenue-attribution.webp";
 
 export const PROFILE = {
-  name: "Arsalaan Mohammed",
-  role: "Product Manager",
+  name: "Mohammed Arsalaan",
+  role: "APM II",
   company: "Convin.ai",
   location: "Bangalore, India",
-  headline: "I turn messy, zero-to-one problems into AI products people actually use.",
+  headline: "I build LLM evals, conversation intelligence, AI voice and chat agents, MCP integrations, and cost-optimised AI infrastructure.",
   tagline:
-    "Engineer turned product manager. I build AI products at Convin, write about what the work teaches me, and sing when nobody's shipping anything.",
+    "Engineer turned product manager. I ship AI products at Convin—LLM infrastructure, evals, agent workflows, and insights that reach the people who need them. I write about what the work teaches me.",
 };
 
 export const ABOUT_FACTS = [
@@ -42,15 +42,6 @@ export const NOW = [
 
 /** The hero board. `stage`: 0 discover, 1 building, 2 shipped. Keep it to what you're actually working on. */
 export const HERO_ROADMAP = [
-  {
-    id: "self-hosted-llms",
-    stage: 2,
-    title: "Self-hosted LLMs",
-    source: "Convin",
-    why: "Third-party LLM bills grew with every call, so we moved to fine-tuned models on our own H200s.",
-    outcome: { value: "−65%", label: "LLM infra cost" },
-    href: "/work/convin",
-  },
   {
     id: "stayora",
     stage: 2,

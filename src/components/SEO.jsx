@@ -4,10 +4,10 @@ import { POSTS } from "../lib/posts";
 
 const BASE_URL = "https://keephustling.in";
 const SITE_NAME = "Keep Hustling";
-const DEFAULT_TITLE = `${SITE_NAME} | Arsalaan Mohammed, Product Manager`;
+const DEFAULT_TITLE = `Mohammed Arsalaan | APM II, Convin.ai`;
 
 // Full Person and WebSite entities live in index.html; pages reference them by @id.
-const PERSON_REF = { "@type": "Person", "@id": `${BASE_URL}/#person`, name: "Arsalaan Mohammed", url: BASE_URL };
+const PERSON_REF = { "@type": "Person", "@id": `${BASE_URL}/#person`, name: "Mohammed Arsalaan", url: BASE_URL };
 const WEBSITE_REF = { "@id": `${BASE_URL}/#website` };
 
 const absoluteUrl = (url) => (/^https?:\/\//.test(url) ? url : `${BASE_URL}${url.startsWith("/") ? "" : "/"}${url}`);
@@ -19,7 +19,7 @@ const Seo = ({ title, description, image, type = "website", noindex = false }) =
   const seoTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const seoDescription =
     description ||
-    "Keep Hustling is the personal website of Arsalaan Mohammed, Product Manager at Convin.ai and IIT Dhanbad alum. AI products, 0-to-1 work, and honest stories from the journey. Based in Bangalore, India.";
+    "Mohammed Arsalaan builds LLM evals, conversation intelligence, AI voice and chat agents, MCP integrations, and cost-optimised AI infrastructure at Convin.ai. Based in Bangalore, India.";
   const seoImage = absoluteUrl(image || "/og-image.jpg");
 
   useEffect(() => {

@@ -25,6 +25,7 @@ Arsalaan works on AI products for enterprise contact centres: self-hosted LLM in
 ## Blog
 
 - [All posts](https://keephustling.in/blog): Stories and lessons on product, AI, and the long way round.
+- [How to Write a Weekly Update Your Manager Actually Reads](https://keephustling.in/blog/weekly-update-your-manager-reads): A Friday format that leads with one decision, a short template, and a before-and-after status report you can copy.
 - [AI Won't Take Your Job. Someone Who Uses It Well Might.](https://keephustling.in/blog/ai-will-not-take-your-job): From inside an AI company: the work that left, the work that grew, and what a junior should practise when people ask will AI take my job.
 - [What My First Year as a Product Manager Actually Looked Like](https://keephustling.in/blog/first-year-as-a-product-manager): He joined on a PPO. The first months were the gap between the associate product manager title and an ordinary Tuesday.
 - [How My Job as a PM Changed in One Year](https://keephustling.in/blog/how-my-pm-job-changed-in-a-year): The design team is gone. He prototypes in Lovable, and he coded pipelines that turn a codebase release into LinkedIn posts, carousels, product videos, one-pagers and sales briefs. Gumloop distributes them.
